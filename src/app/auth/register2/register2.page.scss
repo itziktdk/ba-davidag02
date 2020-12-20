@@ -1,0 +1,114 @@
+ion-content {
+  --background: url('../../../assets/imgs/bg.png') no-repeat 100% 100%;
+  background-position: center center;
+  background-attachment: fixed;
+  background-size: cover;
+}
+  
+  ion-toolbar {
+    --background: transparent;
+    --ion-color-base: transparent !important;
+    --border-style: none;
+    visibility: visible !important;
+    }
+  
+    ion-title{
+      padding-top: 14%;
+    }
+
+    ion-input {
+      color: #2d2d31 !important;
+      margin-left: auto;
+      margin-right: auto;
+      padding: auto !important;
+    }
+
+    h5{
+        font-size: 25px;
+        color: #ffff;
+        line-height: 33px;
+    }
+
+    hr{
+        background-color: #fff;
+        margin-top: 40px;
+        width: 207%;
+        height: 4px;
+    }
+
+    .second{
+        margin-left: -38px;
+        width: 315%!important;
+    }
+
+
+     //inputFirst
+  .rounded {
+    
+    --background:#fff;
+    border-bottom-left-radius: 10px;
+//    --padding-start: 25% !important;
+//   border: 1px solid #ccc;
+   
+  /* Safari 5, Chrome support border-radius without vendor prefix.
+   * FF 3.0/3.5/3.6, Mobile Safari 4.0.4 require vendor prefix.
+   * No support in Safari 3/4, IE 6/7/8, Opera 10.0.
+   */
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 30px;
+  /* Chrome, FF 4.0 support box-shadow without vendor prefix.
+   * Safari 3/4/5 and FF 3.5/3.6 require vendor prefix.
+   * No support in FF 3.0, IE 6/7/8, Opera 10.0, iPhone 3.
+   * change the offsets, blur and color to suit your design.
+   */
+  
+  /* using a bigger font for demo purposes so the box isn't too small */
+  font-size: 20px;
+  
+  /* with a big radius/font there needs to be padding left and right
+   * otherwise the text is too close to the radius.
+   * on a smaller radius/font it may not be necessary
+   */
+  /* only needed for webkit browsers which show a rectangular outline;
+   * others do not do outline when radius used.
+   * android browser still displays a big outline
+   */
+  outline: 0;
+
+  /* this is needed for iOS devices otherwise a shadow/line appears at the
+   * top of the input. depending on the ratio of radius to height it will
+   * go all the way across the full width of the input and look really messy.
+   * ensure the radius is no more than half the full height of the input, 
+   * and the following is set, and everything will render well in iOS.
+   */
+  -webkit-appearance: none;
+  
+}
+
+
+ ion-item{
+ --background:transparent;
+ }
+
+.w-outline {
+    --border-color: #fff;
+    background-color: #339933;
+    --border-width: 2px;
+  }
+
+  ion-chip {
+    height: 40px;
+  }
+
+  .bigger {
+    height: auto;
+  }
+
+  input ion-input{
+    margin: auto;
+  }
+
+      .ttl {
+        font-size: 20pt;
+    }

@@ -1,0 +1,138 @@
+<ion-content>
+  <div class="holder ion-padding">
+    <div class="top-logo">
+      <div class="img-holder ion-text-center">
+        <img src="assets/imgs/products.png" alt="">
+        <h5>המוצרים שלנו</h5>
+        <div class="sub-bar ion-text-center">
+          <p>למד על המוצרים שלנו</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="search-holder ion-padding">
+      <ion-searchbar class="ion-text-center" placeholder="חיפוש חופשי" inputmode="decimal" type="decimal"
+        [debounce]="250" showCancelButton="never"></ion-searchbar>
+    </div>
+
+
+    <div>
+      <div class="the-list ion-padding-vertical">
+        <div class="card" (click)="showModal()">
+          <ion-row>
+            <ion-col size="3" class="left flex al-start jc-between">
+              <img src="assets/imgs/ganja.png" alt="">
+            </ion-col>
+            <ion-col size="8" class="right flex flexd al-center jc-between">
+              <div class="first ion-text-center">
+                <h4>T20/C4 יהונתן</h4>
+                <p class="ion-text-wrap">תפרחת סאטיבה</p>
+              </div>
+              <div class="btns-holder flex al-center jc-center">
+                <ion-button id="subject">
+                  THC 20%
+                </ion-button>
+                <ion-button id="hmo">
+                  CBD 4%
+                </ion-button>
+
+
+
+              </div>
+            </ion-col>
+
+            <ion-col size="1" class="flex al-center">
+              <ion-icon name="chevron-back-outline"></ion-icon>
+            </ion-col>
+
+          </ion-row>
+        </div>
+
+        <div class="card" (click)="showModal()">
+          <ion-row>
+            <ion-col size="3" class="left flex al-start jc-between">
+              <img src="assets/imgs/ganja.png" alt="">
+            </ion-col>
+            <ion-col size="8" class="right flex flexd al-center jc-between">
+              <div class="first ion-text-center">
+                <h4>דוד - בלנד T20/C4</h4>
+                <p class="ion-text-wrap">הוא זן קנאביס היברידי, כך שהוא מותאם לצריכה ביום ובלילה, מאחר ואינו גורם לעייפות כבדה או לערנות מוגברת.</p>
+              </div>
+              <div class="btns-holder flex al-center jc-center">
+                <ion-button id="label-sp">
+                  SUPER PREMIUM
+                </ion-button>
+              </div>
+            </ion-col>
+            <ion-col size="1" class="flex al-center">
+              <ion-icon name="chevron-back-outline"></ion-icon>
+            </ion-col>
+
+          </ion-row>
+        </div>
+        <div class="card" (click)="showModal()">
+          <ion-row>
+            <ion-col size="3" class="left flex al-start jc-between">
+              <img src="assets/imgs/ganja.png" alt="">
+            </ion-col>
+            <ion-col size="8" class="right flex flexd al-center jc-between">
+              <div class="first ion-text-center">
+                <h4>dukhh, </h4>
+                <p class="ion-text-wrap">2 rows description</p>
+              </div>
+              <div class="btns-holder flex al-center jc-center">
+                <ion-button id="subject">
+                  THC 16%
+                </ion-button>
+                <ion-button id="hmo">
+                  CBD 3%
+                </ion-button>
+
+
+
+              </div>
+            </ion-col>
+
+            <ion-col size="1" class="flex al-center">
+              <ion-icon name="chevron-back-outline"></ion-icon>
+            </ion-col>
+
+          </ion-row>
+        </div>
+
+        <div class="card" (click)="showModal()">
+          <ion-row>
+            <ion-col size="3" class="left flex al-start jc-between">
+              <img src="assets/imgs/ganja.png" alt="">
+            </ion-col>
+            <ion-col size="8" class="right flex flexd al-center jc-between">
+              <div class="first ion-text-center">
+                <h4>Product Name</h4>
+                <p class="ion-text-wrap">2 rows description</p>
+              </div>
+              <div class="btns-holder flex al-center jc-center">
+                <ion-button id="subject">
+                  THC 16%
+                </ion-button>
+                <ion-button id="hmo">
+                  CBD 3%
+                </ion-button>
+              </div>
+            </ion-col>
+            <ion-col size="1" class="flex al-center">
+              <ion-icon name="chevron-back-outline"></ion-icon>
+            </ion-col>
+
+          </ion-row>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</ion-content>
+
+<ion-fab vertical="bottom" horizontal="center" slot="fixed">
+  <ion-fab-button (click)="goHome()">
+    <ion-icon name="home"></ion-icon>
+  </ion-fab-button>
+</ion-fab>

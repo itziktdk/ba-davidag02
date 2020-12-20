@@ -1,0 +1,119 @@
+<ion-content [fullscreen]="true">
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+      <div class="ion-text-center fixed-content" style="margin-top: 30px;">
+        <img src="../../../assets/imgs/logonewwhite.png" width="110px">
+      </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="ion-text-right" size="12">
+        <ion-item lines=none class="ttl">
+        <ion-icon name="person-circle-outline"></ion-icon>
+          <ion-label>הרשמה</ion-label>
+        </ion-item>
+        <ion-item lines=none>
+          <ion-label>
+            ברוך הבא לאפליקצית השירות המתקדמת שלנו!
+          </ion-label>
+        </ion-item>
+        <ion-item lines=none>
+          <ion-label class="bigger ion-text-wrap">
+            על מנת להתחיל להינות מהשירות, יש להשלים רישום קצר ומענה על מספר שאלות.<br>
+            לצורך השלמת הרישום, יש להצטייד בטופס מרשם ורשיון בתוקף.
+          </ion-label>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <!-- Start Progress Icons -->
+    <ion-row>
+      <ion-col size=12>
+        <div class="ion-text-center fixed-content" style="margin-top: 10px;">
+          <img src="../../../assets/imgs/step1-personaldetailes.svg" width="80%" />
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <!-- END Progress Icons -->
+
+    <ion-row>
+      <ion-col size="12">
+        <ion-item lines=none class="ion-text-center">
+          <ion-input class="rounded" placeholder="שם פרטי"></ion-input>
+          <ion-input class="rounded" placeholder="שם משפחה">
+          </ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+
+    <ion-row>
+      <ion-col size="12">
+        <ion-item lines=none class="ion-text-center">
+          <ion-input type=email class="rounded" placeholder="דואר אלקטרוני">
+          </ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="12">
+        <ion-item lines=none class="ion-text-center">
+          <ion-input id="city" class="rounded" placeholder="ישוב"></ion-input>
+          <ion-input id="street" class="rounded" placeholder="רחוב ומספר">
+          </ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="12">
+        <ion-item lines=none class="ion-text-center">
+          <ion-input id="city" class="rounded" placeholder="טלפון נייד"></ion-input>
+          <ion-input id="city" class="rounded" placeholder="תעודת זהות"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col style="text-align: right;" size="12">
+        <ion-item lines=none>
+          <h6>
+            לתשומת לבך: חברת דוד וגולית בע"מ שומרת לעצמה את הזכות לעשות שימוש במידע אנונימי לצורך שיפור השירות ואיכות
+            המוצרים
+          </h6>
+        </ion-item>
+      </ion-col>
+
+    </ion-row>
+
+
+
+    <!-- START Next Step Button -->
+    <ion-row class="ion-justify-content-center">
+      <ion-col center size="8">
+        <ion-item (click)="regform2()" button detail="false" lines="none" detail-icon="chevron-back-outline"
+          class="ion-text-center input-darkb-rnd">
+          <ion-label>המשך</ion-label>
+          <ion-icon name="arrow-back-circle-outline"></ion-icon>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <!-- END -->
+  </ion-grid>
+
+</ion-content>
+<style>
+  ion-toolbar {
+    visibility: visible;
+  }
+
+      .input-darkb-rnd {
+      --background: #071a33;
+      --border-radius: 25px;
+      color: #ffffff;
+      border-color: #333333;
+      border-width: thin;
+    }
+</style>

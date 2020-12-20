@@ -1,0 +1,54 @@
+ion-content
+{
+  .holder
+  {
+    background: url(../../assets/imgs/bg.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 100%;
+    width: 100%;
+
+
+    .logo-holder
+    {
+      padding-top: 2vh;
+      img
+      {
+        height: 8vh;
+      }
+    }
+
+    .the-form
+    {
+      margin-top: 20vw;
+
+      .forgot-holder
+      {
+        p
+        {
+          span
+          {
+            color: white;
+          }
+        }
+      }
+    }
+
+    .btn-holder
+    {
+      ion-button
+      {
+        --background: #333;
+        --border-radius: 50px;
+        --box-shadow: none;
+        --color: white;
+        font-size: 30px;
+        height: 3rem;
+        margin: 20px auto;
+      }
+    }
+
+ 
+  }
+}

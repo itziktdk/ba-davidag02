@@ -1,0 +1,240 @@
+
+<ion-content [fullscreen]="true">
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <div class="ion-text-center fixed-content" style="margin-top: 30px;">
+          <img src="../../../assets/imgs/logonewwhite.png" width="110px">
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="ion-text-right" size="12">
+        <ion-item lines="none" class="ttl">
+          <ion-icon class="white" name="documents-outline"></ion-icon>
+          <ion-label class="white">שאלון מטופל</ion-label>
+        </ion-item>
+        <!-- <ion-item lines="none">
+          <ion-label>
+            ברוך הבא לאפליקצית השירות המתקדמת שלנו!
+          </ion-label>
+        </ion-item> -->
+        <ion-item lines="none">
+          <ion-label class="bigger ion-text-wrap">
+            המסמכים שתצרף בשלב זה ישמשו לבדיקת זכאותך בעת בקשה לשמירת מלאי או הזמנה ישירה של מוצר. <br>
+            לצורך השלמת הרישום, יש להצטייד בטופס מרשם ורשיון בתוקף.
+          </ion-label>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <!-- Start Progress Icons -->
+    <ion-row>
+      <ion-col size=12>
+        <div class="ion-text-center fixed-content" style="margin-top: 10px;">
+          <img src="../../../assets/imgs/step3-survey.svg" width="80%" />
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <!-- END Progress Icons -->
+
+    <ion-card class="white" id="surv1" style="background-color: #0d171f; color:#333333">
+      <ion-card-header>
+        <ion-card-title color="light">
+          שאלה 1 מתוך 5
+        </ion-card-title>
+        <ion-card-subtitle color="light">
+          מהו טווח השנים שבו הנך צורך מוצרי קנאביס רפואי?
+        </ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item lines="none">
+          <ion-chip color="light" style="background-color: deeppink;">לחץ לבחירה</ion-chip>
+          <ion-select id="select1" showcancelbutton="none" selectedText=" " value="q1" aria-data="0" interface="action-sheet">
+            <ion-select-option value="1">מעל 10 שנים</ion-select-option>
+            <ion-select-option value="2">בין 5-10 שנים</ion-select-option>
+            <ion-select-option value="3">בין 3-5 שנים</ion-select-option>
+            <ion-select-option value="4">פחות משנה</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-card-content>
+      <div>
+        <ion-row>
+          <ion-col>
+            <!-- Other types -->
+            <ion-progress-bar value="0" buffer="0.8"></ion-progress-bar>
+          </ion-col>
+        </ion-row>
+      </div>
+    </ion-card>
+
+    <ion-card id="surv2" class="ion-hide" style="background-color: #0d171f; color:#333333">
+      <ion-card-header>
+        <ion-card-title>
+          שאלה 2 מתוך 5
+        </ion-card-title>
+        <ion-card-subtitle>
+האם קיימת העדפה לצריכה באידוי ?
+        </ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item lines="none">
+          <ion-chip color="white">לחץ לבחירה</ion-chip>
+          <ion-select showCancelButton="none" selectedText=" " value="q2" interface="action-sheet">
+            <ion-select-option value="1">כן</ion-select-option>
+            <ion-select-option value="2">לא</ion-select-option>
+           
+          </ion-select>
+        </ion-item>
+      </ion-card-content>
+      <div>
+        <ion-row>
+          <ion-col>
+            <!-- Other types -->
+            <ion-progress-bar value="0" buffer="0.6"></ion-progress-bar>
+          </ion-col>
+        </ion-row>
+      </div>
+    </ion-card>
+
+<ion-card id="surv3" class="ion-hide" style="background-color: #0d171f; color:#333333">
+  <ion-card-header>
+    <ion-card-title>
+      שאלה 3 מתוך 5
+    </ion-card-title>
+    <ion-card-subtitle>
+אלו זנים אתה צורך בלילה ?
+    </ion-card-subtitle>
+  </ion-card-header>
+  <ion-card-content>
+    <ion-item lines="none">
+      <ion-chip color="white">לחץ לבחירה</ion-chip>
+      <ion-select showCancelButton="none" selectedText=" " value="q3" interface="action-sheet">
+                <ion-select-option value="1">
+                  סאטיבה %T15%-c3
+                </ion-select-option>
+                <ion-select-option value="2">
+                  סאטיבה %T20%-c4
+                </ion-select-option>
+                <ion-select-option value="3">
+                  אינדיקה %T15%-c3
+                </ion-select-option>
+                <ion-select-option value="4">
+                  אינדיקה %T20%-c4
+                </ion-select-option>
+                <ion-select-option value="5">
+                  T10%-C10%
+                </ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-card-content>
+  <div>
+    <ion-row>
+      <ion-col>
+        <!-- Other types -->
+        <ion-progress-bar value="0" buffer="0.4"></ion-progress-bar>
+      </ion-col>
+    </ion-row>
+  </div>
+</ion-card>
+
+<ion-card id="surv4" class="ion-hide" style="background-color: #0d171f; color:#333333">
+  <ion-card-header>
+    <ion-card-title>
+      שאלה 4 מתוך 5
+    </ion-card-title>
+    <ion-card-subtitle>
+אלו זנים אתה צורך במהלך היום ?
+    </ion-card-subtitle>
+  </ion-card-header>
+  <ion-card-content>
+    <ion-item lines="none">
+      <ion-chip color="white">לחץ לבחירה</ion-chip>
+      <ion-select showCancelButton="none" selectedText=" " value="q4" interface="action-sheet">
+        <ion-select-option value="1">
+          סאטיבה %T15%-c3
+        </ion-select-option>
+        <ion-select-option value="2">
+          סאטיבה %T20%-c4
+        </ion-select-option>
+        <ion-select-option value="3">
+אינדיקה %T15%-c3
+        </ion-select-option>
+        <ion-select-option value="4">
+אינדיקה %T20%-c4
+        </ion-select-option>
+                <ion-select-option value="5">
+                T10%-C10%
+                </ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-card-content>
+  <div>
+    <ion-row>
+      <ion-col>
+        <!-- Other types -->
+        <ion-progress-bar value="0" buffer="0.2"></ion-progress-bar>
+      </ion-col>
+    </ion-row>
+  </div>
+</ion-card>
+
+<ion-card id="surv5" class="ion-hide" style="background-color: #0d171f; color:#333333">
+  <ion-card-header>
+    <ion-card-title>
+      שאלה 5 מתוך 5
+    </ion-card-title>
+    <ion-card-subtitle>
+      מהי תצורת המוצרים המועדפת עליך?
+    </ion-card-subtitle>
+  </ion-card-header>
+  <ion-card-content>
+    <ion-item lines="none">
+      <ion-chip color="white">לחץ לבחירה</ion-chip>
+      <ion-select showCancelButton="none" selectedText=" " value="q5" interface="action-sheet">
+        <ion-select-option value="1">איניקה או תפררחת מועדפת</ion-select-option>
+        <ion-select-option value="2">שמנים במינון משתנה</ion-select-option>
+        <ion-select-option value="3">סיגריות מגולגלות</ion-select-option>
+        <ion-select-option value="4">אחר</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-card-content>
+  <div>
+    <ion-row>
+      <ion-col>
+        <!-- Other types -->
+        <ion-progress-bar value="0" buffer="0"></ion-progress-bar>
+      </ion-col>
+    </ion-row>
+  </div>
+</ion-card>
+
+    <!-- START Next Step Button -->
+    <ion-row class="ion-justify-content-center">
+      <ion-col center size="8" routerLink="/survey2">
+        <ion-item button detail="false" lines="none" detail-icon="chevron-back-outline"
+          class="ion-text-center input-darkb-rnd">
+          <ion-label>המשך</ion-label>
+          <ion-icon name="arrow-back-circle-outline"></ion-icon>
+
+
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <!-- END -->
+  </ion-grid>
+
+</ion-content>
+<style>
+  ion-toolbar {
+    visibility: visible;
+  }
+
+  .input-darkb-rnd {
+    --background: #071a33;
+    --border-radius: 25px;
+    color: #ffffff;
+    border-color: #333333;
+    border-width: thin;
+  }
+</style>

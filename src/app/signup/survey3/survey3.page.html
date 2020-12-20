@@ -1,0 +1,67 @@
+<ion-content [fullscreen]="true">
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <div class="ion-text-center fixed-content" style="margin-top: 30px;">
+          <img src="../../../assets/imgs/logonewwhite.png" width="110px">
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size=12>
+        <div class="ion-text-center fixed-content" style="margin-top: 10px;">
+          <img src="../../../assets/imgs/completed.svg" width="80%" />
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="ion-text-right" size="12">
+          <ion-card class="ion-text-center ion-align-items-center" style="border-radius: 20px; min-height: 100px;">
+            <ion-card-content>
+              <img src="../../../assets/imgs/weed.png">
+              <h1>סיימנו!</h1>
+              <h3>לחץ המשך כדי להגיע לעמוד הבית</h3>
+            </ion-card-content>
+            
+          </ion-card>
+        <!-- <ion-item lines="none">
+          <ion-label>
+            ברוך הבא לאפליקצית השירות המתקדמת שלנו!
+          </ion-label>
+        </ion-item> -->
+      </ion-col>
+    </ion-row>
+    <!-- Start Progress Icons -->
+
+
+    <!-- END Progress Icons -->
+
+
+    <!-- START Next Step Button -->
+    <ion-row class="ion-justify-content-center">
+    <ion-col size="8">
+        <ion-item (click)="goHome()" button detail="false" lines="none" detail-icon="chevron-back-outline"
+          class="ion-text-center input-darkb-rnd">
+          <ion-label>המשך</ion-label>
+          <ion-icon name="arrow-back-circle-outline"></ion-icon>
+
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <!-- END -->
+  </ion-grid>
+
+</ion-content>
+<style>
+  ion-toolbar {
+    visibility: visible;
+  }
+
+  .input-darkb-rnd {
+    --background: #071a33;
+    --border-radius: 25px;
+    color: #ffffff;
+    border-color: #333333;
+    border-width: thin;
+  }
+</style>

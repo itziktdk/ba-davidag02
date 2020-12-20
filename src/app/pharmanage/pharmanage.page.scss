@@ -1,0 +1,88 @@
+ion-content
+{
+  --background: url('../../assets/imgs/bg.png') no-repeat center center / cover;
+
+  .holder
+  {
+    
+    width: 100%;
+
+    .logo-holder
+    {
+      padding-top: 2vh;
+      img
+      {
+        height: 10vh;
+      }
+    }
+
+    .title-holder
+    {
+      h1
+      {
+        color: white;
+        font-size: 30px;
+      }
+    }
+
+    .user-bar
+    {
+
+      margin-top: 1rem;
+      width: 100%;
+      padding: 10px;
+      ion-avatar
+      {
+        --border-radius: 50%;
+        height: 2.5rem;
+        width: 2.5rem;
+        margin-left: 10px;
+      }
+
+   
+    }
+
+    .cat-holder
+    {
+      .btn
+      {
+        background: white;
+        border-radius: 15px;
+        padding: 10px 0;
+        .img-holder
+        {
+          img
+          {
+            height: 3rem;
+          }
+        }
+
+        p
+        {
+          margin: 5px 0;
+          font-size: 0.9rem;
+        }
+      }
+    }
+
+    .btn-holder
+    {
+      margin-top: 10px;
+      position: absolute;
+      width: 100%;
+      bottom: 10px;
+      ion-button
+      {
+        --background: #FF8A00;
+        --color: white;
+        --border-radius: 20px;
+        height: 3rem;
+        font-size: 20px;
+      }
+    
+    }
+    
+  }
+
+ 
+}

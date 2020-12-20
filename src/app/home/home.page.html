@@ -1,0 +1,122 @@
+<ion-content>
+  <div class="holder ion-padding-vertical">
+    <div class="logo-holder ion-text-center">
+      <img src="assets/imgs/logo.png" alt="">
+    </div>
+
+    <div class="user-bar flex al-center jc-between">
+      <div class="flex al-center">
+        <ion-avatar>
+          <img src="assets/imgs/user.png" />
+        </ion-avatar>
+        <ion-badge mode="ios">שלום חגי!</ion-badge>
+      </div>
+      <ion-button (click)="goLogin()">
+        התחבר
+      </ion-button>
+     
+
+    </div>
+
+    <div class="search-holder ion-padding">
+      <ion-searchbar class="ion-text-center" placeholder="חיפוש מהיר" inputmode="decimal" type="decimal"
+        [debounce]="250" showCancelButton="never"></ion-searchbar>
+    </div>
+
+
+    <div class="cat-holder">
+      <ion-grid fixed>
+        <ion-row>
+          <ion-col size="4">
+            <div class="btn ion-text-center ion-activatable ripple-parent" (click)="goProducts()">
+              <ion-ripple-effect></ion-ripple-effect>
+              <div class="img-holder">
+                <img src="assets/imgs/c3.png" alt="">
+              </div>
+              <p>המוצרים
+                שלנו
+              </p>
+            </div>
+          </ion-col>
+
+          <ion-col size="4">
+            <div class="btn ion-text-center ion-activatable ripple-parent" (click)="goDoctors()">
+              <ion-ripple-effect></ion-ripple-effect>
+              <div class="img-holder">
+                <img src="assets/imgs/c2.png" alt="">
+              </div>
+              <p>רופאים
+                מורשים
+              </p>
+            </div>
+          </ion-col>
+          <ion-col size="4">
+            <div class="btn ion-text-center ion-activatable ripple-parent" (click)="goPharmacies()">
+              <ion-ripple-effect></ion-ripple-effect>
+              <div class="img-holder">
+                <img src="assets/imgs/c1.png" alt="">
+              </div>
+              <p>בתי
+                מרקחת
+              </p>
+            </div>
+          </ion-col>
+          <ion-col size="4">
+            <div class="btn ion-text-center ion-activatable ripple-parent" (click)="goNews()">
+              <ion-ripple-effect></ion-ripple-effect>
+              <div class="img-holder">
+                <img src="assets/imgs/c6.png" alt="">
+              </div>
+              <p>חדשות
+                ועדכונים
+              </p>
+            </div>
+          </ion-col>
+
+          <ion-col size="4">
+            <div class="btn ion-text-center ion-activatable ripple-parent" (click)="goLicense()">
+              <ion-ripple-effect></ion-ripple-effect>
+              <div class="img-holder">
+                <img src="assets/imgs/c5.png" alt="">
+              </div>
+              <p>ניפוק
+                רישיון
+              </p>
+            </div>
+          </ion-col>
+          <ion-col size="4">
+            <div class="btn ion-text-center ion-activatable ripple-parent">
+              <ion-ripple-effect></ion-ripple-effect>
+              <div class="img-holder">
+                <img src="assets/imgs/c4.png" alt="">
+              </div>
+              <p>מבצעים
+                והטבות
+              </p>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+
+    <div class="btn-holder ion-padding-horizontal">
+      <ion-item button lines="none">
+        <ion-label class="ion-text-center">משלוחים מהירים עד אליך!</ion-label>
+        <div class="end-slot" slot="start">
+          <img src="assets/imgs/amb.png" alt="">
+        </div>
+      </ion-item>
+    </div>
+
+    <div class="ion-padding-horizontal">
+      <div class="pharm-btn">
+        <ion-item button lines="none" (click)="goMange()">
+          <ion-label class="ion-text-center">כניסה לרוקחים</ion-label>
+          <div class="end-slot" slot="start">
+            <img src="assets/imgs/pharmbtn.png" alt="">
+          </div>
+        </ion-item>
+      </div>
+    </div>
+  </div>
+</ion-content>

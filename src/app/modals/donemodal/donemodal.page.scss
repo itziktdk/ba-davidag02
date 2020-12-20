@@ -1,0 +1,29 @@
+ion-content
+{
+    --background: transparent;
+
+    .holder
+    {
+        width: 100%;
+        .card
+        {
+            background: #F3CA3E;
+            border: 1px solid #F36;
+            border-radius: 0 !important;
+            height: 60vh;
+            width: 80%;
+            margin: 0 auto;
+
+            ion-icon
+            {
+                font-size: 4rem;
+            }
+
+            h4
+            {
+                color: #ff3344;
+                font-weight: bold;
+            }
+        }
+    }
+}

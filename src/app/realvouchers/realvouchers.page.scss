@@ -1,0 +1,44 @@
+ion-content
+{
+  --background: url('../../assets/imgs/bg.png') no-repeat center center / cover;
+
+  .title-holder
+  {
+    margin: 10vw;
+    h1
+    {
+      color: white;
+      font-size: 30px;
+    }
+  }
+
+  .the-list
+  {
+    .card
+    {
+      border-radius: 0 !important;
+      .right
+      {
+        ion-icon
+        {
+          font-size: 3rem;
+          margin: 0 10px;
+        }
+      }
+      .details
+      {
+        h5
+        {
+          margin: 5px 0;
+          font-size: 1rem;
+        }
+
+        p
+        {
+          color: #39F;
+          margin: 0;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,82 @@
+<ion-content>
+  <div class="holder ion-padding-vertical">
+    <div class="logo-holder ion-text-center">
+      <img src="assets/imgs/logo.png" alt="">
+    </div>
+
+    <div class="title-holder ion-text-center">
+      <h1>מסך ניהול - בית מרקחת
+
+      </h1>
+    </div>
+
+
+    <div class="user-bar flex al-center">
+      <div class="flex al-center">
+        <ion-avatar>
+          <img src="assets/imgs/u2.png" />
+        </ion-avatar>
+        <h5>בוקר טוב רוקח!&nbsp; </h5>
+      </div>
+
+    </div>
+
+
+    <div class="cat-holder">
+      <ion-grid fixed>
+        <ion-row>
+          <ion-col size="4">
+            <div class="btn ion-text-center ion-activatable ripple-parent" (click)="goProfile()">
+              <ion-ripple-effect></ion-ripple-effect>
+              <div class="img-holder">
+                <img src="assets/imgs/hospital.png" alt="">
+              </div>
+              <p>
+                פרופיל
+                <br>
+                בית מרקחת
+
+              </p>
+            </div>
+          </ion-col>
+
+          <ion-col size="4">
+            <div class="btn ion-text-center ion-activatable ripple-parent" (click)="goTracking()">
+              <ion-ripple-effect></ion-ripple-effect>
+              <div class="img-holder">
+                <img src="assets/imgs/order.png" alt="">
+              </div>
+              <p>מעקב
+                <br>
+                הזמנות
+
+
+              </p>
+            </div>
+          </ion-col>
+          <ion-col size="4">
+            <div class="btn ion-text-center ion-activatable ripple-parent" (click)="goVoucher()">
+              <ion-ripple-effect></ion-ripple-effect>
+              <div class="img-holder">
+                <img src="assets/imgs/coupon.png" alt="">
+              </div>
+              <p>מימוש
+                <br>
+                שוברים
+              </p>
+            </div>
+          </ion-col>
+
+        </ion-row>
+      </ion-grid>
+    </div>
+
+    <div class="btn-holder ion-padding-horizontal">
+      <ion-button expand="block">
+        מבצעים והודעות
+      </ion-button>
+    </div>
+
+  
+  </div>
+</ion-content>

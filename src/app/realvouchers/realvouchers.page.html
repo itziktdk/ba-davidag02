@@ -1,0 +1,123 @@
+<ion-content>
+  <div class="title-holder ion-text-center">
+    <h1>מסך ניהול - בית מרקחת
+
+    </h1>
+  </div>
+
+  <div class="seg-holder">
+    <div class="segments-holder2">
+      <ion-segment (ionChange)="segmentChanged($event)" [value]="category">
+
+        <ion-segment-button value="s2">
+          <ion-label>ממתינים
+
+          </ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="s1">
+          <ion-label>
+            הסטוריית שוברים
+          </ion-label>
+        </ion-segment-button>
+      </ion-segment>
+    </div>
+  </div>
+
+
+  <div class="the-list" *ngIf="category == 's2'">
+    <div class="card" (click)="showModal()">
+      <ion-row>
+        <ion-col size="8" class="left" class="ion-padding">
+          <div class="details">
+            <h5  class="fonty">DAG3445675</h5>
+          </div>
+        </ion-col>
+        <ion-col size="4" class="right flex al-center">
+          <ion-icon name="checkmark-circle-outline"></ion-icon>
+          <ion-icon name="close-circle-outline"></ion-icon>
+        </ion-col>
+      </ion-row>
+        <ion-row>
+        <ion-col size="8" class="left">
+          <div class="details">
+            <p>
+              שולה ירושלמי,
+              תל אביב
+            </p>
+          </div>
+        </ion-col>
+      </ion-row>
+      <!-- <ion-row>
+        
+      </ion-row> -->
+    </div>
+
+    <div class="card" (click)="showModal()">
+      <ion-row>
+        <ion-col size="8" class="left" class="ion-padding">
+          <div class="details">
+            <h5  class="fonty">DAG3445675</h5>
+          </div>
+        </ion-col>
+        <ion-col size="4" class="right flex al-center">
+          <ion-icon name="checkmark-circle-outline"></ion-icon>
+          <ion-icon name="close-circle-outline"></ion-icon>
+        </ion-col>
+      </ion-row>
+        <ion-row>
+        <ion-col size="8" class="left">
+          <div class="details">
+            <p>
+              ישראל שטרן,
+              תל אביב
+            </p>
+          </div>
+        </ion-col>
+      </ion-row>
+      <!-- <ion-row>
+        
+      </ion-row> -->
+    </div>
+
+
+
+    <div class="card" (click)="showModal()">
+      <ion-row>
+        <ion-col size="8" class="left" class="ion-padding">
+          <div class="details">
+            <h5  class="fonty">DAG3445675</h5>
+          </div>
+        </ion-col>
+        <ion-col size="4" class="right flex al-center">
+          <ion-icon name="checkmark-circle-outline"></ion-icon>
+          <ion-icon name="close-circle-outline"></ion-icon>
+        </ion-col>
+      </ion-row>
+        <ion-row>
+        <ion-col size="8" class="left">
+          <div class="details">
+            <p>
+              עאבד ספי,
+              רמלה
+            </p>
+          </div>
+        </ion-col>
+      </ion-row>
+      <!-- <ion-row>
+        
+      </ion-row> -->
+    </div>
+
+    
+
+  
+    </div>
+  
+</ion-content>
+<ion-footer>
+  <ion-toolbar>
+ <ion-buttons slot="end">
+  <ion-back-button defaultHref="pharmanage" text="" icon="chevron-back-outline" mode="md"></ion-back-button>
+ </ion-buttons>
+  </ion-toolbar>
+</ion-footer>

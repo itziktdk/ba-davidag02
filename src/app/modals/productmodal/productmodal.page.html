@@ -1,0 +1,45 @@
+<ion-content fullscreen>
+  <ion-grid >
+    <div class="modalfull"> 
+    <ion-row class="ion-justify-content-center ion-align-items-center" style="height: 100%">
+      <div class="holder" style="display:block">
+        <div class="close-holder flex jc-start">
+          <ion-button color="dark" (click)="close()" expand="block" fill="clear" shape="round">
+            <ion-icon slot="icon-only" name="close-circle-outline"></ion-icon>
+          </ion-button>
+        </div>
+
+        <div class="img-holder ion-text-center">
+          <img src="assets/imgs/ganja.png" alt="">
+        </div>
+
+
+        <div class="content">
+          <div class="title-holder ion-text-right">
+            <h4>Product Name</h4>
+            <p class="ion-text-wrap">2 rows description</p>
+          </div>
+
+          <div class="description ion-padding-horizontal">
+            <p class="ion-text-wrap">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempo</p>
+          </div>
+
+          <div class="lab-data ion-text-center">
+            <p>נתוני מעבדה
+            </p>
+          </div>
+
+          <div class="btns-holder flex al-center jc-center">
+            <ion-button id="subject">
+              THC 16%
+            </ion-button>
+            <ion-button id="hmo">
+              CBD 3%
+            </ion-button>
+          </div>
+        </div>
+      </div>
+    </ion-row>
+    </div>
+  </ion-grid>
+</ion-content>

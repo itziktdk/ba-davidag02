@@ -1,0 +1,76 @@
+<ion-content>
+  <ion-grid style="height: 100%">
+    <ion-row class="ion-justify-content-center ion-align-items-center" style="height: 100%">
+      <div class="holder">
+        <div class="close-holder flex jc-end">
+          <ion-button color="dark" (click)="close()" expand="block" fill="clear" shape="round">
+            <ion-icon slot="icon-only" name="close-circle-outline"></ion-icon>
+          </ion-button>
+        </div>
+
+        <div class="img-holder ion-text-center ion-padding">
+          
+          <img src="{{img}}" alt="">
+        </div>
+
+        <div class="rate-holder flex jc-center">
+          <div class="rate flex al-center jc-center">
+            <ionic-rating-component #rating activeIcon="star" defaultIcon="star" activeColor="#ffc919"
+              defaultColor="#d8d8d8" readonly="false" rating="2" fontSize="20px">
+            </ionic-rating-component>
+            <p>&nbsp; דרג</p>
+          </div>
+        </div>
+
+        <div class="content ion-padding">
+          <div class="address-holder ion-text-center">
+            <h4>{{name}}</h4>
+          </div>
+          <ion-row>
+            <ion-col size="6">
+              <div class="tel-holder ion-text-center">
+                <p>{{phone}}</p>
+              </div>
+            </ion-col>
+
+            <ion-col size="6">
+              <div class="tel-holder ion-text-center">
+                <p>{{city}}</p>
+              </div>
+            </ion-col>
+          </ion-row>
+          <div class="btns-holder flex al-center jc-center">
+            <div class="btn ">
+            
+              <div class="img-holder" class="ion-activatable ripple-parent">
+                <ion-ripple-effect></ion-ripple-effect>
+                <img src="../../../assets/imgs/whatsapp (3).png" alt="">
+              </div>
+            </div>
+
+            <div class="btn ion-activatable ripple-parent">
+              <ion-ripple-effect></ion-ripple-effect>
+              <div class="img-holder">
+                <img src="../../../assets/imgs/phone-call (1).png" alt="">
+              </div>
+            </div>
+
+            <div class="btn ion-activatable ripple-parent">
+              <ion-ripple-effect></ion-ripple-effect>
+              <div class="img-holder">
+                <img src="../../../assets/imgs/waze (3).png" alt="">
+              </div>
+            </div>
+
+            <div class="btn ion-activatable ripple-parent">
+              <ion-ripple-effect></ion-ripple-effect>
+              <div class="img-holder">
+                <img src="../../../assets/imgs/web-link.png" alt="">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ion-row>
+  </ion-grid>
+</ion-content>

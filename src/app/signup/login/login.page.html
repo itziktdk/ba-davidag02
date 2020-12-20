@@ -1,0 +1,89 @@
+<ion-content [fullscreen]="true">
+  <div class="holder ion-padding-vertical">
+
+  <div class="ion-text-center fixed-content" style="margin-top: 120px;">
+  <img src="../../assets/imgs/logonewwhite.png" width="140px">
+  </div>
+    <div class="ion-text-center fixed-content" style="margin-top: 50px;">
+    </div>
+  <!-- <div id="container">
+    <strong>Ready to create an app?</strong>
+    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+  </div> -->
+
+  <ion-grid>
+
+    <!--initial row span -->
+    <ion-row>
+      <ion-col size="12">
+        <ion-item lines="none" class="ion-text-center input-w-rnd">
+          <ion-icon name="at-outline"></ion-icon>
+          <ion-input enterkeyhint="next" inputmode="inputmode" pattern="email" type="email" expand="full"
+            placeholder="כתובת דואר אלקטרוני" (ionFocus)="placeholder=''" ></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="ion-justify-content-center">
+
+      <ion-col size=12>
+      <div class="ion-text-center">
+        <ion-chip>
+          <ion-icon name="arrow-up-outline"></ion-icon>
+          <ion-label>כניסת משתמש חדש\רשום</ion-label>
+        </ion-chip>
+      </div>
+      </ion-col>
+
+        <ion-col size=12>
+          <ion-chip>
+            <ion-label>או כניסה מהירה באמצעות</ion-label>
+            <ion-icon name="arrow-down-outline"></ion-icon>
+          </ion-chip>
+        </ion-col>
+
+
+    </ion-row>
+
+    <!-- START Social Login buttons -->
+    <ion-row>
+      <ion-col size="12" routerLink="/register1">
+        <ion-item button lines="none" detail-icon="chevron-back-outline" class="ion-text-center input-w-rnd">
+          <img width="24px"
+            src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHhtbG5zOnN2Z2pzPSJodHRwOi8vc3ZnanMuY29tL3N2Z2pzIiB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgeD0iMCIgeT0iMCIgdmlld0JveD0iMCAwIDUxMiA1MTIiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDUxMiA1MTIiIHhtbDpzcGFjZT0icHJlc2VydmUiIGNsYXNzPSIiPjxnPgo8cGF0aCB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHN0eWxlPSIiIGQ9Ik00OTIuNjY4LDIxMS40ODlsLTIwOC44NC0wLjAxYy05LjIyMiwwLTE2LjY5Nyw3LjQ3NC0xNi42OTcsMTYuNjk2djY2LjcxNSAgYzAsOS4yMiw3LjQ3NSwxNi42OTYsMTYuNjk2LDE2LjY5NmgxMTcuNjA2Yy0xMi44NzgsMzMuNDIxLTM2LjkxNCw2MS40MS02Ny41OCw3OS4xOTRMMzg0LDQ3Ny41ODkgIGM4MC40NDItNDYuNTIzLDEyOC0xMjguMTUyLDEyOC0yMTkuNTNjMC0xMy4wMTEtMC45NTktMjIuMzEyLTIuODc3LTMyLjc4NUM1MDcuNjY1LDIxNy4zMTcsNTAwLjc1NywyMTEuNDg5LDQ5Mi42NjgsMjExLjQ4OXoiIGZpbGw9IiMxNjdlZTYiIGRhdGEtb3JpZ2luYWw9IiMxNjdlZTYiPjwvcGF0aD4KPHBhdGggeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiBzdHlsZT0iIiBkPSJNMjU2LDQxMS44MjZjLTU3LjU1NCwwLTEwNy43OTgtMzEuNDQ2LTEzNC43ODMtNzcuOTc5bC04Ni44MDYsNTAuMDM0ICBDNzguNTg2LDQ2MC40NDMsMTYxLjM0LDUxMiwyNTYsNTEyYzQ2LjQzNywwLDkwLjI1NC0xMi41MDMsMTI4LTM0LjI5MnYtMC4xMTlsLTUwLjE0Ny04Ni44MSAgQzMxMC45MTUsNDA0LjA4MywyODQuMzcxLDQxMS44MjYsMjU2LDQxMS44MjZ6IiBmaWxsPSIjMTJiMzQ3IiBkYXRhLW9yaWdpbmFsPSIjMTJiMzQ3Ij48L3BhdGg+CjxwYXRoIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgc3R5bGU9IiIgZD0iTTM4NCw0NzcuNzA4di0wLjExOWwtNTAuMTQ3LTg2LjgxYy0yMi45MzgsMTMuMzAzLTQ5LjQ4LDIxLjA0Ny03Ny44NTMsMjEuMDQ3VjUxMiAgQzMwMi40MzcsNTEyLDM0Ni4yNTYsNDk5LjQ5NywzODQsNDc3LjcwOHoiIGZpbGw9IiMwZjk5M2UiIGRhdGEtb3JpZ2luYWw9IiMwZjk5M2UiIGNsYXNzPSIiPjwvcGF0aD4KPHBhdGggeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiBzdHlsZT0iIiBkPSJNMTAwLjE3NCwyNTZjMC0yOC4zNjksNy43NDItNTQuOTEsMjEuMDQzLTc3Ljg0N2wtODYuODA2LTUwLjAzNEMxMi41MDIsMTY1Ljc0NiwwLDIwOS40NDQsMCwyNTYgIHMxMi41MDIsOTAuMjU0LDM0LjQxMSwxMjcuODgxbDg2LjgwNi01MC4wMzRDMTA3LjkxNiwzMTAuOTEsMTAwLjE3NCwyODQuMzY5LDEwMC4xNzQsMjU2eiIgZmlsbD0iI2ZmZDUwMCIgZGF0YS1vcmlnaW5hbD0iI2ZmZDUwMCIgY2xhc3M9IiI+PC9wYXRoPgo8cGF0aCB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHN0eWxlPSIiIGQ9Ik0yNTYsMTAwLjE3NGMzNy41MzEsMCw3Mi4wMDUsMTMuMzM2LDk4LjkzMiwzNS41MTljNi42NDMsNS40NzIsMTYuMjk4LDUuMDc3LDIyLjM4My0xLjAwOCAgbDQ3LjI3LTQ3LjI3YzYuOTA0LTYuOTA0LDYuNDEyLTE4LjIwNS0wLjk2My0yNC42MDNDMzc4LjUwNywyMy42NzMsMzE5LjgwNywwLDI1NiwwQzE2MS4zNCwwLDc4LjU4Niw1MS41NTcsMzQuNDExLDEyOC4xMTkgIGw4Ni44MDYsNTAuMDM0QzE0OC4yMDIsMTMxLjYyLDE5OC40NDYsMTAwLjE3NCwyNTYsMTAwLjE3NHoiIGZpbGw9IiNmZjRiMjYiIGRhdGEtb3JpZ2luYWw9IiNmZjRiMjYiIGNsYXNzPSIiPjwvcGF0aD4KPHBhdGggeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiBzdHlsZT0iIiBkPSJNMzU0LjkzMiwxMzUuNjkzYzYuNjQzLDUuNDcyLDE2LjI5OSw1LjA3NywyMi4zODMtMS4wMDhsNDcuMjctNDcuMjcgIGM2LjkwMy02LjkwNCw2LjQxMS0xOC4yMDUtMC45NjMtMjQuNjAzQzM3OC41MDcsMjMuNjcyLDMxOS44MDcsMCwyNTYsMHYxMDAuMTc0QzI5My41MywxMDAuMTc0LDMyOC4wMDUsMTEzLjUxLDM1NC45MzIsMTM1LjY5M3oiIGZpbGw9IiNkOTNmMjEiIGRhdGEtb3JpZ2luYWw9IiNkOTNmMjEiIGNsYXNzPSIiPjwvcGF0aD4KPGcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPC9nPgo8ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8L2c+CjxnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjwvZz4KPGcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPC9nPgo8ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8L2c+CjxnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjwvZz4KPGcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPC9nPgo8ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8L2c+CjxnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjwvZz4KPGcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPC9nPgo8ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8L2c+CjxnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjwvZz4KPGcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPC9nPgo8ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8L2c+CjxnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjwvZz4KPC9nPjwvc3ZnPg==" />
+          <ion-label>כניסה מהירה עם Google</ion-label>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="12" routerLink="/register1">
+        <ion-item button lines="none" detail-icon="chevron-back-outline" class="ion-text-center input-w-rnd">
+          <img width="24px"
+            src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHhtbG5zOnN2Z2pzPSJodHRwOi8vc3ZnanMuY29tL3N2Z2pzIiB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgeD0iMCIgeT0iMCIgdmlld0JveD0iMCAwIDUxMiA1MTIiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDUxMiA1MTIiIHhtbDpzcGFjZT0icHJlc2VydmUiIGNsYXNzPSIiPjxnPjxwYXRoIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgZD0ibTUxMiAyNTZjMCAxNDEuMzg2NzE5LTExNC42MTMyODEgMjU2LTI1NiAyNTZzLTI1Ni0xMTQuNjEzMjgxLTI1Ni0yNTYgMTE0LjYxMzI4MS0yNTYgMjU2LTI1NiAyNTYgMTE0LjYxMzI4MSAyNTYgMjU2em0wIDAiIGZpbGw9IiM0YTdhZmYiIGRhdGEtb3JpZ2luYWw9IiM0YTdhZmYiIHN0eWxlPSIiPjwvcGF0aD48cGF0aCB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGQ9Im0yNjcuMjM0Mzc1IDUxMS43MzgyODFjMTM2LjE3MTg3NS01Ljg3ODkwNiAyNDQuNzY1NjI1LTExOC4xMjEwOTMgMjQ0Ljc2NTYyNS0yNTUuNzM4MjgxIDAtLjk5NjA5NC0uMDI3MzQ0LTEuOTg4MjgxLS4wMzkwNjItMi45ODQzNzVsLTE3Ny42OTkyMTktMTc3LjcwMzEyNS0xOTAgMTk4LjU5Mzc1IDEwNS41NjY0MDYgMTA1LjU2NjQwNi00OC42NzU3ODEgNjYuMTgzNTk0em0wIDAiIGZpbGw9IiMwMDUzYmYiIGRhdGEtb3JpZ2luYWw9IiMwMDUzYmYiIHN0eWxlPSIiPjwvcGF0aD48cGF0aCB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGQ9Im0zMzQuMjYxNzE5IDc1LjMxMjV2NTcuOTY4NzVzLTY2LjU1NDY4OC05LjY2MDE1Ni02Ni41NTQ2ODggMzMuMjc3MzQ0djQyLjkzNzVoNjAuMTEzMjgxbC03LjUxMTcxOCA2NS40ODA0NjhoLTUyLjYwMTU2M3YxNzAuNjc5Njg4aC02Ni41NTQ2ODd2LTE3MC42Nzk2ODhsLTU2Ljg5NDUzMi0xLjA3NDIxOHYtNjQuNDA2MjVoNTUuODIwMzEzdi00OS4zNzg5MDZzLTMuNjgzNTk0LTczLjQ1NzAzMiA2OC43MDMxMjUtODYuOTQ5MjE5YzMwLjA1ODU5NC01LjYwNTQ2OSA2NS40ODA0NjkgMi4xNDQ1MzEgNjUuNDgwNDY5IDIuMTQ0NTMxem0wIDAiIGZpbGw9IiNmZmZmZmYiIGRhdGEtb3JpZ2luYWw9IiNmZmZmZmYiIHN0eWxlPSIiPjwvcGF0aD48cGF0aCB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGQ9Im0zMzQuMjYxNzE5IDEzMy4yODEyNXYtNTcuOTY4NzVzLTM1LjQyMTg3NS03Ljc1LTY1LjQ4MDQ2OS0yLjE0NDUzMWMtNC42OTUzMTIuODc1LTkuMDYyNSAyLjAwNzgxMi0xMy4xMzY3MTkgMy4zNDc2NTZ2MzY5LjE0MDYyNWgxMi4wNjI1di0xNzAuNjc5Njg4aDUyLjU5NzY1N2w3LjUxNTYyNC02NS40ODA0NjhoLTYwLjExMzI4MXMwIDAgMC00Mi45Mzc1IDY2LjU1NDY4OC0zMy4yNzczNDQgNjYuNTU0Njg4LTMzLjI3NzM0NHptMCAwIiBmaWxsPSIjZGNlMWViIiBkYXRhLW9yaWdpbmFsPSIjZGNlMWViIiBzdHlsZT0iIj48L3BhdGg+PC9nPjwvc3ZnPg==" />
+          <ion-label>כניסה מהירה עם Facebook</ion-label>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <!-- END Social Login buttons -->
+    <div class="fixed-content" style="margin-top: 20px;"></div>
+    <!-- START Submit Button -->
+
+    <ion-row class="ion-justify-content-center" routerLink="/regform1">
+      <ion-col center size="8" >
+        <ion-item  button detail="false" lines="none" detail-icon="chevron-back-outline"
+          class="ion-text-center input-darkb-rnd">
+          <ion-label>המשך</ion-label>
+          <ion-icon name="arrow-back-circle-outline"></ion-icon>
+
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <!-- END Submit Button -->
+
+  </ion-grid>
+
+  </div>
+</ion-content>

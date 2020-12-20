@@ -1,0 +1,235 @@
+#container {
+    text-align: center;
+  
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  
+  #container strong {
+    font-size: 20px;
+    line-height: 26px;
+  }
+  
+  #container p {
+    font-size: 16px;
+    line-height: 22px;
+  
+    color: #8c8c8c;
+  
+    margin: 0;
+  }
+  
+  #container a {
+    text-decoration: none;
+  }
+  
+  ion-content {
+    --background: url(../../../assets/imgs/bg.png) no-repeat 100% 100%;
+  }
+  
+  ion-toolbar {
+    --background: transparent;
+    --ion-color-base: transparent !important;
+    --border-style: none;
+    }
+  
+    ion-title{
+      padding-top: 14%;
+    }
+  
+    //inputFirst
+    .rounded {
+      
+        --background:#fff;
+        --padding-start: 25% !important;
+  
+  
+      border: 1px solid #ccc;
+       
+      /* Safari 5, Chrome support border-radius without vendor prefix.
+       * FF 3.0/3.5/3.6, Mobile Safari 4.0.4 require vendor prefix.
+       * No support in Safari 3/4, IE 6/7/8, Opera 10.0.
+       */
+      -moz-border-radius: 30px;
+      -webkit-border-radius: 30px;
+      border-radius: 30px;
+      
+      /* Chrome, FF 4.0 support box-shadow without vendor prefix.
+       * Safari 3/4/5 and FF 3.5/3.6 require vendor prefix.
+       * No support in FF 3.0, IE 6/7/8, Opera 10.0, iPhone 3.
+       * change the offsets, blur and color to suit your design.
+       */
+      -moz-box-shadow: 2px 2px 3px #666;
+      -webkit-box-shadow: 2px 2px 3px #666;
+      box-shadow: 2px 2px 3px #666;
+      
+      /* using a bigger font for demo purposes so the box isn't too small */
+      font-size: 20px;
+      
+      /* with a big radius/font there needs to be padding left and right
+       * otherwise the text is too close to the radius.
+       * on a smaller radius/font it may not be necessary
+       */
+      padding: 4px 7px;
+      
+      /* only needed for webkit browsers which show a rectangular outline;
+       * others do not do outline when radius used.
+       * android browser still displays a big outline
+       */
+      outline: 0;
+    
+      /* this is needed for iOS devices otherwise a shadow/line appears at the
+       * top of the input. depending on the ratio of radius to height it will
+       * go all the way across the full width of the input and look really messy.
+       * ensure the radius is no more than half the full height of the input, 
+       * and the following is set, and everything will render well in iOS.
+       */
+      -webkit-appearance: none;
+      
+    }
+    
+    .rounded:focus {
+      
+      /* supported IE8+ and all other browsers tested.
+       * optional, but gives the input focues when selected.
+       * change to a color that suits your design.
+       */
+      border-color: #339933;
+      
+    }
+  
+    ion-input {
+      color: #666;
+     margin-left: auto;
+     margin-right: auto;
+  
+    }
+  
+    ion-item{
+    --background:transparent;
+    }
+        ion-content ion-toolbar {
+        margin: 10px 0;
+      }
+    
+      ion-toolbar {
+        background-color: rgba(255, 255, 255, 0.2) !important;
+      }
+    
+      ion-header ion-toolbar {
+        color: #fff;
+      }
+    
+      .logo {
+        height: 20%;
+        width: 20%;
+        margin: auto;
+        display: block;
+      }
+    
+      .input-w-rnd {
+        --background: #ffffff;
+        --border-radius: 25px;
+        color: #333333;
+        border-color: #333333;
+        border-width: thin;
+      }
+    
+      .input-darkb-rnd {
+        --background: #071a33;
+        --border-radius: 25px;
+        color: #ffffff;
+        border-color: #333333;
+        border-width: thin;
+      }
+      .holder
+    {
+      background: url(../../../assets/imgs/bg.png);
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+      height: 100%;
+      width: 100%;
+  
+      .logo-holder
+      {
+        padding-top: 2vh;
+        img
+        {
+          height: 10vh;
+        }
+      }
+  
+      .user-bar
+      {
+        background: #ffffff80;
+        margin-top: 1rem;
+        width: 100%;
+        padding: 10px;
+        ion-avatar
+        {
+          --border-radius: 50%;
+          height: 2.5rem;
+          width: 2.5rem;
+          margin-left: 10px;
+        }
+  
+        ion-badge
+        {
+          background-color: rgba(255,255,255,0.5);
+          font-size: 14px;
+        }
+      }
+  
+      .cat-holder
+      {
+        .btn
+        {
+          background: white;
+          border-radius: 15px;
+          padding: 10px 0;
+          .img-holder
+          {
+            img
+            {
+              height: 3rem;
+            }
+          }
+  
+          p
+          {
+            margin: 5px 0;
+            font-size: 0.9rem;
+          }
+        }
+      }
+  
+      .btn-holder
+      {
+        margin-top: 10px;
+        ion-item
+        {
+          --background: #FF8A00;
+          --border-radius: 30px;
+  
+          ion-label
+          {
+            color: white;
+            font-size: 18px;
+          }
+          .end-slot
+          {
+            margin: 0;
+            img
+            {
+              height: 3rem;
+            }
+          }
+  
+        }
+      }
+    }
+  

@@ -1,0 +1,246 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "~@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "~@ionic/angular/css/normalize.css";
+@import "~@ionic/angular/css/structure.css";
+@import "~@ionic/angular/css/typography.css";
+@import '~@ionic/angular/css/display.css';
+
+/* Optional CSS utils that can be commented out */
+@import "~@ionic/angular/css/padding.css";
+@import "~@ionic/angular/css/float-elements.css";
+@import "~@ionic/angular/css/text-alignment.css";
+@import "~@ionic/angular/css/text-transformation.css";
+@import "~@ionic/angular/css/flex-utils.css";
+
+@font-face {
+    font-family: 'IDAHC39M';
+    src: url('/src/assets/fonts/barcode.ttf') format('truetype');
+}
+
+
+
+.modal-wrapper
+{
+    background: transparent !important;
+}
+
+
+.flex 
+{
+    display: flex;
+}
+
+.flexd
+{
+    flex-direction: column;
+}
+
+.al-center
+{
+    align-items: center;
+}
+
+.al-end
+{
+    align-items: flex-end;
+}
+.jc-start
+{
+    justify-content: flex-start;
+}
+
+.jc-center
+{
+    justify-content: center;
+}
+.jc-end
+{
+    justify-content: flex-end;
+}
+
+.jc-between
+{
+    justify-content: space-between;
+}
+
+.fonty {
+    font-family: 'IDAHC39M Code 39 Barcode' !important;
+}
+
+ion-button
+{
+    
+    text-transform: none !important;
+}
+
+.ripple-parent 
+{
+    position: relative;
+    overflow: hidden;
+}
+
+
+.the-form
+{
+    .input-item
+    {
+        ion-item
+        {
+            --border-radius: 30px;
+        }
+    }
+}
+
+.search-holder
+{
+    // background-color: rgba(0,2,66,0.5);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+
+}
+
+  ion-searchbar
+    {
+        padding: 0 !important;
+        .searchbar-input-container {
+            input {
+              background: white !important;
+              border-radius: 1rem !important;
+            }
+          }
+    }
+
+
+    .segments-holder 
+    {
+    padding: 0 10px !important;
+    ion-segment
+    {
+        --background:  #ffffff80;
+        border-radius: 15px !important;
+        ion-segment-button
+        { 
+            --background-checked: white;
+            --border-radius: 15px;
+            font-size: 1rem !important;
+            min-height: 3rem !important;
+            ion-label {
+                margin: 0 !important;
+            }
+            --indicator-height:0  !important;
+        }
+    }
+    }
+
+
+    .segments-holder2
+    {
+    padding: 0 10px !important;
+    ion-segment
+    {
+   
+
+        ion-segment-button
+        { 
+            --background-checked: white;
+            --background: #BDBDBD;
+            --border-radius: 5px;
+            --color-checked: #4F4F4F;
+            font-size: 1rem !important;
+            min-height: 30px !important;
+            ion-label {
+                margin: 0 !important;
+            }
+            --indicator-height:0  !important;
+        }
+    }
+    }
+
+
+.card
+{
+    background: white;
+    border-radius: 15px;
+    padding: 10px 5px;
+    margin: 10px 0;
+    .left
+    {
+        img
+        {
+            height: 2rem;
+        }
+    }
+
+    .right
+    {
+
+        img
+        {
+            height: 2rem;
+        }
+        h4
+        {
+            font-size: 20px;
+            font-weight: bold;
+            margin: 0;
+        }
+
+        p
+        {
+            font-size: 12px;
+        }
+
+        .btns-holder
+        {
+
+            #subject
+            {
+                --background: #F36;
+
+            }
+
+            #hmo
+            {
+                --background: #2AC940;
+
+
+            }
+            ion-button
+            {
+                --color: white;
+                --border-radius: 15px;
+                --box-shadow: none;
+                height: 20px;
+                width: 100px;
+            }
+        }
+    }
+}
+
+
+ion-fab-button
+{
+    --background: transparent;
+    --border-color: white;
+    --border-radius: 50%;
+    --border-width: 1px;
+    --border-style: solid;
+}
+
+ion-content {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}

@@ -1,0 +1,44 @@
+ion-content
+{
+  --background: url('../../assets/imgs/bg.png') no-repeat center center / cover;
+
+
+  .logo-holder
+  {
+    padding-top: 2vh;
+    img
+    {
+      height: 8vh;
+    }
+  }
+
+
+  .title-holder
+    {
+      h1
+      {
+        color: white;
+        font-size: 30px;
+      }
+    }
+
+    .profile-holder
+    {
+
+      h5
+      {
+        color: white;
+      }
+      .btn
+      {
+        border: 2px solid white;
+        border-radius: 50%;
+        height: 5rem;
+        width: 5rem;
+        img
+        {
+          height: 2rem;
+        }
+      }
+    }
+}
