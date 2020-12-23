@@ -9,8 +9,8 @@ export class AlertService {
   async Invalid() {
     const alert = await this.alertController.create({
       cssClass: 'my-custom-class',
-      header: 'Alert',
-      message: "This Email Doesn't Exist",
+      header: 'שגיאה',
+      message: 'כתובת הדואר האלקטרוני לא נמצאה',
       buttons: ['OK']
     });
 
@@ -18,9 +18,8 @@ export class AlertService {
   };
   async email() {
     const alert = await this.alertController.create({
-      header: 'Wooow',
-      subHeader: 'Oops!',
-      message: 'Invalid Email',
+      header:  'אופס!',
+      message: 'כתובת הדואר האלקטרוני אינה תקינה',
       buttons: ['ok']
     });
     await alert.present();
@@ -28,18 +27,13 @@ export class AlertService {
 
   async Signin() {
     const alert = await this.alertController.create({
-      header: 'Alert',
-      message: 'User Sign In',
-      buttons: ['ok']
+      header: 'ברוך הבא!',
+      message: 'נכנסת בהצלחה :)',
+      buttons: ['סגירה'],
+      cssClass: 'Alert'
     });
     await alert.present();
   }
-
-
-
-
-
-
 
 
   constructor(private alertController: AlertController) { }

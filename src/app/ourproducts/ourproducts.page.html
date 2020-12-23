@@ -16,30 +16,37 @@
     </div>
  -->
     <div class="title-holder ion-text-center ion-padding-vertical">
-      <h2>קטגוריה T15/C3      </h2>
+      <h2> {{ category.categoryName }} {{ category.categoryKind }}     </h2>
     </div>
 
-    <div>
-      <div class="the-list ion-padding-vertical">
-        <div class="card">
+    <!-- <div>
+      <div class="the-list ion-padding-vertical"> -->
+        <ng-container *ngFor="let item of ourProducts; let i = index">
+
+        
+        <div *ngIf="item.productName | checkstring:category.categoryKind" class="card" (click)="showModal(item.productName, item.desc, item.series)">
           <ion-row>
             <ion-col size="3" class="left flex al-center jc-between">
-              <img src="assets/imgs/cc1.png" alt="">
+              <img src="{{ category.categoryImage }}" alt="">
             </ion-col>
-            <ion-col size="8" class="right flex flexd">
-              <div class="first ion-text-center">
-                <h5>שמשון INDICA T15/C3 
-                </h5>
-                <p class="ion-text-wrap">שמשון INDICA T15/C3 
-                תפרחת אינדיקה ברמת פרימיום</p>
-              </div>
-              <div class="btns-holder flex  jc-end">
-
-                <ion-button id="prem">
-                  PREMIUM
-                </ion-button>
-              </div>
-            </ion-col>
+            <ng-container>
+              <ion-col size="8" class="right flex flexd">
+                <div class="first ion-text-center">
+                  <h5>{{ item.productName }} 
+                  </h5>
+                  <p class="ion-text-wrap">{{ item.desc }}</p>
+                </div>
+                <div class="btns-holder flex  jc-end">
+  
+                  <!-- <ion-button id="prem" *ngIf="item.series.startsWith('SUPER')"> -->
+                    <ion-button id="prem" style="--background: #FA9917; width: fit-content;" *ngIf="item.series.includes('SUPER'); else premium">{{ item.series }}</ion-button>
+                     <ng-template #premium> <ion-button id="prem" >{{ item.series }}</ion-button></ng-template>
+                   
+                
+                </div>
+              </ion-col>
+            </ng-container>
+          
 
             <ion-col size="1" class="flex al-center">
               <ion-icon name="chevron-back-outline"></ion-icon>
@@ -47,8 +54,8 @@
 
           </ion-row>
         </div>
-
-        <div class="card" >
+      </ng-container>
+        <!-- <div class="card" >
           <ion-row class="ion-text-right">
             <ion-col size="3" class="left flex al-center jc-between">
               <img src="assets/imgs/cc1.png" alt="">
@@ -72,7 +79,7 @@
             </ion-col>
 
           </ion-row>
-        </div>
+        </div> -->
 
 <ion-fab vertical="bottom" horizontal="center" slot="fixed">
   <ion-fab-button (click)="goHome()">

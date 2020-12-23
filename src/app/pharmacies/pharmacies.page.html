@@ -11,17 +11,16 @@
     </div>
 
     <div class="search-holder ion-padding">
-      <ion-searchbar class="ion-text-center" placeholder="חיפוש מהיר" inputmode="decimal" type="decimal"
-        [debounce]="250" showCancelButton="never"
-        [(ngModel)]="filterTerm">
+      <ion-searchbar class="ion-text-center" placeholder="חיפוש מהיר" inputmode="search" type="decimal"
+        [debounce]="250" showCancelButton="never" [(ngModel)]="filterTerm">
 
       </ion-searchbar>
     </div>
 
     <div class="seg-holder">
       <div class="segments-holder">
-        <ion-segment  (ionChange)="segmentChanged($event)" [value]="category">
-          
+        <ion-segment (ionChange)="segmentChanged($event)" [value]="category">
+
           <ion-segment-button value="s2">
             <ion-label>בתי מרקחת </ion-label>
           </ion-segment-button>
@@ -41,42 +40,46 @@
           &nbsp; תוצאות
         </ion-chip>
         <input #ref1 type="text" hidden value="../../assets/imgs/logo_super-pharm.png" />
-      <ng-container *ngFor="let data of result" >
-      <div class="the-list">
-       <div class="card" (click)="showModal(data.name,data.phone,data.city,data.address,ref1.value)">
-        <ion-row>
-          <ion-col size="7" class="right">
-            <div class="first flex al-center jc-start">
-              <img src="../../assets/imgs/logo_super-pharm.png" alt="">
-              <h4>&nbsp;{{data.name}}</h4>
-            
-            </div>
-            <div class="sec">
-              <p class="ion-text-wrap">{{data.address}}, {{data.city}}</p>
-            </div>
-            <div class="btns-holder flex al-center jc-between">
-              <ion-button id="hmo" >
-                {{data.phone}}
-               </ion-button>
-              <!-- <ion-button id="subject" >
+        <ng-container *ngFor="let data of result">
+          <div class="the-list">
+            <div class="card" (click)="showModal(data.name,data.phone,data.city,data.address,ref1.value)">
+              <ion-row>
+                <ion-col size="7" class="right">
+                  <div class="first flex al-center jc-start">
+                    <img src="../../assets/imgs/logo_super-pharm.png" alt="">
+                    <h4>&nbsp;{{data.name}}</h4>
+
+                  </div>
+                  <div class="sec">
+                    <p class="ion-text-wrap">{{data.address}}, {{data.city}}</p>
+                  </div>
+                  <div class="btns-holder flex al-center jc-between">
+                    <ion-button id="hmo">
+                      {{data.phone}}
+                    </ion-button>
+                    <!-- <ion-button id="subject" >
                 subject
               </ion-button> -->
-  
-          
+
+
+                  </div>
+                </ion-col>
+                <ion-col size="5" class="left flex al-start jc-between">
+                  <a><img src="assets/imgs/phone-call (1).png" alt=""></a>
+                  <a (click)=goNavigate(data.address)> <img src="assets/imgs/waze (3).png" alt=""></a>
+                  <a *ngIf="(data.phone.includes('050'))"
+                    href="{{'https://wa.me/972' + (data.phone.replace('-', '') | slice:1:9)}}"><img
+                      src="assets/imgs/whatsapp (3).png" alt=""></a>
+
+
+
+                </ion-col>
+              </ion-row>
             </div>
-            </ion-col>
-          <ion-col size="5" class="left flex al-start jc-between">
-            <img src="assets/imgs/waze (3).png" alt="">
-           
-              <img src="assets/imgs/phone-call (1).png" alt="">
-              <img src="assets/imgs/whatsapp (3).png" alt="">
-          </ion-col>
-        </ion-row>
-      </div>
-        </div>
+          </div>
         </ng-container>
-       </ng-container>
-       
+      </ng-container>
+
     </div>
 
     <div class="s1" *ngIf="category == 's2'">
@@ -86,43 +89,46 @@
           &nbsp; תוצאות
         </ion-chip>
         <input #ref2 type="text" hidden value="../../assets/imgs/pharmacy (2).png" />
-      <ng-container *ngFor="let data of result">
-      <div class="the-list">
-       <div class="card" (click)="showModal(data.name,data.phone,data.city,data.address,ref2.value)">
-        <ion-row>
-          <ion-col size="7" class="right">
-            <div class="first flex al-center jc-start">
-              <img src="{{ref2.value}}" alt="">
-              <h4>&nbsp;{{data.name}}</h4>
-            
-            </div>
-            <div class="sec">
-              <p class="ion-text-wrap">{{data.address}}, {{data.city}}</p>
-            </div>
-            <div class="btns-holder flex al-center jc-between">
-              <ion-button id="hmo" >
-                {{data.phone}}
-               </ion-button>
-              <!-- <ion-button id="subject" >
+        <ng-container *ngFor="let data of result">
+          <div class="the-list">
+            <div class="card">
+              <!-- (click)="showModal(data.name,data.phone,data.city,data.address,ref2.value)" -->
+              <ion-row>
+                <ion-col size="7" class="right">
+                  <div class="first flex al-center jc-start">
+                    <img src="{{ref2.value}}" alt="">
+                    <h4>&nbsp;{{data.name}}</h4>
+
+                  </div>
+                  <div class="sec">
+                    <p class="ion-text-wrap">{{data.address}}, {{data.city}}</p>
+                  </div>
+                  <div class="btns-holder flex al-center jc-between">
+                    <ion-button id="hmo">
+                      {{data.phone}}
+                    </ion-button>
+                    <!-- <ion-button id="subject" >
                 subject
               </ion-button> -->
-  
-          
+
+
+                  </div>
+                </ion-col>
+                <ion-col size="5" class="left flex al-start jc-between">
+
+                  <a (click)=goNavigate()> <img src="assets/imgs/waze (3).png" alt=""></a>
+                  <a href="{{'https://wa.me/972' + (data.phone | slice:0:9)}}"><img src="assets/imgs/phone-call (1).png"
+                      alt=""></a>
+                  <a *ngIf="(data.phone.includes('050'))"
+                    href="{{'https://wa.me/972' + (data.phone.replace('-', '') | slice:1:9)}}"><img
+                      src="assets/imgs/whatsapp (3).png" alt=""></a>
+                </ion-col>
+              </ion-row>
             </div>
-            </ion-col>
-          <ion-col size="5" class="left flex al-start jc-between">
-            <img src="assets/imgs/waze.png" alt="">
-            <a (click)=goNavigate()></a>
-           
-            <img src="assets/imgs/call.png" alt="">
-            <img src="assets/imgs/whatsapp.png" alt="">
-          </ion-col>
-        </ion-row>
-      </div>
-        </div>
+          </div>
         </ng-container>
-       </ng-container>
-       
+      </ng-container>
+
     </div>
   </div>
 </ion-content>

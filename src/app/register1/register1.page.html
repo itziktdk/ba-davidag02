@@ -21,7 +21,7 @@
         <ion-col class="processing ion-text-center">
           <ion-icon name="document-attach-outline" *ngIf="step2"></ion-icon>
           <ion-icon name="checkmark-circle" *ngIf="!step2 && !step1"></ion-icon>
-          <ion-icon name="" *ngIf="step2init "></ion-icon>
+          <ion-icon name="" *ngIf="step2init"></ion-icon>
           <span>צירוף מסמכים</span>
         </ion-col>
         <ion-col class="processing ion-text-center">
@@ -129,8 +129,10 @@
         </ion-col>
         <ion-col size="6">
           <div class="input-item">
-            <ion-item lines="none">
-              <ion-input type="text" class="ion-text-center" placeholder="תוקף רשיון"></ion-input>
+            <ion-item lines=none>
+              <ion-label class="ion-align-self-center ion-text-center" style="--background:#fff; color:#333333"></ion-label>
+              <ion-datetime style="font-size: smaller;" monthValues="1,2,3,4,5,6,7,8,9,10,11,12" yearValues="2021,2022,2023" value="" placeholder="תוקף רשיון">
+              </ion-datetime>
             </ion-item>
           </div>
         </ion-col>
@@ -143,7 +145,7 @@
               "></ion-input> -->
               <ion-item lines=none>
                 <ion-label class="ion-align-self-center ion-text-center" style="--background:#fff; color:#333333"></ion-label>
-                <ion-datetime style="font-size: smaller;" monthValues="1,2,3,4,5,6,7,8,9,10,11,12" yearValues="2021,2022,2023" value="" placeholder="בחר תאריך">
+                <ion-datetime style="font-size: smaller;" monthValues="1,2,3,4,5,6,7,8,9,10,11,12" yearValues="2021,2022,2023" value="" placeholder="תוקף מרשם">
                 </ion-datetime>
               </ion-item>
             </ion-item>
@@ -208,7 +210,7 @@
 
     <div class="the-form set3" *ngIf="step3">
       <div class="quiz-box">
-        <ion-slides mode="ios" pager="false" scrollbar="false">
+        <ion-slides mode="ios" pager="yes" scrollbar="yes">
           <ion-slide>
             <ion-grid fixed>
               <ion-row>

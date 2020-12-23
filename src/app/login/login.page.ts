@@ -7,7 +7,7 @@ import { AlertService } from '../services/alert.service';
 import { GooglePlus } from '@ionic-native/google-plus/ngx';
 import { LoadingController, Platform } from '@ionic/angular';
 import { AngularFireAuth } from '@angular/fire/auth';
-import * as firebase from 'firebase/app'; 
+import * as firebase from 'firebase/app';
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -24,14 +24,14 @@ export class LoginPage implements OnInit {
     private auth: AuthService,
     private router: Router,
     private alert: AlertController,
-    private google: GooglePlus,
+    public google: GooglePlus,
     public loadingController: LoadingController,
-    private fireAuth: AngularFireAuth,
+    public fireAuth: AngularFireAuth,
     private platform: Platform,) { }
 
 
 
-  async loginUser(form):Promise<void>{
+  async loginUser(form): Promise<void>{
     await this.auth.loginUser(form.value.email);
   }
 
@@ -68,11 +68,12 @@ export class LoginPage implements OnInit {
     } else{
       console.log('else...');
       this.fireAuth.signInWithPopup(new firebase.default.auth.GoogleAuthProvider()).then(success => {
-        console.log('success in google login', success);
+        console.log('success in google login', success.user.displayName);
         this.navCtrl.navigateBack('home');
         this.Alert.Signin();
         this.isGoogleLogin = true;
         this.user =  success.user;
+        console.log(this.user);
       }).catch(err => {
         console.log(err.message, 'error in google login');
       });

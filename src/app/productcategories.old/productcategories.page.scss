@@ -1,0 +1,97 @@
+ion-content
+{
+  --background: #fff url('../../assets/imgs/bg.png') no-repeat center center / cover;
+  .holder
+  {
+   
+    .top-logo
+    {
+      .img-holder
+      {
+        img
+        {
+          height: 4rem;
+        }
+
+        h5
+        {
+          color: white;
+          margin: 0;
+        }
+        
+      }
+
+      .sub-bar
+      {
+        background-color: rgba(0,2,66,0.5);
+        border-radius: 25px;
+        p
+        {
+         
+          color: white;
+          margin: 5px 0;
+        }
+      }
+    }
+
+    .title-holder
+    {
+        h2
+        {
+            color: white;
+        }
+    }
+
+    .cat-holder
+    {
+      .btn
+      {
+        background: white;
+        border-radius: 15px;
+        padding: 10px 0 0 0;
+        .img-holder
+        {
+          img
+          {
+            height: 3rem;
+          }
+        }
+
+        #first
+        {
+          background: #005AB5;
+
+        }
+
+        #second
+        {
+          background: #2AC940;
+
+
+        }
+
+        #third
+        {
+          background: #FA9917;
+
+
+        }
+
+        .bottom-holder
+        {
+          margin-top: 5px;
+          padding: 10px 0;
+          p
+          {
+            color: white;
+            margin:  0;
+            font-size: 0.9rem;
+          }
+        } 
+
+      
+      }
+    }
+
+  }
+}
