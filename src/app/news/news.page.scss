@@ -1,5 +1,14 @@
 ion-content
 {
+  h1
+  {
+    color: white;
+    font-size: 30px;
+  }
+  .box {
+    background-color: #ffffff;
+    border-radius: 15px;
+  }
   --background: #fff url('../../assets/imgs/bg.png') no-repeat center center / cover;
   .holder
   {

@@ -8,6 +8,7 @@ import { ActionSheetController } from '@ionic/angular';
 
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { AuthService } from '../services/auth.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 export interface ImgFile {
   name: string;
@@ -22,13 +23,13 @@ export interface ImgFile {
 })
 export class Register1Page implements OnInit {
 step1 = true;
-step2: boolean;
+step2 = false;
 step2init = true;
 step3 = false;
 step3init = true;
 step4 = false;
 logup = {first: '', last: '', address: '',  id: '',city:'',number:''};
- password:any;
+ password: any;
 capturedSnapURL: string;
 
 cameraOptions: CameraOptions = {
@@ -66,6 +67,10 @@ private filesCollection: AngularFirestoreCollection<ImgFile>;
  
   signup() {
    this.auth.register(this.email,this.password,this.logup);
+   this.step1 = false;
+   this.step2 = true;
+   this.step3 = false;
+   this.step2init = false;
 }
 
   constructor(
@@ -75,7 +80,15 @@ private filesCollection: AngularFirestoreCollection<ImgFile>;
     private afs: AngularFirestore,
     private afStorage: AngularFireStorage,
     private auth: AuthService,
+    private route: ActivatedRoute, private router: Router,
     ) {
+
+      this.route.queryParams.subscribe(params => {
+        if (this.router.getCurrentNavigation().extras.state) {
+          this.router.getCurrentNavigation().extras.state.step2 = true;
+         // this.step2 = this.router.getCurrentNavigation().extras.state.step2;
+        }
+      });
 
       this.isFileUploading = false;
       this.isFileUploaded = false;
@@ -114,6 +127,7 @@ private filesCollection: AngularFirestoreCollection<ImgFile>;
     this.email=history.state.data;
     console.log(this.email);
   }
+
 
   takeSnap() {
     this.camera.getPicture(this.cameraOptions).then((imageData) => {

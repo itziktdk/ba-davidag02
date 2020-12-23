@@ -4,14 +4,18 @@ import firebase from 'firebase/app';
 import { combineAll } from 'rxjs/operators';
 import { AlertService } from './alert.service';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { NavigationExtras } from '@angular/router';
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   userid: string;
 
-  constructor(public store:AngularFirestore, private navCtrl: NavController,private Alert:AlertService,public Alerts:AlertController) { }
-  signInMethod:any;
+  constructor(public store: AngularFirestore,
+              private navCtrl: NavController,
+              private Alert: AlertService,
+              public Alerts: AlertController) { }
+  signInMethod: any;
   loginUser(
     email: string,
   ){
@@ -19,64 +23,74 @@ export class AuthService {
         .then((response) => {
           })
             .catch((error) => {
-        if(error.code === 'auth/wrong-password'){
+        if (error.code === 'auth/wrong-password'){
           this.getpassword(email);
            }
-        else if(error.code === 'auth/user-not-found'){
-          this.navCtrl.navigateBack('register1',{state:{data:email}});
+        else if (error.code === 'auth/user-not-found'){
+          this.navCtrl.navigateBack('register1', {state: {data: email}});
        }
-        else if(error.code === 'auth/invalid-email'){
+        else if (error.code === 'auth/invalid-email'){
           this.Alert.email();
         }
-})
+});
   }
-  
+
   login(
-    email:string,
+    email: string,
     password: string,
-  
+
   ){
-    console.log(email,password);
-  firebase.auth().signInWithEmailAndPassword(email, password).then(()=>{
+    console.log(email, password);
+    firebase.auth().signInWithEmailAndPassword(email, password).then(() => {
     this.Alert.Signin();
-    this.navCtrl.navigateForward('home');
+    const navigationExtras: NavigationExtras = {
+      state: {
+        signedin: true,
+      }
+    };
+    this.navCtrl.navigateForward('home', navigationExtras);
   });
   }
 
   register(
-    email:string,
+    email: string,
     password: string,  
-    userdata:any,
+    userdata: any,
   ){
-    console.log(email,password,userdata);
-  firebase.auth().createUserWithEmailAndPassword(email, password).then(()=>{
-    this.userid=firebase.auth().currentUser.uid
+    console.log(email, password, userdata);
+    firebase.auth().createUserWithEmailAndPassword(email, password).then(() => {
+    this.userid = firebase.auth().currentUser.uid;
     this.store.doc(`users/${this.userid}`).set({
       userdata
-    })
-    this.presentAlert('Success', 'You are registered!')
-   this.navCtrl.navigateForward('home');
-  })
+    });
+    this.presentAlert('ברוך הבא למערכת', 'נרשמת בהצלחה :)');
+    const navigationExtras: NavigationExtras = {
+      state: {
+        step2: true,
+      }
+    };
+    this.navCtrl.navigateForward('register1', navigationExtras);
+  });
   }
 
 	async presentAlert(title: string, content: string) {
 		const alert = await this.Alerts.create({
 			header: title,
 			message: content,
-			buttons: ['OK']
-		})
+			buttons: ['אישור']
+		});
 
-		await alert.present()
+		await alert.present();
 	}
 
   async getpassword(email) {
     const alert = await this.Alerts.create({
       cssClass: 'my-custom-class',
-      header: 'Sign In',
+      header: 'הזדהות',
       inputs: [{
         name: 'password',
         type: 'password',
-        placeholder: 'Enter Password',
+        placeholder: 'הקלד סיסמא',
         cssClass: 'specialClass',
         attributes: {
           inputmode: 'decimal'
@@ -93,8 +107,8 @@ export class AuthService {
         }, {
           text: 'Ok',
           handler: (alertData) => {
-           this.login(email,alertData.password);
-           console.log(alertData.password)
+           this.login(email, alertData.password);
+           console.log(alertData.password);
           }
         }
       ]

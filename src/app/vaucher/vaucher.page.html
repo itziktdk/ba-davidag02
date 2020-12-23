@@ -1,0 +1,61 @@
+<ion-content>
+  <div class="holder ion-padding">
+    <div class="top-logo">
+      <div class="img-holder ion-text-center">
+        <img src="assets/imgs/c4.png" alt="">
+        <h1 calss="padding">שובר הנחה</h1>
+        <div class="sub-bar ion-text-center">
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="s1">
+      <div class="the-list ion-padding-vertical">
+        <div class="card">
+          <ion-row>
+            <ion-col size="6" class="right flex al-center">
+              <div class="thumb ion-padding" >
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=039094909" alt="">
+              </div>
+            </ion-col>
+            <ion-col size="6" class="ion-align-items-center">
+              <div class="ion-text-center">
+                <h1 class="ion-align-self-center">שובר הנחה</h1>
+                <h4 class="ion-align-self-center">10% הנחה </h4>
+                <p class="ion-align-self-center">למזמינים מעל 40 גרם </p>
+              </div>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col class="ion-text-center">
+    
+            <ion-chip style="--background: #F36; color:aliceblue" (click)="presentPopover()">מימוש שובר</ion-chip>
+          
+          </ion-col>
+          </ion-row>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <ion-list>
+    <ion-list-header>
+      Products
+    </ion-list-header>
+    <ion-item  *ngFor="let product of products | async">
+      <h1>{{product.serial}}</h1>
+      <p>{{product.description}}</p> 
+      <p>{{product.quantity}}</p>
+    </ion-item>
+  </ion-list>
+  
+  <ion-button (click)="createProduct('מוצר', 'שווה ביותר', '3')">Create</ion-button>
+</ion-content>
+
+<ion-fab vertical="bottom" horizontal="center" slot="fixed">
+  <ion-fab-button (click)="goHome()">
+    <ion-icon name="home"></ion-icon>
+  </ion-fab-button>
+</ion-fab>

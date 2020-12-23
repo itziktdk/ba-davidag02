@@ -5,6 +5,10 @@ import { AngularFirestore } from '@angular/fire/firestore';
 @Injectable({
   providedIn: 'root'
 })
+export class SingletonService {
+  public loginState = false;
+  public userinfo = [];
+}
 export class FirebaseService {
 
   collectionName = 'Customers';
