@@ -1,40 +1,39 @@
 {
-    "project_info": {
-      "project_number": "843728717134",
-      "firebase_url": "https://davidagtemp.firebaseio.com",
-      "project_id": "davidagtemp",
-      "storage_bucket": "davidagtemp.appspot.com"
-    },
-    "client": [
-      {
-        "client_info": {
-          "mobilesdk_app_id": "1:843728717134:android:0234d768505dbd03b14a1f",
-          "android_client_info": {
-            "package_name": "com.davidag.doc"
-          }
-        },
-        "oauth_client": [
-          {
-            "client_id": "843728717134-icmdqaolcdljt7iooofn76hp2eekc10c.apps.googleusercontent.com",
-            "client_type": 3
-          }
-        ],
-        "api_key": [
-          {
-            "current_key": "AIzaSyBYvuFeZaL4H5KoORk5K082k4zDz24OUN8"
-          }
-        ],
-        "services": {
-          "appinvite_service": {
-            "other_platform_oauth_client": [
-              {
-                "client_id": "843728717134-icmdqaolcdljt7iooofn76hp2eekc10c.apps.googleusercontent.com",
-                "client_type": 3
-              }
-            ]
-          }
+  "project_info": {
+    "project_number": "18185314799",
+    "project_id": "davidag02-fa32f",
+    "storage_bucket": "davidag02-fa32f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:18185314799:android:4cc36c9750f51c9181161a",
+        "android_client_info": {
+          "package_name": "com.davidag.doc"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "18185314799-0rc5r3cspp19km2a7qfbt3tuffelq3i9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCSy6V2wGynLNqMA8w_XPhXFJwmFbcaL6M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "18185314799-0rc5r3cspp19km2a7qfbt3tuffelq3i9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
-    ],
-    "configuration_version": "1"
-  }
+    }
+  ],
+  "configuration_version": "1"
+}

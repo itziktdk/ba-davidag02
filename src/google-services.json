@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "259418705314",
+    "firebase_url": "https://newapp-d37de-default-rtdb.firebaseio.com",
+    "project_id": "newapp-d37de",
+    "storage_bucket": "newapp-d37de.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:259418705314:android:7f6d88a56050debb1d36fb",
+        "android_client_info": {
+          "package_name": "com.davidag.doc"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "259418705314-oq70ta0b82ggtatd60cn7h7po1s9ob40.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.davidag.doc",
+            "certificate_hash": "a18d228d1935a7e36406e6aceb9b4d1b193492d6"
+          }
+        },
+        {
+          "client_id": "259418705314-d7h6bm3e4o8u6000jq1vvttk1eeobs17.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCk3VF3eTmeu6RP5mMlnZzgU6B9qv_5Msc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "259418705314-d7h6bm3e4o8u6000jq1vvttk1eeobs17.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

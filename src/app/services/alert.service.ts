@@ -10,12 +10,12 @@ export class AlertService {
     const alert = await this.alertController.create({
       cssClass: 'my-custom-class',
       header: 'Alert',
-      message: "This Email Doesn't Exist",
+      message: 'This Email Doesn\'t Exist',
       buttons: ['OK']
     });
 
     await alert.present();
-  };
+  }
   async email() {
     const alert = await this.alertController.create({
       header: 'Wooow',

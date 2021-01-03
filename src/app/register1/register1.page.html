@@ -33,323 +33,349 @@
     </div>
 
 
-    <form  #form="ngForm" (ngSubmit)="signup(form)">
-    <div class="the-form set1" *ngIf="step1">
-      <ion-row>
-        <ion-col size="6">
-          <div class="input-item">
-            <ion-item lines="none">
-              <ion-input type="text" name="First" [(ngModel)]="logup.first" ngModel required class="ion-text-center" placeholder="שם מלא"></ion-input>
-            </ion-item>
-          </div>
-        </ion-col>
-        <ion-col size="6">
-          <div class="input-item">
-            <ion-item lines="none">
-              <ion-input type="text" name="Second" [(ngModel)]="logup.last" ngModel required class="ion-text-center" placeholder="שם פרטי"></ion-input>
-            </ion-item>
-          </div>
-        </ion-col>
-
-        <ion-col size="12">
-          <div class="input-item">
-            <ion-item lines="none">
-              <ion-input type="text" name="Email" [(ngModel)]="email" ngModel required class="ion-text-center" placeholder="Email"></ion-input>
-            </ion-item>
-          </div>
-        </ion-col>
-        <ion-col size="12">
-          <div class="input-item">
-            <ion-item lines="none">
-              <ion-input type="text" name="password" [(ngModel)]="password" ngModel required class="ion-text-center" placeholder="Password"></ion-input>
-            </ion-item>
-          </div>
-        </ion-col>
-
-        <ion-col size="7">
-          <div class="input-item">
-            <ion-item lines="none">
-              <ion-input type="text" name="address" [(ngModel)]="logup.address" ngModel required class="ion-text-center" placeholder="רחוב ומספר"></ion-input>
-            </ion-item>
-          </div>
-        </ion-col>
-
-        <ion-col size="5">
-          <div class="input-item">
-            <ion-item lines="none">
-              <ion-input type="text" name="id" [(ngModel)]="logup.id" ngModel required class="ion-text-center" placeholder="עיר"></ion-input>
-            </ion-item>
-          </div>
-        </ion-col>
-
-        <ion-col size="5">
-          <div class="input-item">
-            <ion-item lines="none">
-              <ion-input type="text" name="city" [(ngModel)]="logup.city" ngModel required class="ion-text-center" placeholder="מספר"></ion-input>
-            </ion-item>
-          </div>
-        </ion-col>
-
-        <ion-col size="7">
-          <div class="input-item">
-            <ion-item lines="none">
-              <ion-input type="text" name="number" [(ngModel)]="logup.number" ngModel required class="ion-text-center" placeholder="מספר טלפון נייד"></ion-input>
-            </ion-item>
-          </div>
-        </ion-col>
-
-        <ion-col size="12">
-          <ion-item lines='none' class="terms">
-            <ion-label class="ion-text-wrap">אנו לא שולחים ספאם ומאפשרים הסרה בקליק.
-              אנו לא שולחים ספאם ומאפשרים הסרה בקליק.
-            </ion-label>
-            <ion-checkbox slot="start"></ion-checkbox>
-          </ion-item>
-        </ion-col>
-      </ion-row>
-
-
-      <div class="btn-holder ion-text-center">
-        <ion-button type="submit" [disabled]="form.invalid">
-          המשך
-          <ion-icon slot="end" name="chevron-back-circle"></ion-icon>
-        </ion-button>
-      </div>
-    </div>
-  </form>
-    <div class="the-form set2" *ngIf="step2">
-      <ion-row>
-        <ion-col size="6">
-          <div class="input-item">
-            <ion-item lines="none">
-              <ion-input type="text" class="ion-text-center" placeholder="מספר רשיון
-              "></ion-input>
-            </ion-item>
-          </div>
-        </ion-col>
-        <ion-col size="6">
-          <div class="input-item">
-            <ion-item lines="none">
-              <ion-input type="text" class="ion-text-center" placeholder="תוקף רשיון"></ion-input>
-            </ion-item>
-          </div>
-        </ion-col>
-
-        <ion-col size="6">
-          <div class="input-item">
-            <ion-item lines="none">
-              <!-- <ion-input type="text" class="ion-text-center" placeholder="תוקף מרשם
-
-              "></ion-input> -->
-              <ion-item lines=none>
-                <ion-label class="ion-align-self-center ion-text-center" style="--background:#fff; color:#333333"></ion-label>
-                <ion-datetime style="font-size: smaller;" monthValues="1,2,3,4,5,6,7,8,9,10,11,12" yearValues="2021,2022,2023" value="" placeholder="בחר תאריך">
-                </ion-datetime>
-              </ion-item>
-            </ion-item>
-          </div>
-        </ion-col>
-        <ion-col size="6">
-          <div class="input-item">
-            <ion-item lines="none">
-              <ion-input type="text" class="ion-text-center" placeholder="תעודת זהות
-
-              "></ion-input>
-            </ion-item>
-          </div>
-        </ion-col>
-      </ion-row>
-
-      <div class="btns-holder ion-padding-top">
+    <form *ngIf="step1" #form="ngForm" (ngSubmit)="signup(form)">
+      <div class="the-form set1" *ngIf="step1">
         <ion-row>
-          <ion-col size="4">
-            <input style="display: none;" id="IDfileinput" type="file" (change)="uploadImage($event.target.files)" class="filyLIC" />
-            <div class="btn ion-text-center" id="uploadLic" (click)="presentActionSheet('filyLIC')">
-              <div class="img-holder">
-                <img src="assets/imgs/document.png" alt="">
-              </div>
-              <p>רשיון בתוקף
-              </p>
+          <ion-col size="6">
+            <div class="input-item">
+              <ion-item lines="none">
+                <ion-input type="text" name="First" [(ngModel)]="logup.first" ngModel required class="ion-text-center"
+                  placeholder="שם מלא"></ion-input>
+              </ion-item>
             </div>
           </ion-col>
-          <ion-col size="4">
-            <input style="display: none;" id="IDfileinput" type="file" (change)="uploadImage($event.target.files)" class="filyID" />
-            <div class="btn ion-text-center" id="uploadLic" (click)="presentActionSheet('filyID')">
-              <div class="img-holder">
-                <img src="assets/imgs/document.png" alt="">
-              </div>
-              <p>תעודת זהות
-
-              </p>
+          <ion-col size="6">
+            <div class="input-item">
+              <ion-item lines="none">
+                <ion-input type="text" name="Second" [(ngModel)]="logup.last" ngModel required class="ion-text-center"
+                  placeholder="שם פרטי"></ion-input>
+              </ion-item>
             </div>
           </ion-col>
-          <ion-col size="4">
-            <input style="display: none;" id="IDfileinput" type="file" (change)="uploadImage($event.target.files)" class="filyREC" />
-            <div class="btn ion-text-center" id="uploadLic" (click)="presentActionSheet('filyREC')">
-              <div class="img-holder">
-                <img src="assets/imgs/document.png" alt="">
-              </div>
-              <p>מרשם בתוקף
 
-              </p>
+          <ion-col size="12">
+            <div class="input-item">
+              <ion-item lines="none">
+                <ion-input [disabled]="isSocialLogin" type="text" name="Email" [(ngModel)]="email" ngModel required
+                  class="ion-text-center" placeholder="Email"></ion-input>
+              </ion-item>
             </div>
+          </ion-col>
+          <ion-col size="12" *ngIf="!isSocialLogin">
+            <div class="input-item">
+              <ion-item lines="none">
+                <ion-input type="text" name="password" [(ngModel)]="password" ngModel required class="ion-text-center"
+                  placeholder="Password"></ion-input>
+              </ion-item>
+            </div>
+          </ion-col>
+
+          <ion-col size="7">
+            <div class="input-item">
+              <ion-item lines="none">
+                <ion-input type="text" name="address" [(ngModel)]="logup.address" ngModel required
+                  class="ion-text-center" placeholder="רחוב ומספר"></ion-input>
+              </ion-item>
+            </div>
+          </ion-col>
+
+          <ion-col size="5">
+            <div class="input-item">
+              <ion-item lines="none">
+                <ion-input type="text" name="id" [(ngModel)]="logup.id" ngModel required class="ion-text-center"
+                  placeholder="עיר"></ion-input>
+              </ion-item>
+            </div>
+          </ion-col>
+
+          <ion-col size="5">
+            <div class="input-item">
+              <ion-item lines="none">
+                <ion-input type="text" name="city" [(ngModel)]="logup.city" ngModel required class="ion-text-center"
+                  placeholder="מספר"></ion-input>
+              </ion-item>
+            </div>
+          </ion-col>
+
+          <ion-col size="7">
+            <div class="input-item">
+              <ion-item lines="none">
+                <ion-input type="text" name="number" [(ngModel)]="logup.number" ngModel required class="ion-text-center"
+                  placeholder="מספר טלפון נייד"></ion-input>
+              </ion-item>
+            </div>
+          </ion-col>
+
+          <ion-col size="12">
+            <ion-item lines='none' class="terms">
+              <ion-label class="ion-text-wrap">אנו לא שולחים ספאם ומאפשרים הסרה בקליק.
+                אנו לא שולחים ספאם ומאפשרים הסרה בקליק.
+              </ion-label>
+              <ion-checkbox slot="start"></ion-checkbox>
+            </ion-item>
           </ion-col>
         </ion-row>
-      </div>
-
-      <div class="btn-holder ion-text-center">
-        <ion-button (click)="goStep3()">
-          המשך
-          <ion-icon slot="end" name="chevron-back-circle"></ion-icon>
-        </ion-button>
-      </div>
-    </div>
 
 
-    <div class="the-form set3" *ngIf="step3">
-      <div class="quiz-box">
-        <ion-slides mode="ios" pager="false" scrollbar="false">
-          <ion-slide>
-            <ion-grid fixed>
-              <ion-row>
-                <ion-col size="12">
-                  <div>
-                    <p class="ion-text-wrap">
-                      לאיזה צורך הנך משתמש בתרופות מסוג אלו?
-                    </p>
-                  </div>
-      
-                  <div class="answers">
-                    <ion-radio-group name="auto" value="tesla" mode="md">
-                      <ion-item lines="none">
-                        <ion-label>תשובה א'
-                        </ion-label>
-                        <ion-radio value="tesla" slot="start"></ion-radio>
-                      </ion-item>
-                      <ion-item lines="none">
-                        <ion-label>תשובה ב'
-      
-                        </ion-label>
-                        <ion-radio value="c" slot="start"></ion-radio>
-                      </ion-item>
-                      <ion-item lines="none">
-                        <ion-label> תשובה ג'
-      
-      
-                        </ion-label>
-                        <ion-radio value="b" slot="start"></ion-radio>
-                      </ion-item>
-                    </ion-radio-group>
-                  </div>
-      
-                 
-                </ion-col>
-              </ion-row>
-            </ion-grid>
-          </ion-slide>
-          <ion-slide>
-            <ion-grid fixed>
-              <ion-row>
-                <ion-col size="12">
-                  <div>
-                    <p class="ion-text-wrap">
-                      לאיזה צורך הנך משתמש בתרופות מסוג אלו?
-                    </p>
-                  </div>
-      
-                  <div class="answers">
-                    <ion-radio-group name="auto" value="tesla" mode="md">
-                      <ion-item lines="none">
-                        <ion-label>תשובה א'
-                        </ion-label>
-                        <ion-radio value="tesla" slot="start"></ion-radio>
-                      </ion-item>
-                      <ion-item lines="none">
-                        <ion-label>תשובה ב'
-      
-                        </ion-label>
-                        <ion-radio value="c" slot="start"></ion-radio>
-                      </ion-item>
-                      <ion-item lines="none">
-                        <ion-label> תשובה ג'
-      
-      
-                        </ion-label>
-                        <ion-radio value="b" slot="start"></ion-radio>
-                      </ion-item>
-                    </ion-radio-group>
-                  </div>
-      
-                 
-                </ion-col>
-              </ion-row>
-            </ion-grid>
-          </ion-slide>
-          <ion-slide>
-            <ion-grid fixed>
-              <ion-row>
-                <ion-col size="12">
-                  <div>
-                    <p class="ion-text-wrap">
-                      לאיזה צורך הנך משתמש בתרופות מסוג אלו?
-                    </p>
-                  </div>
-      
-                  <div class="answers">
-                    <ion-radio-group name="auto" value="tesla" mode="md">
-                      <ion-item lines="none">
-                        <ion-label>תשובה א'
-                        </ion-label>
-                        <ion-radio value="tesla" slot="start"></ion-radio>
-                      </ion-item>
-                      <ion-item lines="none">
-                        <ion-label>תשובה ב'
-      
-                        </ion-label>
-                        <ion-radio value="c" slot="start"></ion-radio>
-                      </ion-item>
-                      <ion-item lines="none">
-                        <ion-label> תשובה ג'
-      
-      
-                        </ion-label>
-                        <ion-radio value="b" slot="start"></ion-radio>
-                      </ion-item>
-                    </ion-radio-group>
-                  </div>
-      
-                 
-                </ion-col>
-              </ion-row>
-            </ion-grid>
-          </ion-slide>
-        </ion-slides>
-        <div class="pbar ion-padding-horizontal flex al-center jc-center">
-          <p>10%</p>
-          <ion-progress-bar value="0.1"></ion-progress-bar>
-        </div>
-
-        <div class="btnnn-holder flex jc-end">
-          <ion-button expand="block" fill="clear" (click)="goStep4()">
-            <ion-icon slot="start" name="chevron-back-outline"></ion-icon>
+        <div class="btn-holder ion-text-center">
+          <ion-button type="submit" [disabled]="form.invalid">
             המשך
-
-
+            <ion-icon slot="end" name="chevron-back-circle"></ion-icon>
           </ion-button>
         </div>
       </div>
+    </form>
 
-      <div class="detail">
-        <p class="ion-text-warp">
-          לתשומת לבך
-          המידע עשוי לשמש לצורכי מחקר ושיפור השירות
+    <form *ngIf="step2" #form="ngForm" (ngSubmit)="signup2(form)">
+      <div class="the-form set2">
+        <ion-row>
+          <ion-col size="6">
+            <div class="input-item">
+              <ion-item lines="none">
+                <ion-input type="text" name="licenseNumber" [(ngModel)]="step2From.licenseNumber" ngModel required
+                  class="ion-text-center" placeholder="מספר רשיון
+              "></ion-input>
+              </ion-item>
+            </div>
+          </ion-col>
+          <ion-col size="6">
+            <div class="input-item">
+              <ion-item lines="none">
+                <ion-input type="text" name="licenseExpireDate" [(ngModel)]="step2From.licenseExpireDate" ngModel
+                  required class="ion-text-center" placeholder="תוקף רשיון"></ion-input>
+              </ion-item>
+            </div>
+          </ion-col>
 
+          <ion-col size="6">
+            <div class="input-item">
+              <ion-item lines="none">
+                <!-- <ion-input type="text" class="ion-text-center" placeholder="תוקף מרשם
 
-        </p>
+              "></ion-input> -->
+                <ion-item lines=none>
+                  <ion-label class="ion-align-self-center ion-text-center" style="--background:#fff; color:#333333">
+                  </ion-label>
+                  <ion-datetime style="font-size: smaller;" monthValues="1,2,3,4,5,6,7,8,9,10,11,12"
+                    yearValues="2021,2022,2023" value="" placeholder="בחר תאריך">
+                  </ion-datetime>
+                </ion-item>
+              </ion-item>
+            </div>
+          </ion-col>
+          <ion-col size="6">
+            <div class="input-item">
+              <ion-item lines="none">
+                <ion-input type="text" class="ion-text-center" placeholder="תעודת זהות"></ion-input>
+              </ion-item>
+            </div>
+          </ion-col>
+        </ion-row>
+
+        <div class="btns-holder ion-padding-top">
+          <ion-row>
+            <ion-col size="4">
+              <input style="display: none;" id="IDfileinput" type="file"
+                (change)="uploadImage($event.target.files,  'L')" class="filyLIC" />
+              <div class="btn ion-text-center" id="uploadLic" (click)="presentActionSheet('L', filyLIC')">
+                <div class="img-holder">
+                  <img *ngIf="!step2From.licenseImgName;else imgSave" src="assets/imgs/document.png" alt="">
+                  <ng-template #imgSave>
+                    <img src="assets/imgs/correct.png" alt="">
+                  </ng-template>
+
+                </div>
+                <p>רשיון בתוקף {{file}}
+                </p>
+              </div>
+            </ion-col>
+            <ion-col size="4">
+              <input style="display: none;" id="IDfileinput" type="file"
+                (change)="uploadImage($event.target.files, 'I')" class="filyID" />
+              <div class="btn ion-text-center" id="uploadLic" (click)="presentActionSheet('I', filyID')">
+                <div class="img-holder">
+                  <img *ngIf="!step2From.idImgName;else imgSave" src="assets/imgs/document.png" alt="">
+                  <ng-template #imgSave>
+                    <img src="assets/imgs/correct.png" alt="">
+                  </ng-template>
+                </div>
+                <p>תעודת זהות
+
+                </p>
+              </div>
+            </ion-col>
+            <ion-col size="4">
+              <input style="display: none;" id="IDfileinput" type="file"
+                (change)="uploadImage($event.target.files, 'R')" class="filyREC" />
+              <div class="btn ion-text-center" id="uploadLic" (click)="presentActionSheet('R', filyREC')">
+                <div class="img-holder">
+                  <img *ngIf="!step2From.recieptImgName;else imgSave" src="assets/imgs/document.png" alt="">
+                  <ng-template #imgSave>
+                    <img src="assets/imgs/correct.png" alt="">
+                  </ng-template>
+                </div>
+                <p>מרשם בתוקף
+
+                </p>
+              </div>
+            </ion-col>
+          </ion-row>
+        </div>
+
+        <div class="btn-holder ion-text-center">
+          <ion-button type="submit" [disabled]="form.invalid">
+            המשך
+            <ion-icon slot="end" name="chevron-back-circle"></ion-icon>
+          </ion-button>
+        </div>
       </div>
+    </form>
 
-    </div>
+    <form *ngIf="step3" #form="ngForm" (ngSubmit)="signup3(form)">
+      <div class="the-form set3" *ngIf="step3">
+        <div class="quiz-box">
+          <ion-slides mode="ios" pager="false" scrollbar="false">
+            <ion-slide>
+              <ion-grid fixed>
+                <ion-row>
+                  <ion-col size="12">
+                    <div>
+                      <p class="ion-text-wrap">
+                        לאיזה צורך הנך משתמש בתרופות מסוג אלו?
+                      </p>
+                    </div>
 
+                    <div class="answers">
+                      <ion-radio-group name="auto" value="tesla" mode="md">
+                        <ion-item lines="none">
+                          <ion-label>תשובה א'
+                          </ion-label>
+                          <ion-radio value="tesla" slot="start"></ion-radio>
+                        </ion-item>
+                        <ion-item lines="none">
+                          <ion-label>תשובה ב'
+
+                          </ion-label>
+                          <ion-radio value="c" slot="start"></ion-radio>
+                        </ion-item>
+                        <ion-item lines="none">
+                          <ion-label> תשובה ג'
+
+
+                          </ion-label>
+                          <ion-radio value="b" slot="start"></ion-radio>
+                        </ion-item>
+                      </ion-radio-group>
+                    </div>
+
+
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-slide>
+            <ion-slide>
+              <ion-grid fixed>
+                <ion-row>
+                  <ion-col size="12">
+                    <div>
+                      <p class="ion-text-wrap">
+                        לאיזה צורך הנך משתמש בתרופות מסוג אלו?
+                      </p>
+                    </div>
+
+                    <div class="answers">
+                      <ion-radio-group name="auto" value="tesla" mode="md">
+                        <ion-item lines="none">
+                          <ion-label>תשובה א'
+                          </ion-label>
+                          <ion-radio value="tesla" slot="start"></ion-radio>
+                        </ion-item>
+                        <ion-item lines="none">
+                          <ion-label>תשובה ב'
+
+                          </ion-label>
+                          <ion-radio value="c" slot="start"></ion-radio>
+                        </ion-item>
+                        <ion-item lines="none">
+                          <ion-label> תשובה ג'
+
+
+                          </ion-label>
+                          <ion-radio value="b" slot="start"></ion-radio>
+                        </ion-item>
+                      </ion-radio-group>
+                    </div>
+
+
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-slide>
+            <ion-slide>
+              <ion-grid fixed>
+                <ion-row>
+                  <ion-col size="12">
+                    <div>
+                      <p class="ion-text-wrap">
+                        לאיזה צורך הנך משתמש בתרופות מסוג אלו?
+                      </p>
+                    </div>
+
+                    <div class="answers">
+                      <ion-radio-group name="auto" value="tesla" mode="md">
+                        <ion-item lines="none">
+                          <ion-label>תשובה א'
+                          </ion-label>
+                          <ion-radio value="tesla" slot="start"></ion-radio>
+                        </ion-item>
+                        <ion-item lines="none">
+                          <ion-label>תשובה ב'
+
+                          </ion-label>
+                          <ion-radio value="c" slot="start"></ion-radio>
+                        </ion-item>
+                        <ion-item lines="none">
+                          <ion-label> תשובה ג'
+
+
+                          </ion-label>
+                          <ion-radio value="b" slot="start"></ion-radio>
+                        </ion-item>
+                      </ion-radio-group>
+                    </div>
+
+
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-slide>
+          </ion-slides>
+          <div class="pbar ion-padding-horizontal flex al-center jc-center">
+            <p>10%</p>
+            <ion-progress-bar value="0.1"></ion-progress-bar>
+          </div>
+
+          <div class="btnnn-holder flex jc-end">
+            <ion-button expand="block" fill="clear" (click)="goStep4()">
+              <ion-icon slot="start" name="chevron-back-outline"></ion-icon>
+              המשך
+
+
+            </ion-button>
+          </div>
+        </div>
+
+        <div class="detail">
+          <p class="ion-text-warp">
+            לתשומת לבך
+            המידע עשוי לשמש לצורכי מחקר ושיפור השירות
+
+
+          </p>
+        </div>
+
+      </div>
+    </form>
 
     <div class="the-form set4" *ngIf="step4">
       <div class="done-box flex al-center jc-center  ion-text-center">
@@ -358,8 +384,6 @@
           <h4>סיימנו!
           </h4>
         </div>
-
-      
       </div>
       <div class="btn-holder ion-text-center">
         <ion-button (click)="goHome()">

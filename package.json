@@ -108,7 +108,8 @@
       "cordova-plugin-androidx": {},
       "cordova-plugin-androidx-adapter": {},
       "cordova-plugin-googleplus": {
-        "REVERSED_CLIENT_ID": "259418705314-d7h6bm3e4o8u6000jq1vvttk1eeobs17.apps.googleusercontent.com"
+        "REVERSED_CLIENT_ID": "259418705314-d7h6bm3e4o8u6000jq1vvttk1eeobs17.apps.googleusercontent.com",
+        "PLAY_SERVICES_VERSION": "15.0.1"
       },
       "uk.co.workingedge.phonegap.plugin.launchnavigator": {
         "GOOGLE_API_KEY_FOR_ANDROID": "AIzaSyCk3VF3eTmeu6RP5mMlnZzgU6B9qv_5Msc",

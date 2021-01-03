@@ -7,21 +7,21 @@
     <div class="the-form">
       <div class="input-item">
         <ion-item lines="none">
-          <ion-input type="text" class="ion-text-center" placeholder="ooooooooo"></ion-input>
+          <ion-input [(ngModel)]="password" type="password" class="ion-text-center" placeholder="ooooooooo"></ion-input>
         </ion-item>
         <div class="forgot-holder ion-text-right">
-          <p> <span> שכחת סיסמא</span>     לחץ כאן</p>
+          <p> <span> שכחת סיסמא</span> לחץ כאן</p>
         </div>
       </div>
     </div>
 
     <div class="btn-holder ion-text-center">
-      <ion-button (click)="goRegister()">
+      <ion-button (click)="login()">
         כניסה
         <ion-icon slot="end" name="chevron-back-circle"></ion-icon>
       </ion-button>
     </div>
 
-  
+
   </div>
 </ion-content>
