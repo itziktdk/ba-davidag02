@@ -148,9 +148,14 @@
       </div>
     </div> -->
     <div class="ion-padding-horizontal">
-      <ion-item class="adv" style="border-radius: 15px;">
-        <img src="../../assets/imgs/delivery.png">
-      </ion-item>
+      <ion-slides mode="ios" [options]="slideOptsOne">
+        <ion-slide>
+          <img src="../../assets/imgs/adv1.png">
+        </ion-slide>
+        <ion-slide>
+          <img src="../../assets/imgs/adv2.png">
+        </ion-slide>
+      </ion-slides>
     </div>
   </div>
 </ion-content>

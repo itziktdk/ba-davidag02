@@ -21,9 +21,9 @@ export class PharmaciesPage implements OnInit {
   pharmRecords = [
     {
       name: 'בית מרקחת פנופארם',
-      address: 'מתחם חצי חינם',
-      city: ' המרכבה 31',
-      phone: 'חולון'
+      address: 'המרכבה 31 חצי חינם',
+      city: 'חולון',
+      phone: '0509005052'
     },
     {
       name: 'טלפארמה עד הבית',

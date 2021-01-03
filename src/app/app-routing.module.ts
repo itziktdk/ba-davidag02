@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { SearchdocPage } from './searchdoc/searchdoc.page';
+import { SearchdocPageModule } from './searchdoc/searchdoc.module';
 
 const routes: Routes = [
   {
@@ -135,6 +137,10 @@ const routes: Routes = [
   {
     path: 'ordertrackdetails',
     loadChildren: () => import('./ordertrackdetails/ordertrackdetails.module').then( m => m.OrdertrackdetailsPageModule)
+  },
+  {
+    path: 'searchdoc',
+    loadChildren: () => import('./searchdoc/searchdoc.module').then( m => m.SearchdocPageModule)
   }
 
 ];

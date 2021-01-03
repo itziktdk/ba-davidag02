@@ -4,8 +4,18 @@ import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import firebase from 'firebase/app';
-import "firebase/auth";
+import 'firebase/auth';
 import { firebaseConfig } from './firebase.config';
+import {
+  GoogleMaps,
+  GoogleMap,
+  GoogleMapsEvent,
+  GoogleMapOptions,
+  CameraPosition,
+  MarkerOptions,
+  Marker,
+  Environment
+} from '@ionic-native/google-maps';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',

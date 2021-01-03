@@ -7,9 +7,18 @@ import { ActionSheetController } from '@ionic/angular';
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
+
+
 export class HomePage {
 
   constructor(private navCtrl: NavController, public actionSheetController: ActionSheetController) {}
+
+  slideOptsOne = {
+    initialSlide: 0,
+    slidesPerView: 1,
+    autoplay: true,
+    scrollbar: false
+   };
 
   async presentActionSheet() {
     const actionSheet = await this.actionSheetController.create({
@@ -53,7 +62,7 @@ export class HomePage {
 
   goPharmacies()
   {
-    this.navCtrl.navigateForward('pharmacies');
+    this.navCtrl.navigateForward('searchdoc');
   }
 
   goDoctors()
