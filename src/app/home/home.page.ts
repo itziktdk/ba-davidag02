@@ -1,12 +1,33 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
+
+import { AuthenticationService } from '../services/authentication.service';
+
 import { ActionSheetController } from '@ionic/angular';
+
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
+
+export class HomePage implements OnInit {
+
+  constructor(
+    private navCtrl: NavController,
+    private authService: AuthenticationService) { }
+
+  ngOnInit() {
+    this.authService.authStatus()
+      .subscribe(res => {
+        console.log(res);
+      });
+  }
+
+  goPharmacies() {
+    this.navCtrl.navigateForward('pharmacies');
+  }
 
 
 export class HomePage {
@@ -63,27 +84,26 @@ export class HomePage {
   goPharmacies()
   {
     this.navCtrl.navigateForward('searchdoc');
+
   }
 
-  goDoctors()
-  {
+  goDoctors() {
     this.navCtrl.navigateForward('doctors');
   }
 
-  goProducts()
-  {
+  goProducts() {
     this.navCtrl.navigateForward('productcategories');
   }
 
-  goLicense()
-  {
+  goLicense() {
     this.navCtrl.navigateForward('license');
   }
 
-  goLogin()
-  {
+  goLogin() {
     this.navCtrl.navigateForward('login');
   }
+
+
 
   goVaucher()
   {
@@ -91,10 +111,10 @@ export class HomePage {
   }
   goMange()
   {
+
     this.navCtrl.navigateForward('pharmanage');
   }
-  goNews()
-  {
+  goNews() {
     this.navCtrl.navigateForward('news');
   }
 }

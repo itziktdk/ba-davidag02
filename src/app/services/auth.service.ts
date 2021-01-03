@@ -4,84 +4,73 @@ import firebase from 'firebase/app';
 import { combineAll } from 'rxjs/operators';
 import { AlertService } from './alert.service';
 import { AngularFirestore } from '@angular/fire/firestore';
+
+import { AuthenticationService } from './authentication.service';
+
 import { NavigationExtras } from '@angular/router';
+
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   userid: string;
-
-  constructor(public store: AngularFirestore,
-              private navCtrl: NavController,
-              private Alert: AlertService,
-              public Alerts: AlertController) { }
   signInMethod: any;
-  loginUser(
-    email: string,
-  ){
-      firebase.auth().signInWithEmailAndPassword(email, 'randoaam-password-added')  
-        .then((response) => {
-          })
-            .catch((error) => {
-        if (error.code === 'auth/wrong-password'){
-          this.getpassword(email);
-           }
-        else if (error.code === 'auth/user-not-found'){
-          this.navCtrl.navigateBack('register1', {state: {data: email}});
-       }
-        else if (error.code === 'auth/invalid-email'){
-          this.Alert.email();
-        }
-});
+
+  constructor(
+    public store: AngularFirestore,
+    private navCtrl: NavController,
+    private Alert: AlertService,
+    public Alerts: AlertController,
+    private authService: AuthenticationService) { }
+
+  fetchUserRegistered(email: string) {
+
+    return firebase.auth().fetchSignInMethodsForEmail(email);
+
+
+    // firebase.auth().signInWithEmailAndPassword(email, 'randoaam-password-added')
+    //   .then((response) => {
+    //     console.log('response ', response)
+    //   })
+    //   .catch((error) => {
+    //     if (error.code === 'auth/wrong-password') {
+    //       this.getpassword(email);
+    //     }
+    //     else if (error.code === 'auth/user-not-found') {
+    //       this.navCtrl.navigateBack('register1', { state: { data: email } });
+    //     }
+    //     else if (error.code === 'auth/invalid-email') {
+    //       this.Alert.email();
+    //     }
+    //   });
   }
 
-  login(
-    email: string,
-    password: string,
-
-  ){
+  login(email: string, password: string) {
     console.log(email, password);
-    firebase.auth().signInWithEmailAndPassword(email, password).then(() => {
-    this.Alert.Signin();
-    const navigationExtras: NavigationExtras = {
-      state: {
-        signedin: true,
-      }
-    };
-    this.navCtrl.navigateForward('home', navigationExtras);
-  });
+    return firebase.auth().signInWithEmailAndPassword(email, password);
   }
 
-  register(
-    email: string,
-    password: string,  
-    userdata: any,
-  ){
+  async register(email: string, password: string, userdata: any): Promise<any> {
     console.log(email, password, userdata);
-    firebase.auth().createUserWithEmailAndPassword(email, password).then(() => {
-    this.userid = firebase.auth().currentUser.uid;
-    this.store.doc(`users/${this.userid}`).set({
-      userdata
-    });
-    this.presentAlert('ברוך הבא למערכת', 'נרשמת בהצלחה :)');
-    const navigationExtras: NavigationExtras = {
-      state: {
-        step2: true,
-      }
-    };
-    this.navCtrl.navigateForward('register1', navigationExtras);
-  });
+    return firebase.auth().createUserWithEmailAndPassword(email, password);
   }
 
-	async presentAlert(title: string, content: string) {
-		const alert = await this.Alerts.create({
-			header: title,
-			message: content,
-			buttons: ['אישור']
-		});
+  // updateUserDocumentDetails() {
+  //   this.firestore.doc(this.collectionName + '/' + recordID).update(record);
+  //   return firebase.database().ref(`users/${uid}`);
 
-		await alert.present();
-	}
+  //   return ref.update(value);
+  // }
+
+  async presentAlert(title: string, content: string) {
+    const alert = await this.Alerts.create({
+      header: title,
+      message: content,
+      buttons: ['OK']
+    });
+
+    await alert.present();
+  }
 
   async getpassword(email) {
     const alert = await this.Alerts.create({
@@ -107,15 +96,20 @@ export class AuthService {
         }, {
           text: 'Ok',
           handler: (alertData) => {
-           this.login(email, alertData.password);
-           console.log(alertData.password);
+            this.login(email, alertData.password);
+            console.log(alertData.password);
+
           }
         }
       ]
     });
     await alert.present();
   }
+
+  async getCurrentUser(): Promise<any> {
+    return firebase.auth().currentUser.uid;
+  }
 }
 
-  
+
 

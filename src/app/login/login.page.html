@@ -3,26 +3,27 @@
     <div class="logo-holder ion-text-left">
       <img src="assets/imgs/logo.png" alt="">
     </div>
-<form #form="ngForm" (ngSubmit)="loginUser(form)">
+    <form #form="ngForm" (ngSubmit)="loginUser(form)">
 
 
-    <div class="the-form">
-      <div class="input-item">
-        <ion-item lines="none">
-          <ion-input name="email"  type="email" ngModel required class="ion-text-center" placeholder="הזן כתובת דואר אלקטרוני" ></ion-input>
-        </ion-item>
+      <div class="the-form">
+        <div class="input-item">
+          <ion-item lines="none">
+            <ion-input name="email" type="email" ngModel required class="ion-text-center"
+              placeholder="הזן כתובת דואר אלקטרוני"></ion-input>
+          </ion-item>
+        </div>
       </div>
-    </div>
+      <div class="btn-holder ion-text-center">
+        <ion-button type="submit">
+          המשך
+          <ion-icon slot="end" name="chevron-back-circle"></ion-icon>
+        </ion-button>
+      </div>
+    </form>
 
-    <div class="btn-holder ion-text-center">
-      <ion-button type="submit">
-        המשך
-        <ion-icon slot="end" name="chevron-back-circle"></ion-icon>
-      </ion-button>
-    </div>
-  </form>
     <div class="social-holder ion-text-center">
-      <ion-item button (click)="doLogin()">
+      <ion-item button (click)="doGoogleLogin()">
         <ion-label>כניסה עם חשבון גוגל
 
         </ion-label>
@@ -33,7 +34,6 @@
 
       <ion-item button>
         <ion-label>כניסה עם חשבון פייסבוק
-
         </ion-label>
         <div class="end-slot" slot="end">
           <img src="assets/imgs/fb.png" alt="">

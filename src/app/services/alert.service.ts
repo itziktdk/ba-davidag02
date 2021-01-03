@@ -9,13 +9,14 @@ export class AlertService {
   async Invalid() {
     const alert = await this.alertController.create({
       cssClass: 'my-custom-class',
+
       header: 'שגיאה',
       message: 'כתובת הדואר האלקטרוני לא נמצאה',
-      buttons: ['OK']
+      buttons: ['סגור']
     });
 
     await alert.present();
-  };
+  }
   async email() {
     const alert = await this.alertController.create({
       header:  'אופס!',
