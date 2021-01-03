@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { SearchdocPage } from './searchdoc/searchdoc.page';
+import { SearchdocPageModule } from './searchdoc/searchdoc.module';
 
 const routes: Routes = [
   {
@@ -8,7 +10,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'login',
     pathMatch: 'full'
   },
   {
@@ -114,15 +116,31 @@ const routes: Routes = [
   },
   {
     path: 'login',
-    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
-  },
-  {
-    path: 'login2',
-    loadChildren: () => import('./login2/login2.module').then( m => m.Login2PageModule)
+    
+
+
+
+      loadChildren: () => import('./login2/login2.module').then( m => m.Login2PageModule)
   },
   {
     path: 'pharmprofile',
     loadChildren: () => import('./pharmprofile/pharmprofile.module').then( m => m.PharmprofilePageModule)
+  },
+  {
+    path: 'vaucher',
+    loadChildren: () => import('./vaucher/vaucher.module').then( m => m.VaucherPageModule)
+  },
+  {
+    path: 'ordertracking',
+    loadChildren: () => import('./ordertracking/ordertracking.module').then( m => m.OrdertrackingPageModule)
+  },
+  {
+    path: 'ordertrackdetails',
+    loadChildren: () => import('./ordertrackdetails/ordertrackdetails.module').then( m => m.OrdertrackdetailsPageModule)
+  },
+  {
+    path: 'searchdoc',
+    loadChildren: () => import('./searchdoc/searchdoc.module').then( m => m.SearchdocPageModule)
   }
 
 ];

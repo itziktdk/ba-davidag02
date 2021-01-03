@@ -1,91 +1,149 @@
 ion-content
 {
-    --background: rgba(255, 255, 255, 0.295);
+    --background: rgba(255, 255, 255, 0.98);
+    direction: rtl;
 }
 
-.holder
-{
-    width: 100%;
-    background: white;
+// .holder
+// {
+//     width: 100%;
+//     background: white;
   
 
-    color: #d8d8d8;
+//     color: #d8d8d8;
 
-    .img-holder
-    {
-        img
-        {
-            height: 20vh;
-        }
+//     .img-holder
+//     {
+//         img
+//         {
+//             height: 20vh;
+//         }
+//     }
+
+
+//     .content
+//     {
+//        .title-holder
+//        {
+//            background: #00CBEE;
+//            padding: 5px 10px;
+//            h4
+//            {
+//                color: white;
+//                 margin: 5px 0;
+//            }
+
+//            p
+//            {
+//                color: black;
+//                 margin: 5px 0;
+//            }
+//        }
+
+//        .description
+//        {
+//            padding: 10px;
+//            border-bottom: 1px solid #808080;
+//         p
+//         {
+//             color: black;
+//              margin: 5px 0;
+//         }
+//        }
+
+//        .lab-data
+//        {
+//            padding: 10px;
+//            p
+//            {
+//                color: #333;
+//            }
+//        }
+
+//        .btns-holder
+//         {
+//             margin: 10px 0;
+
+//             #subject
+//             {
+//                 --background: #F36;
+
+//             }
+
+//             #hmo
+//             {
+//                 --background: #2AC940;
+
+
+//             }
+//             ion-button
+//             {
+//                 --color: white;
+//                 --border-radius: 15px;
+//                 --box-shadow: none;
+//                 height: 20px;
+//                 width: 100px;
+//             }
+//         }
+
+
+        
+//     }
+// }
+
+
+
+    .item-profile {
+      width: 100%;
+      background-position: center center;
+      background-size: cover;
+      height: 250px;
+    }
+  
+    .item-detail {
+      width: 100%;
+      background: white;
+      position: absolute;
     }
 
-
-    .content
+    .btns-holder
     {
-       .title-holder
-       {
-           background: #00CBEE;
-           padding: 5px 10px;
-           h4
-           {
-               color: white;
-                margin: 5px 0;
-           }
+        margin: 10px 0;
 
-           p
-           {
-               color: black;
-                margin: 5px 0;
-           }
-       }
+        #subject
+        {
+            --background: #F36;
 
-       .description
-       {
-           padding: 10px;
-           border-bottom: 1px solid #808080;
+        }
+
+        #hmo
+        {
+            --background: #2AC940;
+
+
+        }
+        ion-button
+        {
+            --color: white;
+            --border-radius: 15px;
+            --box-shadow: none;
+            height: 20px;
+            width: 100px;
+        }
+    }
+    .title-holder
+    {
+        background: #00CBEE;
+        padding: 5px 10px;
+        h4
+        {
+            color: white;
+             margin: 5px 0;
+        }
+
         p
         {
             color: black;
              margin: 5px 0;
         }
-       }
-
-       .lab-data
-       {
-           padding: 10px;
-           p
-           {
-               color: #333;
-           }
-       }
-
-       .btns-holder
-        {
-            margin: 10px 0;
-
-            #subject
-            {
-                --background: #F36;
-
-            }
-
-            #hmo
-            {
-                --background: #2AC940;
-
-
-            }
-            ion-button
-            {
-                --color: white;
-                --border-radius: 15px;
-                --box-shadow: none;
-                height: 20px;
-                width: 100px;
-            }
-        }
-
-
-        
     }
-}

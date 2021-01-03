@@ -21,7 +21,7 @@
         <ion-col class="processing ion-text-center">
           <ion-icon name="document-attach-outline" *ngIf="step2"></ion-icon>
           <ion-icon name="checkmark-circle" *ngIf="!step2 && !step1"></ion-icon>
-          <ion-icon name="" *ngIf="step2init "></ion-icon>
+          <ion-icon name="" *ngIf="step2init"></ion-icon>
           <span>צירוף מסמכים</span>
         </ion-col>
         <ion-col class="processing ion-text-center">
@@ -109,12 +109,26 @@
           <ion-col size="12">
             <ion-item lines='none' class="terms">
               <ion-label class="ion-text-wrap">אנו לא שולחים ספאם ומאפשרים הסרה בקליק.
-                אנו לא שולחים ספאם ומאפשרים הסרה בקליק.
               </ion-label>
               <ion-checkbox slot="start"></ion-checkbox>
             </ion-item>
+
           </ion-col>
         </ion-row>
+
+          </div>
+        </ion-col>
+        <ion-col size="6">
+          <div class="input-item">
+            <ion-item lines=none>
+              <ion-label class="ion-align-self-center ion-text-center" style="--background:#fff; color:#333333"></ion-label>
+              <ion-datetime style="font-size: smaller;" monthValues="1,2,3,4,5,6,7,8,9,10,11,12" yearValues="2021,2022,2023" value="" placeholder="תוקף רשיון">
+              </ion-datetime>
+            </ion-item>
+          </div>
+        </ion-col>
+
+
 
 
         <div class="btn-holder ion-text-center">
@@ -125,6 +139,26 @@
         </div>
       </div>
     </form>
+
+      
+              <ion-item lines=none>
+                <ion-label class="ion-align-self-center ion-text-center" style="--background:#fff; color:#333333"></ion-label>
+                <ion-datetime style="font-size: smaller;" monthValues="1,2,3,4,5,6,7,8,9,10,11,12" yearValues="2021,2022,2023" value="" placeholder="תוקף מרשם">
+                </ion-datetime>
+              </ion-item>
+            </ion-item>
+          </div>
+        </ion-col>
+        <ion-col size="6">
+          <div class="input-item">
+            <ion-item lines="none">
+              <ion-input type="text" class="ion-text-center" placeholder="תעודת זהות
+
+              "></ion-input>
+            </ion-item>
+          </div>
+        </ion-col>
+      </ion-row>
 
     <form *ngIf="step2" #form="ngForm" (ngSubmit)="signup2(form)">
       <div class="the-form set2">
@@ -171,6 +205,7 @@
             </div>
           </ion-col>
         </ion-row>
+
 
         <div class="btns-holder ion-padding-top">
           <ion-row>
@@ -220,6 +255,137 @@
               </div>
             </ion-col>
           </ion-row>
+
+      <div class="btn-holder ion-text-center">
+        <ion-button (click)="goStep3()">
+          המשך
+          <ion-icon slot="end" name="chevron-back-circle"></ion-icon>
+        </ion-button>
+      </div>
+    </div>
+
+
+    <div class="the-form set3" *ngIf="step3">
+      <div class="quiz-box">
+        <ion-slides mode="ios" pager="yes" scrollbar="yes">
+          <ion-slide>
+            <ion-grid fixed>
+              <ion-row>
+                <ion-col size="12">
+                  <div>
+                    <p class="ion-text-wrap">
+                      לאיזה צורך הנך משתמש בתרופות מסוג אלו?
+                    </p>
+                  </div>
+      
+                  <div class="answers">
+                    <ion-radio-group name="auto" value="tesla" mode="md">
+                      <ion-item lines="none">
+                        <ion-label>תשובה א'
+                        </ion-label>
+                        <ion-radio value="tesla" slot="start"></ion-radio>
+                      </ion-item>
+                      <ion-item lines="none">
+                        <ion-label>תשובה ב'
+      
+                        </ion-label>
+                        <ion-radio value="c" slot="start"></ion-radio>
+                      </ion-item>
+                      <ion-item lines="none">
+                        <ion-label> תשובה ג'
+      
+      
+                        </ion-label>
+                        <ion-radio value="b" slot="start"></ion-radio>
+                      </ion-item>
+                    </ion-radio-group>
+                  </div>
+      
+                 
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-slide>
+          <ion-slide>
+            <ion-grid fixed>
+              <ion-row>
+                <ion-col size="12">
+                  <div>
+                    <p class="ion-text-wrap">
+                      לאיזה צורך הנך משתמש בתרופות מסוג אלו?
+                    </p>
+                  </div>
+      
+                  <div class="answers">
+                    <ion-radio-group name="auto" value="tesla" mode="md">
+                      <ion-item lines="none">
+                        <ion-label>תשובה א'
+                        </ion-label>
+                        <ion-radio value="tesla" slot="start"></ion-radio>
+                      </ion-item>
+                      <ion-item lines="none">
+                        <ion-label>תשובה ב'
+      
+                        </ion-label>
+                        <ion-radio value="c" slot="start"></ion-radio>
+                      </ion-item>
+                      <ion-item lines="none">
+                        <ion-label> תשובה ג'
+      
+      
+                        </ion-label>
+                        <ion-radio value="b" slot="start"></ion-radio>
+                      </ion-item>
+                    </ion-radio-group>
+                  </div>
+      
+                 
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-slide>
+          <ion-slide>
+            <ion-grid fixed>
+              <ion-row>
+                <ion-col size="12">
+                  <div>
+                    <p class="ion-text-wrap">
+                      לאיזה צורך הנך משתמש בתרופות מסוג אלו?
+                    </p>
+                  </div>
+      
+                  <div class="answers">
+                    <ion-radio-group name="auto" value="tesla" mode="md">
+                      <ion-item lines="none">
+                        <ion-label>תשובה א'
+                        </ion-label>
+                        <ion-radio value="tesla" slot="start"></ion-radio>
+                      </ion-item>
+                      <ion-item lines="none">
+                        <ion-label>תשובה ב'
+      
+                        </ion-label>
+                        <ion-radio value="c" slot="start"></ion-radio>
+                      </ion-item>
+                      <ion-item lines="none">
+                        <ion-label> תשובה ג'
+      
+      
+                        </ion-label>
+                        <ion-radio value="b" slot="start"></ion-radio>
+                      </ion-item>
+                    </ion-radio-group>
+                  </div>
+      
+                 
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-slide>
+        </ion-slides>
+        <div class="pbar ion-padding-horizontal flex al-center jc-center">
+          <p>10%</p>
+          <ion-progress-bar value="0.1"></ion-progress-bar>
         </div>
 
         <div class="btn-holder ion-text-center">

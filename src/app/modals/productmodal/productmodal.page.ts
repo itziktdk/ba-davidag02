@@ -7,7 +7,9 @@ import { ModalController } from '@ionic/angular';
   styleUrls: ['./productmodal.page.scss'],
 })
 export class ProductmodalPage implements OnInit {
-  
+series;
+productName;
+desc;
   constructor(private modalCtrl: ModalController) { }
 
   ngOnInit() {

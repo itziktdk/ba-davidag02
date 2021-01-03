@@ -4,7 +4,11 @@ import firebase from 'firebase/app';
 import { combineAll } from 'rxjs/operators';
 import { AlertService } from './alert.service';
 import { AngularFirestore } from '@angular/fire/firestore';
+
 import { AuthenticationService } from './authentication.service';
+
+import { NavigationExtras } from '@angular/router';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -71,11 +75,11 @@ export class AuthService {
   async getpassword(email) {
     const alert = await this.Alerts.create({
       cssClass: 'my-custom-class',
-      header: 'Sign In',
+      header: 'הזדהות',
       inputs: [{
         name: 'password',
         type: 'password',
-        placeholder: 'Enter Password',
+        placeholder: 'הקלד סיסמא',
         cssClass: 'specialClass',
         attributes: {
           inputmode: 'decimal'
@@ -94,6 +98,7 @@ export class AuthService {
           handler: (alertData) => {
             this.login(email, alertData.password);
             console.log(alertData.password);
+
           }
         }
       ]

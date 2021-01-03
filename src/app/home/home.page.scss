@@ -7,7 +7,7 @@ ion-content
     background-size: cover;
     background-position: center;
     height: 100%;
-    width: 100%;
+    //width: 100%;
 
     .logo-holder
     {
@@ -15,6 +15,29 @@ ion-content
       img
       {
         height: 10vh;
+      }
+    }
+.delivery {
+  background-color: #F36 !important;
+  color: #fff !important;
+}
+    @media (max-width: 370px) {
+      .wide {
+        visibility: hidden;
+        height: 0;
+        padding: 0%;
+      }
+      .menuitem {
+        img{max-width: 32x; max-height: 32px;}
+        height: 96px;
+        display: block;
+      }
+    }
+
+    @media (min-width: 370px) {
+      .menuitem {
+        img{max-width: 48x; max-height: 48px;}
+        
       }
     }
 
