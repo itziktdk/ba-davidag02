@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NavController } from '@ionic/angular';
+import { AlertService } from '../services/alert.service';
 import { AuthService } from '../services/auth.service';
 
 @Component({
@@ -14,7 +15,8 @@ export class Login2Page implements OnInit {
   constructor(
     private navCtrl: NavController,
     private activatedRoute: ActivatedRoute,
-    private authService: AuthService) { }
+    private authService: AuthService,
+    public alertService: AlertService) { }
 
   ngOnInit() {
     this.email = this.activatedRoute.snapshot.paramMap.get('email');
@@ -33,6 +35,11 @@ export class Login2Page implements OnInit {
       .catch(err => {
         console.log('err ', err);
       });
+  }
+
+  openForgetPassword() {
+    this.alertService.default('אנא בדוק את הדוא"ל שלך.', 'שכחת סיסמא');
+    this.navCtrl.navigateBack('login');
   }
 
 }

@@ -45,7 +45,7 @@ export class LoginPage implements OnInit {
       .then((res: any) => {
         console.log('res ', res);
         if (res.length > 0) {
-          if (res === 'password' && res !== 'google.com') {
+          if (res[0] === 'password' && res[0] !== 'google.com') {
             this.navCtrl.navigateForward(['login2', { email: form.value.email }]);
           } else {
             this.navCtrl.navigateForward('home');

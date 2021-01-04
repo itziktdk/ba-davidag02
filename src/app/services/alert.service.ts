@@ -35,6 +35,15 @@ export class AlertService {
     await alert.present();
   }
 
+  async default(header: string, message: string) {
+    const alert = await this.alertController.create({
+      header,
+      message,
+      buttons: ['ok']
+    });
+    await alert.present();
+  }
+
 
 
 
