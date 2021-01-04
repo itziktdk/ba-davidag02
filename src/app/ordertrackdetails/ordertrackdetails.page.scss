@@ -1,0 +1,54 @@
+ion-content
+{
+  --background: url('../../assets/imgs/bg.png') no-repeat center center / cover;
+
+  .title-holder
+  {
+    margin: 10vw;
+    h1
+    {
+      color: white;
+      font-size: 30px;
+    }
+  }
+
+  .details
+  {
+      background: white;
+
+      .section
+      {
+        #gray
+        {
+            --background: #E0E0E0;
+        }
+
+        h5
+        {
+            margin: 5px 0;
+        }
+
+        .btnn-holder
+        {
+            ion-button
+            {
+                --background: transparent;
+                --box-shadow: none;
+                --color: black;
+               ion-icon
+               {
+                font-size: 2rem;
+               }
+            }
+        }
+
+        .btns-holder
+        {
+            width: 50%;
+            margin: 10px auto;
+            padding-bottom: 10px;
+        }
+      }
+  }
+
+}

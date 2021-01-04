@@ -7,18 +7,18 @@
     <div class="user-bar flex al-center jc-between">
       <div class="flex al-center">
         <ion-avatar>
-          <img src="assets/imgs/user.png" />
+          <img src="{{photoUrl}}" />
         </ion-avatar>
-        <ion-badge mode="ios">שלום חגי!</ion-badge>
+        <ion-badge mode="ios">שלום {{firstName}}!</ion-badge>
       </div>
-      <ion-button (click)="goLogin()">
-        התחבר
+      <ion-button (click)="goOut()">
+        התנתק
       </ion-button>
-     
+
 
     </div>
 
-    <div class="search-holder ion-padding">
+    <div class="search-holder ion-padding wide" (click)="presentActionSheet()">
       <ion-searchbar class="ion-text-center" placeholder="חיפוש מהיר" inputmode="decimal" type="decimal"
         [debounce]="250" showCancelButton="never"></ion-searchbar>
     </div>
@@ -28,7 +28,7 @@
       <ion-grid fixed>
         <ion-row>
           <ion-col size="4">
-            <div class="btn ion-text-center ion-activatable ripple-parent" (click)="goProducts()">
+            <div class="btn ion-text-center ion-activatable ripple-parent menuitem" (click)="goProducts()">
               <ion-ripple-effect></ion-ripple-effect>
               <div class="img-holder">
                 <img src="assets/imgs/c3.png" alt="">
@@ -40,7 +40,7 @@
           </ion-col>
 
           <ion-col size="4">
-            <div class="btn ion-text-center ion-activatable ripple-parent" (click)="goDoctors()">
+            <div class="btn ion-text-center ion-activatable ripple-parent menuitem" (click)="goDoctors()">
               <ion-ripple-effect></ion-ripple-effect>
               <div class="img-holder">
                 <img src="assets/imgs/c2.png" alt="">
@@ -51,7 +51,7 @@
             </div>
           </ion-col>
           <ion-col size="4">
-            <div class="btn ion-text-center ion-activatable ripple-parent" (click)="goPharmacies()">
+            <div class="btn ion-text-center ion-activatable ripple-parent menuitem" (click)="goPharmacies()">
               <ion-ripple-effect></ion-ripple-effect>
               <div class="img-holder">
                 <img src="assets/imgs/c1.png" alt="">
@@ -62,7 +62,7 @@
             </div>
           </ion-col>
           <ion-col size="4">
-            <div class="btn ion-text-center ion-activatable ripple-parent" (click)="goNews()">
+            <div class="btn ion-text-center ion-activatable ripple-parent menuitem" (click)="goNews()">
               <ion-ripple-effect></ion-ripple-effect>
               <div class="img-holder">
                 <img src="assets/imgs/c6.png" alt="">
@@ -74,7 +74,7 @@
           </ion-col>
 
           <ion-col size="4">
-            <div class="btn ion-text-center ion-activatable ripple-parent" (click)="goLicense()">
+            <div class="btn ion-text-center ion-activatable ripple-parent menuitem" (click)="goLicense()">
               <ion-ripple-effect></ion-ripple-effect>
               <div class="img-holder">
                 <img src="assets/imgs/c5.png" alt="">
@@ -85,7 +85,7 @@
             </div>
           </ion-col>
           <ion-col size="4">
-            <div class="btn ion-text-center ion-activatable ripple-parent">
+            <div class="btn ion-text-center ion-activatable ripple-parent menuitem" (click)="goVaucher()">
               <ion-ripple-effect></ion-ripple-effect>
               <div class="img-holder">
                 <img src="assets/imgs/c4.png" alt="">
@@ -96,19 +96,48 @@
             </div>
           </ion-col>
         </ion-row>
+        <ion-row>
+          <ion-col size="4">
+            <div class="btn ion-text-center ion-activatable ripple-parent menuitem" (click)="goMange()">
+              <ion-ripple-effect></ion-ripple-effect>
+              <div class="img-holder">
+                <img src="assets/imgs/pharmbtn.png" alt="">
+              </div>
+              <p>פורטל רוקחים
+              </p>
+            </div>
+          </ion-col>
+          <ion-col size="8">
+            <div class="btn ion-text-center ion-activatable ripple-parent menuitem delivery" (click)="goProducts()">
+              <ion-ripple-effect></ion-ripple-effect>
+              <div class="img-holder">
+                <img height="32" src="assets/imgs/amb.png" alt="">
+              </div>
+              <p>משלוחים מהירים עד אליך!
+              </p>
+            </div>
+          </ion-col>
+        </ion-row>
       </ion-grid>
+
+      <ion-fab vertical="bottom" horizontal="start" slot="fixed" (click)="presentActionSheet()">
+        <ion-fab-button>
+          <ion-icon name="search-outline"></ion-icon>
+        </ion-fab-button>
+      </ion-fab>
+
     </div>
 
-    <div class="btn-holder ion-padding-horizontal">
+    <!-- <div class="btn-holder ion-padding-horizontal">
       <ion-item button lines="none">
         <ion-label class="ion-text-center">משלוחים מהירים עד אליך!</ion-label>
         <div class="end-slot" slot="start">
           <img src="assets/imgs/amb.png" alt="">
         </div>
       </ion-item>
-    </div>
+    </div> -->
 
-    <div class="ion-padding-horizontal">
+    <!-- <div class="ion-padding-horizontal">
       <div class="pharm-btn">
         <ion-item button lines="none" (click)="goMange()">
           <ion-label class="ion-text-center">כניסה לרוקחים</ion-label>
@@ -117,6 +146,19 @@
           </div>
         </ion-item>
       </div>
+    </div> -->
+    <div class="ion-padding-horizontal">
+      <ion-slides mode="ios" [options]="slideOptsOne">
+        <ion-slide>
+          <img src="../../assets/imgs/adv1.png">
+        </ion-slide>
+        <ion-slide>
+          <img src="../../assets/imgs/adv2.png">
+        </ion-slide>
+      </ion-slides>
+<div>
+
+</div>
     </div>
   </div>
 </ion-content>

@@ -133,5 +133,8 @@ export class LoginPage implements OnInit {
       this.isGoogleLogin = false;
     });
   }
-
+  goHome()
+  {
+    this.navCtrl.navigateForward('home');
+  }
 }

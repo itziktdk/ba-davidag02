@@ -1,5 +1,14 @@
+$font-family-ios-base: 'IDAHC39M';
+$font-family-md-base:'IDAHC39M';
+$font-family-wp-base:'IDAHC39M';
+
 ion-content
 {
+
+  .fonty {
+    font-family: 'IDAHC39M';
+  }
+
   --background: url('../../assets/imgs/bg.png') no-repeat center center / cover;
 
   .title-holder
@@ -27,6 +36,10 @@ ion-content
       }
       .details
       {
+        img {
+          width: 64px;
+          height: 64px;
+        }
         h5
         {
           margin: 5px 0;

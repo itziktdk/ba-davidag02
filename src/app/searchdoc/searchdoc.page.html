@@ -1,0 +1,82 @@
+<ion-content class="ion-padding">
+  <div class="logo-holder ion-text-left">
+    <img src="assets/imgs/logo.png" alt="">
+  </div>
+
+  <div class="title ion-padding-top">
+    <h3>חיפוש בתי מרקחת </h3>
+  </div>
+
+
+  <div class="form-holder">
+    <div class="the-form">
+      <div class="input-item">
+        <ion-item lines="none">
+          <ion-input type="text" name="First" class="ion-text-center" placeholder="חפש לפי שם"></ion-input>
+        </ion-item>
+      </div>
+      <ion-row>
+        <ion-col size="5" class="in-label flex al-center jc-center">
+          <ion-label>חפש באיזור          </ion-label>
+        </ion-col>
+
+        <ion-col size="7">
+          <div class="input-item">
+            <ion-item lines="none">
+              <ion-input type="text" name="First"  class="ion-text-center"  placeholder="{{ttt1}}"></ion-input>
+            </ion-item>
+          </div>
+        </ion-col>
+      </ion-row>
+    </div>
+    <div class="btnn-holder ion-text-left">
+      <ion-button >
+        חפש
+      </ion-button>
+    </div>
+  </div>
+  <div class="in-holder ion-text-center">
+    <div class="bar">
+
+    </div>
+    <div class="in">
+      <h3>או</h3>
+    </div>
+    <div class="bar">
+
+    </div>
+  </div>
+
+  <div class="bottom-button">
+   <ion-item class="button">
+     <ion-label> {{this.hx}} חפש סביב מיקום נוכחי</ion-label>
+     <div class="end-slot" slot="start">
+      <img src="assets/imgs/location.png" alt="">
+     </div>
+   </ion-item>
+  </div>
+  <div class="ion-text-center">
+    <ion-list>
+
+      <ion-item *ngFor="let location of locationTraces">
+        <ion-label class="ion-text-wrap">
+          <ion-label>Time: {{location.timestamp | date:'M/d/yy, h:mm a'}}</ion-label>
+          <ion-label>Latitude: {{location.latitude}} Longitude: {{location.longitude}}</ion-label>
+          <ion-label>Accuracy: {{location.accuracy}}</ion-label>
+        </ion-label>
+      </ion-item>
+  
+    </ion-list>
+    <ng-container *ngIf="!locationWatchStarted; else elseTemplate">
+      <ion-button color="primary" (click)="getCoordinates()">Start Location {{latitude}}, {{hx}}</ion-button>
+      <ion-item>
+      {{locationTraces}}
+      </ion-item>
+    </ng-container>
+    <ng-template #elseTemplate>
+      {{ttt1}}
+    </ng-template>
+
+  </div>
+
+</ion-content>

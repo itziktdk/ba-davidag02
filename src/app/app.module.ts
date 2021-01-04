@@ -18,13 +18,15 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { GooglePlus } from '@ionic-native/google-plus/ngx';
 
-
+import {SingletonService} from './services/firebase.service';
 import { environment } from '../environments/environment';
 import { Camera } from '@ionic-native/camera/ngx';
 import { LaunchNavigator } from '@ionic-native/launch-navigator/ngx';
 import { CallNumber } from '@ionic-native/call-number/ngx';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 
+import { Geolocation } from '@ionic-native/geolocation/ngx';
+import { NativeGeocoder, NativeGeocoderResult, NativeGeocoderOptions } from '@ionic-native/native-geocoder/ngx';
 @NgModule({
   declarations: [
     AppComponent],
@@ -48,10 +50,13 @@ import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
     SplashScreen,
     GooglePlus,
     Camera,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    Geolocation,
+    NativeGeocoder,
+    SingletonService,
     LaunchNavigator,
     CallNumber,
-    InAppBrowser
+    InAppBrowser,
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent],
 })

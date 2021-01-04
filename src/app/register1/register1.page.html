@@ -177,7 +177,7 @@
             <ion-col size="4">
               <input style="display: none;" id="IDfileinput" type="file"
                 (change)="uploadImage($event.target.files,  'L')" class="filyLIC" />
-              <div class="btn ion-text-center" id="uploadLic" (click)="presentActionSheet('L', filyLIC')">
+              <div class="btn ion-text-center" id="uploadLic" (click)="presentActionSheet('L', 'filyLIC')">
                 <div class="img-holder">
                   <img *ngIf="!step2From.licenseImgName;else imgSave" src="assets/imgs/document.png" alt="">
                   <ng-template #imgSave>
@@ -192,7 +192,7 @@
             <ion-col size="4">
               <input style="display: none;" id="IDfileinput" type="file"
                 (change)="uploadImage($event.target.files, 'I')" class="filyID" />
-              <div class="btn ion-text-center" id="uploadLic" (click)="presentActionSheet('I', filyID')">
+              <div class="btn ion-text-center" id="uploadLic" (click)="presentActionSheet('I', 'filyID')">
                 <div class="img-holder">
                   <img *ngIf="!step2From.idImgName;else imgSave" src="assets/imgs/document.png" alt="">
                   <ng-template #imgSave>
@@ -207,7 +207,7 @@
             <ion-col size="4">
               <input style="display: none;" id="IDfileinput" type="file"
                 (change)="uploadImage($event.target.files, 'R')" class="filyREC" />
-              <div class="btn ion-text-center" id="uploadLic" (click)="presentActionSheet('R', filyREC')">
+              <div class="btn ion-text-center" id="uploadLic" (click)="presentActionSheet('R', 'filyREC')">
                 <div class="img-holder">
                   <img *ngIf="!step2From.recieptImgName;else imgSave" src="assets/imgs/document.png" alt="">
                   <ng-template #imgSave>
