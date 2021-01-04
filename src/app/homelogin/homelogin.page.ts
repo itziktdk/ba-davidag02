@@ -10,22 +10,20 @@ import { Router } from '@angular/router';
 })
 export class HomeloginPage {
 
-  constructor(private navCtrl: NavController, private router: Router) {}
+  constructor(private navCtrl: NavController, private router: Router) { }
 
-  goFurther(){
+  goFurther() {
     console.log('click test');
   }
-  goLicense()
-  {
+  goLicense() {
     this.navCtrl.navigateForward('license');
   }
 
-register2()
-{
-  this.navCtrl.navigateForward('/auth/register2');
-}
+  register2() {
+    this.navCtrl.navigateForward('/auth/register2');
+  }
 
-navigate(){
-  this.router.navigate(['register1']);
-}
+  navigate() {
+    this.router.navigate(['register1']);
+  }
 }

@@ -21,11 +21,19 @@ import { GooglePlus } from '@ionic-native/google-plus/ngx';
 
 import { environment } from '../environments/environment';
 import { Camera } from '@ionic-native/camera/ngx';
+import { LaunchNavigator } from '@ionic-native/launch-navigator/ngx';
+import { CallNumber } from '@ionic-native/call-number/ngx';
+import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [
+    AppComponent],
+
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot({mode: 'md'}), AppRoutingModule,
+
+  imports: [
+    BrowserModule, IonicModule.forRoot({ mode: 'md' }),
+    AppRoutingModule,
     PharmodalPageModule,
     ProductmodalPageModule,
     DocmodalPageModule,
@@ -34,13 +42,17 @@ import { Camera } from '@ionic-native/camera/ngx';
     AngularFirestoreModule,
     AngularFireAuthModule,
     AngularFireStorageModule],
+
   providers: [
     StatusBar,
     SplashScreen,
     GooglePlus,
     Camera,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    LaunchNavigator,
+    CallNumber,
+    InAppBrowser
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

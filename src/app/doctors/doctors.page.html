@@ -12,56 +12,61 @@
 
     <div class="search-holder ion-padding">
       <ion-searchbar class="ion-text-center" placeholder="חיפוש לפי שם, התמחות או ישוב" inputmode="decimal"
-        type="decimal" [debounce]="250" showCancelButton="never"
-        [(ngModel)]="filterTerm"
-        ></ion-searchbar>
+        type="decimal" [debounce]="250" showCancelButton="never" [(ngModel)]="filterTerm"></ion-searchbar>
     </div>
     <div class="s1">
-      <div class="the-list">
-        <ng-container *ngIf='userRecords | filter:filterTerm as result'>
+
+      <div *ngIf="doctorList && doctorList.length>0;else loading" class="the-list">
+        <ng-container *ngIf='doctorList | filter:filterTerm as result'>
           <ion-chip class="ion-align-self-center"> נמצאו &nbsp;
             {{result.length}}
             &nbsp; רופאים
           </ion-chip>
-        <ng-container *ngFor="let data of result">
-        <div class="card" (click)="showModal(data.name,data.Telephone,data.Telephone,data.Address )" >
-          <ion-row>
-            <ion-col size="7" class="right">
-              <div class="first flex al-center jc-start">
-                <img src="assets/imgs/doca.png" alt="">
-                <h4>&nbsp;{{data.name}}</h4>
-               
-              </div>
-              <div class="sec">
-                <p class="ion-text-wrap">{{data.Address}}, {{data.City}}</p>
-              </div>
-              <div class="btns-holder flex al-center jc-between">
-                <ion-button id="hmo">
-                  {{data.Assosiation}}
-                </ion-button>
-                <ion-button id="subject">
-                  {{data.subject}}
-                </ion-button>
+          <ion-chip *ngIf="result.length == 0" class="ion-align-self-center">
+            'לא נמצאו רופאים מתאימים'
+          </ion-chip>
+          <ng-container *ngFor="let data of result">
+            <div class="card">
+              <ion-row>
+                <ion-col size="7" class="right" (click)="showModal(data)">
+                  <div class="first flex al-center jc-start">
+                    <img src="assets/imgs/doca.png" alt="">
+                    <h4>&nbsp;{{data.name}}</h4>
 
-               
-              </div>
-            </ion-col>
-            <ion-col size="5" class="left flex al-start jc-between">
-              <img src="assets/imgs/waze (3).png" alt="">
-           
-              <img src="assets/imgs/phone-call (1).png" alt="">
-              <img src="assets/imgs/whatsapp (3).png" alt="">
-             
-            </ion-col>
-           
-          </ion-row>
-        </div>
-        <!-- <ng-container *ngIf="(result.length) < 1" [ngTemplateOutlet]="noItems">
+                  </div>
+                  <div class="sec">
+                    <p class="ion-text-wrap">{{data.Address}}, {{data.City}}</p>
+                  </div>
+                  <div class="btns-holder flex al-center jc-between">
+                    <ion-button id="hmo">
+                      {{data.Assosiation}}
+                    </ion-button>
+                    <ion-button id="subject">
+                      {{data.subject}}
+                    </ion-button>
+
+
+                  </div>
+                </ion-col>
+                <ion-col size="5" class="left flex al-start jc-between">
+                  <img (click)="onNavigate(data.city)" src="assets/imgs/waze (3).png" alt="">
+
+                  <img (click)="onCallDial(data.Telephone)" src="assets/imgs/phone-call (1).png" alt="">
+                  <a href="whatsapp://send?phone=data.Telephone">
+                    <img src="assets/imgs/whatsapp (3).png" alt="">
+                  </a>
+
+
+                </ion-col>
+
+              </ion-row>
+            </div>
+            <!-- <ng-container *ngIf="(result.length) < 1" [ngTemplateOutlet]="noItems">
           ffffff
         </ng-container> -->
-      </ng-container>
-      </ng-container>
-<!-- 
+          </ng-container>
+        </ng-container>
+        <!-- 
         <div class="card" (click)="showModal()">
           <ion-row>
             <ion-col size="7" class="right">
@@ -107,3 +112,7 @@
     <ion-icon name="home"></ion-icon>
   </ion-fab-button>
 </ion-fab>
+
+<ng-template #loading>
+  Loading...
+</ng-template>
