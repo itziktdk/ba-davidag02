@@ -21,6 +21,7 @@ export class AuthService {
 
   fetchUserRegistered(email: string) {
 
+
     return firebase.auth().fetchSignInMethodsForEmail(email);
 
 
@@ -39,6 +40,10 @@ export class AuthService {
     //       this.Alert.email();
     //     }
     //   });
+  }
+
+  fetchCurrentUser() {
+    console.log(firebase.auth().currentUser);
   }
 
   login(email: string, password: string) {
@@ -103,6 +108,10 @@ export class AuthService {
 
   async getCurrentUser(): Promise<any> {
     return firebase.auth().currentUser.uid;
+  }
+
+  signOutCurrentUser() {
+    return firebase.auth().signOut();
   }
 }
 

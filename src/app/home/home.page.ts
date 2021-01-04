@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
+import { AuthService } from '../services/auth.service';
 import { AuthenticationService } from '../services/authentication.service';
 
 @Component({
@@ -11,13 +12,14 @@ export class HomePage implements OnInit {
 
   constructor(
     private navCtrl: NavController,
-    private authService: AuthenticationService) { }
+    private authService: AuthService,
+  ) { }
 
   ngOnInit() {
-    this.authService.authStatus()
-      .subscribe(res => {
-        console.log(res);
-      });
+    // this.authService.authStatus()
+    //   .subscribe(res => {
+    //     console.log(res);
+    //   });
   }
 
   goPharmacies() {
@@ -37,7 +39,12 @@ export class HomePage implements OnInit {
   }
 
   goLogin() {
-    this.navCtrl.navigateForward('login');
+    this.authService.signOutCurrentUser()
+      .then(res => {
+        localStorage.clear();
+        this.navCtrl.navigateForward('login');
+        console.log('signout res ', res);
+      });
   }
 
   goMange() {
