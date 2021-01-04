@@ -1,10 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
-
 import { AuthenticationService } from '../services/authentication.service';
-
 import { ActionSheetController } from '@ionic/angular';
+import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
+import { Observable } from 'rxjs/Observable';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { SingletonService } from '../services/firebase.service';
 
+
+interface User {
+  first: string;
+  last: string;
+  img: any;
+}
 
 @Component({
   selector: 'app-home',
@@ -13,33 +21,52 @@ import { ActionSheetController } from '@ionic/angular';
 })
 
 export class HomePage implements OnInit {
+  username: string;
+  photoUrl: string;
+  userDoc: any;
+  firstName: any;
+  userProfileCollection: any;
+  userDetailes: any;
+  userUID: string;
+  users: Observable<User[]>;
+  usersCollectionRef: AngularFirestoreCollection<User>;
+  // tslint:disable-next-line: max-line-length
+  constructor(private navCtrl: NavController,
+              public actionSheetController: ActionSheetController,
+              private authService: AuthenticationService,
+              private fireStore: AngularFirestore,
+              afs: AngularFirestore,
+  ) {
 
-  constructor(
-    private navCtrl: NavController,
-    private authService: AuthenticationService) { }
+    // this.userDoc = fireStore.doc<any>('users/xGT8mosXOfN9o4AMawx506Uotag2');
+    // this.userProfileCollection = fireStore.collection<any>('users');
+    // this.usersCollectionRef = afs.collection('users').doc('xGT8mosXOfN9o4AMawx506Uotag2').collection('userdata');
+    // this.users = this.usersCollectionRef.valueChanges();
+    // this.userDetailes = fireStore.collection<any>('users', ref =>
+    // ref.where('doc', '==', true));
 
-  ngOnInit() {
-    this.authService.authStatus()
-      .subscribe(res => {
-        console.log(res);
-      });
   }
-
-  goPharmacies() {
-    this.navCtrl.navigateForward('pharmacies');
-  }
-
-
-export class HomePage {
-
-  constructor(private navCtrl: NavController, public actionSheetController: ActionSheetController) {}
 
   slideOptsOne = {
     initialSlide: 0,
     slidesPerView: 1,
     autoplay: true,
     scrollbar: false
-   };
+  };
+
+
+  ngOnInit() {
+
+    this.photoUrl = 'assets/imgs/user.png';
+
+    this.authService.authStatus()
+      .subscribe(res => {
+        console.log(res);
+        this.firstName = res.displayName;
+        this.userUID = res.uid;
+        if (res.photoURL) { this.photoUrl = res.photoURL; }
+      });
+  }
 
   async presentActionSheet() {
     const actionSheet = await this.actionSheetController.create({
@@ -81,8 +108,7 @@ export class HomePage {
     await actionSheet.present();
   }
 
-  goPharmacies()
-  {
+  goPharmacies() {
     this.navCtrl.navigateForward('searchdoc');
 
   }
@@ -102,15 +128,14 @@ export class HomePage {
   goLogin() {
     this.navCtrl.navigateForward('login');
   }
+  goOut() {
+    this.navCtrl.navigateForward('login');
+  }
 
-
-
-  goVaucher()
-  {
+  goVaucher() {
     this.navCtrl.navigateForward('vaucher');
   }
-  goMange()
-  {
+  goMange() {
 
     this.navCtrl.navigateForward('pharmanage');
   }

@@ -13,8 +13,6 @@ import { NavigationExtras } from '@angular/router';
   providedIn: 'root'
 })
 export class AuthService {
-  userid: string;
-  signInMethod: any;
 
   constructor(
     public store: AngularFirestore,
@@ -22,6 +20,11 @@ export class AuthService {
     private Alert: AlertService,
     public Alerts: AlertController,
     private authService: AuthenticationService) { }
+  userid: string;
+  signInMethod: any;
+  loginUser(email: any) {
+    throw new Error('Method not implemented.');
+  }
 
   fetchUserRegistered(email: string) {
 

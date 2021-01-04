@@ -9,7 +9,6 @@ import { LoadingController, Platform } from '@ionic/angular';
 import { AngularFireAuth } from '@angular/fire/auth';
 import * as firebase from 'firebase/app';
 import { UserDataService } from '../services/user-data.service';
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -28,12 +27,11 @@ export class LoginPage implements OnInit {
     private userDataService: UserDataService,
     private router: Router,
     private alert: AlertController,
-    public google: GooglePlus,
+    private google: GooglePlus,
     public loadingController: LoadingController,
-
     private fireAuth: AngularFireAuth,
     private platform: Platform) { }
-    public fireAuth: AngularFireAuth,
+
 
   async ngOnInit() {
     localStorage.removeItem('email');
@@ -41,7 +39,6 @@ export class LoginPage implements OnInit {
       message: 'Connecting ...'
     });
   }
-
 
   async loginUser(form): Promise<void> {
     this.auth.fetchUserRegistered(form.value.email)
@@ -63,9 +60,6 @@ export class LoginPage implements OnInit {
       .catch(err => {
         console.log(err);
       });
-
-  async loginUser(form): Promise<void>{
-    await this.auth.loginUser(form.value.email);
   }
 
   login() {
@@ -112,13 +106,6 @@ export class LoginPage implements OnInit {
           this.user = success.user;
         }
 
-      this.fireAuth.signInWithPopup(new firebase.default.auth.GoogleAuthProvider()).then(success => {
-        console.log('success in google login', success.user.displayName);
-        this.navCtrl.navigateBack('home');
-        this.Alert.Signin();
-        this.isGoogleLogin = true;
-        this.user =  success.user;
-        console.log(this.user);
       }).catch(err => {
         console.log(err.message, 'error in google login');
       });
@@ -146,5 +133,8 @@ export class LoginPage implements OnInit {
       this.isGoogleLogin = false;
     });
   }
-
+  goHome()
+  {
+    this.navCtrl.navigateForward('home');
+  }
 }

@@ -8,7 +8,6 @@ import { ActionSheetController } from '@ionic/angular';
 
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { AuthService } from '../services/auth.service';
-import { ActivatedRoute, Router } from '@angular/router';
 
 export interface ImgFile {
   name: string;
@@ -22,7 +21,6 @@ export interface ImgFile {
   styleUrls: ['./register1.page.scss'],
 })
 export class Register1Page implements OnInit {
-
   step1 = true;
   step2: boolean;
   step2init = true;
@@ -86,58 +84,6 @@ export class Register1Page implements OnInit {
   file: File;
   isSocialLogin = false;
 
-step1 = true;
-step2 = false;
-step2init = true;
-step3 = false;
-step3init = true;
-step4 = false;
-logup = {first: '', last: '', address: '',  id: '',city:'',number:''};
- password: any;
-capturedSnapURL: string;
-
-cameraOptions: CameraOptions = {
-  quality: 20,
-  destinationType: this.camera.DestinationType.DATA_URL,
-  encodingType: this.camera.EncodingType.JPEG,
-  mediaType: this.camera.MediaType.PICTURE
-};
-
- // File upload task
-fileUploadTask: AngularFireUploadTask;
-
-// Upload progress
-percentageVal: Observable<number>;
-
-// Track file uploading with snapshot
-trackSnapshot: Observable<any>;
-
-// Uploaded File URL
-UploadedImageURL: Observable<string>;
-
-// Uploaded image collection
-files: Observable<ImgFile[]>;
-
-// Image specifications
-imgName: string;
-imgSize: number;
-
-// File uploading status
-isFileUploading: boolean;
-isFileUploaded: boolean;
-
-private filesCollection: AngularFirestoreCollection<ImgFile>;
-  email: string;
- 
-  signup() {
-   this.auth.register(this.email,this.password,this.logup);
-   this.step1 = false;
-   this.step2 = true;
-   this.step3 = false;
-   this.step2init = false;
-}
-
-
   constructor(
     private navCtrl: NavController,
     public actionSheetController: ActionSheetController,
@@ -145,24 +91,10 @@ private filesCollection: AngularFirestoreCollection<ImgFile>;
     private afs: AngularFirestore,
     private afStorage: AngularFireStorage,
     private auth: AuthService,
-
   ) {
 
     this.isFileUploading = false;
     this.isFileUploaded = false;
-
-    private route: ActivatedRoute, private router: Router,
-    ) {
-
-      this.route.queryParams.subscribe(params => {
-        if (this.router.getCurrentNavigation().extras.state) {
-          this.router.getCurrentNavigation().extras.state.step2 = true;
-         // this.step2 = this.router.getCurrentNavigation().extras.state.step2;
-        }
-      });
-
-      this.isFileUploading = false;
-      this.isFileUploaded = false;
 
     // Define uploaded files collection
     this.filesCollection = afs.collection<ImgFile>('imagesCollection');
@@ -209,7 +141,6 @@ private filesCollection: AngularFirestoreCollection<ImgFile>;
 
   }
 
-
   async signup2() {
     console.log(this.step2From);
     this.afs.doc(`users/${this.userid}`).update({
@@ -217,13 +148,6 @@ private filesCollection: AngularFirestoreCollection<ImgFile>;
     });
     this.goStep3();
   }
-
-
-  takeSnap() {
-    this.camera.getPicture(this.cameraOptions).then((imageData) => {
-      // this.camera.DestinationType.FILE_URI gives file URI saved in local
-      // this.camera.DestinationType.DATA_URL gives base64 URI
-
 
   signup3() {
     console.log(this.logup);

@@ -7,14 +7,14 @@
     <div class="user-bar flex al-center jc-between">
       <div class="flex al-center">
         <ion-avatar>
-          <img src="assets/imgs/user.png" />
+          <img src="{{photoUrl}}" />
         </ion-avatar>
-        <ion-badge mode="ios">שלום חגי!</ion-badge>
+        <ion-badge mode="ios">שלום {{firstName}}!</ion-badge>
       </div>
-      <ion-button (click)="goLogin()">
-        התחבר
+      <ion-button (click)="goOut()">
+        התנתק
       </ion-button>
-     
+
 
     </div>
 
@@ -119,13 +119,13 @@
           </ion-col>
         </ion-row>
       </ion-grid>
-        
+
       <ion-fab vertical="bottom" horizontal="start" slot="fixed" (click)="presentActionSheet()">
         <ion-fab-button>
           <ion-icon name="search-outline"></ion-icon>
         </ion-fab-button>
       </ion-fab>
-      
+
     </div>
 
     <!-- <div class="btn-holder ion-padding-horizontal">
@@ -156,6 +156,9 @@
           <img src="../../assets/imgs/adv2.png">
         </ion-slide>
       </ion-slides>
+<div>
+
+</div>
     </div>
   </div>
 </ion-content>
