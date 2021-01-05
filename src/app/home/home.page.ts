@@ -65,6 +65,8 @@ export class HomePage implements OnInit {
         console.log(res);
         this.firstName = res.displayName;
         this.userUID = res.uid;
+        localStorage.setItem('userId', res.uid);
+        localStorage.setItem('email', res.email);
         if (res.photoURL) { this.photoUrl = res.photoURL; }
       });
   }
@@ -126,16 +128,21 @@ export class HomePage implements OnInit {
     this.navCtrl.navigateForward('license');
   }
 
-  goLogin() {
-    this.authService.signOutCurrentUser()
-      .then(res => {
-        localStorage.clear();
-        this.navCtrl.navigateForward('login');
-        console.log('signout res ', res);
-      });
-  }
+  // goLogin() {
+  //   this.authService.signOutCurrentUser()
+  //     .then(res => {
+  //       localStorage.clear();
+  //       this.navCtrl.navigateForward('login');
+  //       console.log('signout res ', res);
+  //     });
+  // }
   goOut() {
-    this.navCtrl.navigateForward('login');
+    this.authService.signOutCurrentUser()
+    .then(res => {
+      localStorage.clear();
+      this.navCtrl.navigateForward('login');
+      console.log('signout res ', res);
+    });
   }
 
   goVaucher() {
