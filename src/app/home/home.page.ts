@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
+import { AuthService } from '../services/auth.service';
 import { AuthenticationService } from '../services/authentication.service';
 import { ActionSheetController } from '@ionic/angular';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
@@ -30,11 +31,13 @@ export class HomePage implements OnInit {
   users: Observable<User[]>;
   usersCollectionRef: AngularFirestoreCollection<User>;
   // tslint:disable-next-line: max-line-length
-  constructor(private navCtrl: NavController,
-              public actionSheetController: ActionSheetController,
-              private authService: AuthenticationService,
-              private fireStore: AngularFirestore,
-              afs: AngularFirestore,
+  constructor(
+    private navCtrl: NavController,
+    public actionSheetController: ActionSheetController,
+    private authService: AuthService,
+    private authenticationService: AuthenticationService,
+    private fireStore: AngularFirestore,
+    afs: AngularFirestore,
   ) {
 
     // this.userDoc = fireStore.doc<any>('users/xGT8mosXOfN9o4AMawx506Uotag2');
@@ -55,10 +58,9 @@ export class HomePage implements OnInit {
 
 
   ngOnInit() {
-
     this.photoUrl = 'assets/imgs/user.png';
 
-    this.authService.authStatus()
+    this.authenticationService.authStatus()
       .subscribe(res => {
         console.log(res);
         this.firstName = res.displayName;
@@ -77,7 +79,7 @@ export class HomePage implements OnInit {
         icon: 'color-filter-outline',
         handler: () => {
           console.log('Delete clicked');
-          this.navCtrl.navigateForward('/ourproducts?category=%7B"categoryImage":"assets%2Fimgs%2Fcc1.png","categoryName":"תפרחות","categoryKind":"T20%2FC4"%7D', );
+          this.navCtrl.navigateForward('/ourproducts?category=%7B"categoryImage":"assets%2Fimgs%2Fcc1.png","categoryName":"תפרחות","categoryKind":"T20%2FC4"%7D');
 
         }
       }, {
@@ -85,14 +87,14 @@ export class HomePage implements OnInit {
         icon: 'color-filter-outline',
         handler: () => {
           console.log('Share clicked');
-          this.navCtrl.navigateForward('/ourproducts?category=%7B"categoryImage":"assets%2Fimgs%2Fcc1.png","categoryName":"תפרחות","categoryKind":"T15%2FC3"%7D', );
+          this.navCtrl.navigateForward('/ourproducts?category=%7B"categoryImage":"assets%2Fimgs%2Fcc1.png","categoryName":"תפרחות","categoryKind":"T15%2FC3"%7D');
         }
       }, {
         text: 'שמני קנאביס',
         icon: 'color-fill-outline',
         handler: () => {
           console.log('Play clicked');
-          this.navCtrl.navigateForward('/ourproducts?category=%7B"categoryImage":"assets%2Fimgs%2Fcc1.png","categoryName":"שמן","categoryKind":"קנאביס"%7D', );
+          this.navCtrl.navigateForward('/ourproducts?category=%7B"categoryImage":"assets%2Fimgs%2Fcc1.png","categoryName":"שמן","categoryKind":"קנאביס"%7D');
 
         }
       }, {
@@ -125,7 +127,12 @@ export class HomePage implements OnInit {
   }
 
   goLogin() {
-    this.navCtrl.navigateForward('login');
+    this.authService.signOutCurrentUser()
+      .then(res => {
+        localStorage.clear();
+        this.navCtrl.navigateForward('login');
+        console.log('signout res ', res);
+      });
   }
   goOut() {
     this.navCtrl.navigateForward('login');

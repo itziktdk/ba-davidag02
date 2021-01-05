@@ -176,7 +176,7 @@
           <ion-row>
             <ion-col size="4">
               <input style="display: none;" id="IDfileinput" type="file"
-                (change)="uploadImage($event.target.files,  'L')" class="filyLIC" />
+                (change)="uploadImage($event.target.files, 'L')" class="filyLIC" />
               <div class="btn ion-text-center" id="uploadLic" (click)="presentActionSheet('L', 'filyLIC')">
                 <div class="img-holder">
                   <img *ngIf="!step2From.licenseImgName;else imgSave" src="assets/imgs/document.png" alt="">
