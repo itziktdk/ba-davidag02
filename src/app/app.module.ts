@@ -18,7 +18,7 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { GooglePlus } from '@ionic-native/google-plus/ngx';
 
-import {SingletonService} from './services/firebase.service';
+// import {SingletonService} from './services/firebase.service';
 import { environment } from '../environments/environment';
 import { Camera } from '@ionic-native/camera/ngx';
 import { LaunchNavigator } from '@ionic-native/launch-navigator/ngx';
@@ -52,7 +52,6 @@ import { NativeGeocoder, NativeGeocoderResult, NativeGeocoderOptions } from '@io
     Camera,
     Geolocation,
     NativeGeocoder,
-    SingletonService,
     LaunchNavigator,
     CallNumber,
     InAppBrowser,

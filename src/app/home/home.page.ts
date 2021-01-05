@@ -4,8 +4,7 @@ import { AuthenticationService } from '../services/authentication.service';
 import { ActionSheetController } from '@ionic/angular';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { Observable } from 'rxjs/Observable';
-import { AngularFireAuth } from '@angular/fire/auth';
-import { SingletonService } from '../services/firebase.service';
+// import { AngularFireAuth } from '@angular/fire/auth';
 
 
 interface User {

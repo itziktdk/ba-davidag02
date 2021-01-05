@@ -8,10 +8,6 @@ import { CallNumber } from '@ionic-native/call-number/ngx';
 @Injectable({
   providedIn: 'root'
 })
-export class SingletonService {
-  public loginState = false;
-  public userinfo = [];
-}
 export class FirebaseService {
 
   collectionName = 'Customers';

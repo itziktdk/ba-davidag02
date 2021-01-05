@@ -9,11 +9,13 @@
         <ion-avatar>
           <img src="{{photoUrl}}" />
         </ion-avatar>
-        <ion-badge mode="ios">שלום {{firstName}}!</ion-badge>
+        <ion-badge class="orangebg" mode="ios">שלום {{firstName}}!</ion-badge>
       </div>
-      <ion-button (click)="goOut()">
-        התנתק
-      </ion-button>
+      <ion-chip (click)="goOut()">
+       
+        <ion-icon name="log-out"></ion-icon>
+        <ion-label>התנתק</ion-label>
+      </ion-chip>
 
 
     </div>
@@ -156,9 +158,9 @@
           <img src="../../assets/imgs/adv2.png">
         </ion-slide>
       </ion-slides>
-<div>
+      <div>
 
-</div>
+      </div>
     </div>
   </div>
 </ion-content>

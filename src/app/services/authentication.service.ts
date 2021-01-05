@@ -7,7 +7,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 export class AuthenticationService {
 
   constructor(
-    private fAuth: AngularFireAuth
+    public fAuth: AngularFireAuth
   ) { }
 
   authStatus() {
