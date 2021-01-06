@@ -1,0 +1,42 @@
+<ion-content>
+  <ion-icon name="camera" (click)="close()"></ion-icon>
+
+  <div class="title-holder ion-text-center">
+    <h1>מעקב הזמנות
+    </h1>
+  </div>
+
+  <div class="the-list">
+    <div class="card" *ngFor="let item of data.inventory">
+      <ion-row>
+        <ion-col size="2" class="right flex al-center flexd">
+          <ion-icon name="checkmark-circle-outline"></ion-icon>
+          <ion-icon name="close-circle-outline"></ion-icon>
+        </ion-col>
+        <ion-col size="5" class="right flex al-center flexd">
+          <div class="details">
+            <h5>{{item.productName}}
+
+            </h5>
+            <p>{{item.description}}
+            </p>
+            <!-- <p>{{item?.category?}}
+            </p> -->
+
+            <h5>Available qty. {{item.quantity}}
+
+            </h5>
+          </div>
+        </ion-col>
+        <ion-col size="5" class="left flex al-center jc-between">
+          <!-- <img src="assets/imgs/pin.png" alt=""> -->
+          <ion-tab-button (click)="onReserve(item)">
+            <ion-label>Reserve</ion-label>
+          </ion-tab-button>
+          <!-- <img src="assets/imgs/call2.png" alt="">
+          <img src="assets/imgs/whatsapp.png" alt=""> -->
+        </ion-col>
+      </ion-row>
+    </div>
+  </div>
+</ion-content>

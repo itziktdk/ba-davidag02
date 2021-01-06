@@ -7,17 +7,14 @@ import { ModalController } from '@ionic/angular';
   styleUrls: ['./pharmodal.page.scss'],
 })
 export class PharmodalPage implements OnInit {
-  name;
-  phone;
-  city;
-  img;
+  data;
   constructor(private modalCtrl: ModalController) { }
 
   ngOnInit() {
+    console.log('data ', this.data)
   }
 
-  close()
-  {
+  close() {
     this.modalCtrl.dismiss();
   }
 

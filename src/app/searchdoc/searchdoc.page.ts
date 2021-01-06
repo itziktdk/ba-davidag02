@@ -157,6 +157,31 @@ export class SearchdocPage implements OnInit {
   }
 
   onNavPharmacyList() {
+    // this.fService.addDoctors({
+    //   address: 'address: \'המרכבה 31 חצי חינם\'',
+    //   city: 'חולון',
+    //   pharmcode: '12121',
+    //   phone: '46546464564564',
+    //   rating: '5',
+    //   inventory: [{
+    //     productName: 'מוצר',
+    //     description: 'שווה ביותר',
+    //     qty: '3'
+    //   },
+    //   {
+    //     productName: 'מוצר',
+    //     description: 'שווה ביותר',
+    //     qty: '7'
+    //   }
+    //   ],
+    //   opening: [{
+    //     from: 'מוצר',
+    //     to: 'שווה ביותר',
+    //     shortDay: '3',
+    //     dayOff: '3',
+    //     shortTo: '3'
+    //   }]
+    // });
     if ((!!this.searchValue1 && (!!this.filteredPharmacyList && this.filteredPharmacyList.length > 0)) ||
       (!!this.searchValue2 && (!!this.filteredPharmacyList && this.filteredPharmacyList.length > 0))) {
       const navigationExtras: NavigationExtras = {

@@ -66,5 +66,9 @@ export class FirebaseService {
   getPharmacyList() {
     return this.firestore.collection('/pharms').valueChanges();
   }
+
+  addReserveOrders(data: any) {
+    return this.firestore.collection(`reserveOrders`).add(data);
+  }
   // END Pharmacy
 }
