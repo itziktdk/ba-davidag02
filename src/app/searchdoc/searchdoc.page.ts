@@ -80,16 +80,14 @@ export class SearchdocPage implements OnInit {
     }
     if (this.filteredPharmacyList && this.filteredPharmacyList.length > 0) {
       const filterPharmacyList1 = [];
-      this.filteredPharmacyList
-        // tslint:disable-next-line:only-arrow-functions
-        .filter(function (d) {
-          for (const key in d) {
-            if (d[key].toString().toLowerCase().indexOf(val) !== -1) {
-              filterPharmacyList1.push(d);
-              return;
-            }
+      this.filteredPharmacyList.filter(function (d) {
+        for (const key in d) {
+          if (d[key].toString().toLowerCase().indexOf(val) !== -1) {
+            filterPharmacyList1.push(d);
+            return;
           }
-        });
+        }
+      });
       this.filteredPharmacyList = filterPharmacyList1;
       // if (filterPharmacyList1 && filterPharmacyList1.length > 0) {
       //   this.filteredPharmacyList = filterPharmacyList1;
@@ -102,16 +100,14 @@ export class SearchdocPage implements OnInit {
         tepmArr = this.pharmacyList;
       }
       const filterPharmacyList2 = [];
-      tepmArr
-        // tslint:disable-next-line:only-arrow-functions
-        .filter(function (d) {
-          for (const key in d) {
-            if (d[key].toString().toLowerCase().indexOf(val) !== -1) {
-              filterPharmacyList2.push(d);
-              return;
-            }
+      tepmArr.filter(function (d) {
+        for (const key in d) {
+          if (d[key].toString().toLowerCase().indexOf(val) !== -1) {
+            filterPharmacyList2.push(d);
+            return;
           }
-        });
+        }
+      });
       this.filteredPharmacyList = filterPharmacyList2;
       // if (filterPharmacyList2 && filterPharmacyList2.length > 0) {
       //   this.filteredPharmacyList = filterPharmacyList2;
@@ -161,8 +157,8 @@ export class SearchdocPage implements OnInit {
   }
 
   onNavPharmacyList() {
-    if (!!this.searchValue1 && !!this.searchValue2 &&
-      (this.filteredPharmacyList && this.filteredPharmacyList.length === 0)) {
+    if ((!!this.searchValue1 && (!!this.filteredPharmacyList && this.filteredPharmacyList.length > 0)) ||
+      (!!this.searchValue2 && (!!this.filteredPharmacyList && this.filteredPharmacyList.length > 0))) {
       const navigationExtras: NavigationExtras = {
         queryParams: {
           data: this.filteredPharmacyList && this.filteredPharmacyList.length > 0 ?
