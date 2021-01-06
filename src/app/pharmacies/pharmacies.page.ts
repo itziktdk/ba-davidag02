@@ -6,6 +6,8 @@ import { LaunchNavigator, LaunchNavigatorOptions } from '@ionic-native/launch-na
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { ActivatedRoute } from '@angular/router';
 import { ProductReserveModalPage } from '../modals/product-reserve-modal/product-reserve-modal.page';
+import { FirebaseService } from '../services/firebase.service';
+import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 // const sendmail = require('sendmail')();
 @Component({
   selector: 'app-pharmacies',
@@ -17,7 +19,9 @@ export class PharmaciesPage implements OnInit {
     private navCtrl: NavController,
     private modalCtrl: ModalController,
     private launchNavigator: LaunchNavigator,
-    private route: ActivatedRoute) { }
+    private fService: FirebaseService,
+    private route: ActivatedRoute,
+    private iab: InAppBrowser) { }
   filterTerm: string;
   category: any = 's1';
 
@@ -72,6 +76,32 @@ export class PharmaciesPage implements OnInit {
     });
 
     return await modal.present();
+  }
+
+  onNavigate(city: string) {
+    console.log('on nav');
+    this.fService.goNavigate(city)
+      .then(
+        success => console.log('Launched navigator'),
+        error => console.log('Error launching navigator', error)
+      );
+  }
+
+  onCallDial(num) {
+    this.fService.goCallDial(num)
+      .then(res => console.log('Launched dialer!', res))
+      .catch(err => console.log('Error launching dialer', err));
+  }
+
+  onOpenBrowser(link: string) {
+    const browser = this.iab.create(link);
+    // browser.executeScript(...);
+
+    // browser.insertCSS(...);
+    // browser.on('loadstop').subscribe(event => {
+    //   browser.insertCSS({ code: 'body{color: red;' });
+    // });
+    // browser.close();
   }
 }
 

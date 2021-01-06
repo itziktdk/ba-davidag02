@@ -35,17 +35,21 @@
             <ion-col size="12">
               <div class="ion-text-center">
                 <ion-item lines="none" class="ion-text-center" slot="start">
-                  <ion-chip href="https://wa.me/972549743003">
-                    <ion-label><a>054-9743003</a></ion-label>
-                    <ion-icon src="../../assets/imgs/whatsapp (2).svg"></ion-icon>
-                  </ion-chip>
+                  <a href="whatsapp://send?phone='054-9743003">
+                    <ion-chip href="https://wa.me/972549743003">
+                      <ion-label><a>054-9743003</a></ion-label>
+                      <ion-icon src="../../assets/imgs/whatsapp (2).svg"></ion-icon>
+                    </ion-chip>
+                  </a>
                   <ion-chip>
                     <ion-label>050-6234567</ion-label>
-                    <ion-icon href="https://wa.me/972506234567" src="../../assets/imgs/whatsapp (2).svg"></ion-icon>
+                    <a href="whatsapp://send?phone='050-6234567">
+                      <ion-icon href="https://wa.me/972506234567" src="../../assets/imgs/whatsapp (2).svg"></ion-icon>
+                    </a>
                   </ion-chip>
                 </ion-item>
               </div>
-        
+
             </ion-col>
           </ion-row>
         </div>
@@ -61,21 +65,22 @@
               <div class="ion-text-center">
                 <h1 class="ion-align-self-center">מור מדיקל</h1>
                 <h4 class="ion-align-self-center">יעוץ ורישוי לקנאביס</h4>
-             
-              <ion-item  href="tel:+9723724939" lines="none" class="ion-text-center" slot="start">
-              <ion-chip>
-                <ion-label>03-3724939</ion-label>
-                <ion-icon src="../../assets/imgs/telephone.svg"></ion-icon>
-              </ion-chip>
-            </ion-item> </div>
+
+                <ion-item (click)="onCallDial('03-3724939')" lines="none" class="ion-text-center" slot="start">
+                  <ion-chip>
+                    <ion-label>03-3724939</ion-label>
+                    <ion-icon src="../../assets/imgs/telephone.svg"></ion-icon>
+                  </ion-chip>
+                </ion-item>
+              </div>
             </ion-col>
-            
+
           </ion-row>
           <ion-row>
             <ion-col size="12">
               <div class="ion-text-center">
               </div>
-        
+
             </ion-col>
           </ion-row>
         </div>
@@ -91,15 +96,16 @@
               <div class="ion-text-center">
                 <h1 class="ion-align-self-center">עץ הדעת</h1>
                 <h4 class="ion-align-self-center">המרכז לקנאביס רפואי</h4>
-             
-              <ion-item  href="tel:3744*" lines="none" class="ion-text-center" slot="start">
-              <ion-chip>
-                <ion-label>3744*</ion-label>
-                <ion-icon src="../../assets/imgs/telephone.svg"></ion-icon>
-              </ion-chip>
-            </ion-item> </div>
+
+                <ion-item (click)="onCallDial('3744*')" lines="none" class="ion-text-center" slot="start">
+                  <ion-chip>
+                    <ion-label>3744*</ion-label>
+                    <ion-icon src="../../assets/imgs/telephone.svg"></ion-icon>
+                  </ion-chip>
+                </ion-item>
+              </div>
             </ion-col>
-            
+
           </ion-row>
         </div>
 

@@ -43,7 +43,9 @@
 
               <div class="img-holder" class="ion-activatable ripple-parent">
                 <ion-ripple-effect></ion-ripple-effect>
-                <img src="../../../assets/imgs/whatsapp (3).png" alt="">
+                <a href="whatsapp://send?phone=data.Telephone">
+                  <img src="../../../assets/imgs/whatsapp (3).png" alt="">
+                </a>
               </div>
             </div>
 
@@ -56,7 +58,7 @@
 
             <div class="btn ion-activatable ripple-parent">
               <ion-ripple-effect></ion-ripple-effect>
-              <div class="img-holder">
+              <div (click)="onNavigate(data.city)" class="img-holder">
                 <img src="../../../assets/imgs/waze (3).png" alt="">
               </div>
             </div>

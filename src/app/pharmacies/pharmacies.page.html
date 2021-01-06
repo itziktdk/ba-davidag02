@@ -21,10 +21,10 @@
       <div class="segments-holder">
         <ion-segment (ionChange)="segmentChanged($event)" [value]="category">
 
-          <ion-segment-button value="s2">
+          <ion-segment-button value="s1">
             <ion-label>בתי מרקחת </ion-label>
           </ion-segment-button>
-          <ion-segment-button value="s1">
+          <ion-segment-button value="s2">
             <ion-label>
               <img src="assets/imgs/sup.png" alt="">
             </ion-label>
@@ -70,9 +70,11 @@
                 <ion-col size="5" class="left flex al-start jc-between">
                   <a><img src="assets/imgs/phone-call (1).png" alt=""></a>
                   <a (click)=goNavigate(data.address)> <img src="assets/imgs/waze (3).png" alt=""></a>
-                  <a *ngIf="(data.phone.includes('050'))"
-                    href="{{'https://wa.me/972' + (data.phone.replace('-', '') | slice:1:9)}}"><img
-                      src="assets/imgs/whatsapp (3).png" alt=""></a>
+                  <!-- <a *ngIf="(data.phone.includes('050'))"
+                    href="{{'https://wa.me/972' + (data.phone.replace('-', '') | slice:1:9)}}"> -->
+                  <a href="whatsapp://send?phone=data.phone">
+                    <img src="assets/imgs/whatsapp (3).png" alt="">
+                  </a>
 
 
 
@@ -132,7 +134,7 @@
                 </ion-col>
                 <ion-col size="5" class="left flex al-start jc-between">
 
-                  <a (click)=goNavigate()> <img src="assets/imgs/waze (3).png" alt=""></a>
+                 <img  (click)="onNavigate(data.city)" src="assets/imgs/waze (3).png" alt="">
                   <a href="{{'https://wa.me/972' + (data.phone | slice:0:9)}}"><img src="assets/imgs/phone-call (1).png"
                       alt=""></a>
                   <a *ngIf="(data.phone.includes('050'))"

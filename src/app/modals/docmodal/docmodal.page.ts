@@ -20,7 +20,7 @@ export class DocmodalPage implements OnInit {
   }
 
   onNavigate(city: string) {
-    console.log('on nav')
+    console.log('on nav');
     this.fService.goNavigate(city)
       .then(
         success => console.log('Launched navigator'),
