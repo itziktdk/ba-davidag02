@@ -160,7 +160,11 @@ const routes: Routes = [
     path: 'searchdoc',
     loadChildren: () => import('./searchdoc/searchdoc.module').then(m => m.SearchdocPageModule),
     canActivate: [AuthGuard]
+  },  {
+    path: 'product-reserve-modal',
+    loadChildren: () => import('./modals/product-reserve-modal/product-reserve-modal.module').then( m => m.ProductReserveModalPageModule)
   }
+
 
 ];
 

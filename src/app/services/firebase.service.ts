@@ -34,12 +34,12 @@ export class FirebaseService {
     this.firestore.doc(this.collectionName + '/' + recordId).delete();
   }
 
-  // Doctors
+  // START Doctors
 
   // addDoctors(data: any) {
   //   const now = new Date();
   //   const currentDateTime = now.getDate() + now.getTime();
-  //   return this.firestore.collection(`doctors`).add(data);
+  //   return this.firestore.collection(`pharms`).add(data);
   // }
 
   getDoctors() {
@@ -52,11 +52,23 @@ export class FirebaseService {
       app: this.launchNavigator.APP.WAZE
     };
 
-    return this.launchNavigator.navigate(location ? location : 'אלנבי 80 תל אביב', OPTS)
+    return this.launchNavigator.navigate(location ? location : 'אלנבי 80 תל אביב', OPTS);
   }
 
   // tslint:disable-next-line:variable-name
   goCallDial(number: string) {
-    return this.callNumber.callNumber(number, true)
+    return this.callNumber.callNumber(number, true);
   }
+
+  // END Doctors
+
+  // START Pharmacy
+  getPharmacyList() {
+    return this.firestore.collection('/pharms').valueChanges();
+  }
+
+  addReserveOrders(data: any) {
+    return this.firestore.collection(`reserveOrders`).add(data);
+  }
+  // END Pharmacy
 }

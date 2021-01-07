@@ -15,6 +15,7 @@ import { NavigationExtras } from '@angular/router';
 export class AuthService {
 
   constructor(
+    private firestore: AngularFirestore,
     public store: AngularFirestore,
     private navCtrl: NavController,
     private Alert: AlertService,
@@ -120,6 +121,11 @@ export class AuthService {
 
   signOutCurrentUser() {
     return firebase.auth().signOut();
+  }
+
+  getCurrentUserDetails() {
+    return this.firestore.collection(`/users`).doc(`${localStorage.getItem('userId')}`).valueChanges();
+    // return firebase.database().ref().child(`users/${localStorage.getItem('userId')}`);
   }
 }
 
