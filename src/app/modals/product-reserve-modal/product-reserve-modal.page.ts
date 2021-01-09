@@ -130,7 +130,7 @@ export class ProductReserveModalPage implements OnInit {
   }
 
   onManuallyAdd(index, event) {
-    console.log(event)
+    console.log(event);
     if (this.data.inventory && this.data.inventory[index] && this.data.inventory[index].orderedQty) {
       if (event.target.value === '') {
         this.data.inventory[index].orderedQty = event.target.value;
@@ -157,7 +157,7 @@ export class ProductReserveModalPage implements OnInit {
     if (item.orderedQty && item.orderedQty > 0) {
       this.orderItemArr.push(item);
       this.hideBtn = false;
-      this.alertService.default('', 'Your item has added successfully!')
+      this.alertService.default('', 'Your item has added successfully!');
     } else {
       this.alertReset(i);
     }
