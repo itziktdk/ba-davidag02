@@ -1,5 +1,9 @@
 <ion-content>
-  <ion-icon name="camera" (click)="close()"></ion-icon>
+  <div class="close-holder flex jc-end">
+    <ion-button color="dark" (click)="close()" expand="block" fill="clear" shape="round">
+      <ion-icon slot="icon-only" name="close-circle-outline"></ion-icon>
+    </ion-button>
+  </div>
 
   <div class="title-holder ion-text-center">
     <h1>מעקב הזמנות
@@ -7,15 +11,59 @@
   </div>
 
   <div class="the-list">
-    <div class="card" *ngFor="let item of data.inventory">
+    <div class="card" *ngFor="let item of data.inventory; let i = index">
+
       <ion-row>
-        <ion-col size="2" class="right flex al-center flexd">
-          <ion-icon name="checkmark-circle-outline"></ion-icon>
-          <ion-icon name="close-circle-outline"></ion-icon>
+        <ion-col size="4" class="left flex al-center">
+
+
+          <div class="btn-holder">
+            <ion-button id="reserve" (click)="onOderItem(item,i)" shape="round">
+              Order
+            </ion-button>
+          </div>
+
         </ion-col>
-        <ion-col size="5" class="right flex al-center flexd">
+
+        <ion-col size="4" class="center flex al-center jc-center">
+          <div class="center-holder flex flexd al-center">
+            <p>Qty</p>
+
+            <div class="qty-holder flex al-center">
+              <div class="btn ion-activatable ripple-parent" (click)="onPlus(i)">
+                <ion-ripple-effect></ion-ripple-effect>
+                <ion-icon slot="icon-only" name="add-circle"></ion-icon>
+              </div>
+
+              <!-- <ion-note>{{item.quantity}}</ion-note> -->
+              <!-- <ion-note class="flex al-center jc-center">{{item.qty}}</ion-note> -->
+              <ion-note id="note-text" *ngIf="validateQty(item.orderedQty) ; else rCount"
+                class="flex al-center jc-center">
+                <ion-input (ionInput)="onManuallyAdd(i, $event)" value="{{item.orderedQty}}"></ion-input>
+                <!-- {{item.orderedQty}} -->
+              </ion-note>
+              <ng-template #rCount>
+                <ion-note id="note-text" class="flex al-center jc-center">
+                  <!-- {{count}} -->
+
+                  <ion-input (ionInput)="onManuallyAdd(i, $event)" value="{{count}}"></ion-input>
+                </ion-note>
+              </ng-template>
+
+              <div class="btn ion-activatable ripple-parent" (click)="onMinus(i)">
+                <ion-ripple-effect></ion-ripple-effect>
+                <ion-icon slot="icon-only" name="remove-circle"></ion-icon>
+              </div>
+
+            </div>
+          </div>
+
+
+        </ion-col>
+
+        <ion-col size="4" class="right flex al-center flexd">
           <div class="details">
-            <h5>{{item.productName}}
+            <h5 id="name">{{item.productName}}
 
             </h5>
             <p>{{item.description}}
@@ -23,20 +71,25 @@
             <!-- <p>{{item?.category?}}
             </p> -->
 
-            <h5>Available qty. {{item.quantity}}
+            <!--  <h5>Available qty. {{item.quantity}}
 
-            </h5>
+            </h5> -->
           </div>
         </ion-col>
-        <ion-col size="5" class="left flex al-center jc-between">
-          <!-- <img src="assets/imgs/pin.png" alt=""> -->
-          <ion-tab-button (click)="onReserve(item)">
-            <ion-label>Reserve</ion-label>
-          </ion-tab-button>
-          <!-- <img src="assets/imgs/call2.png" alt="">
-          <img src="assets/imgs/whatsapp.png" alt=""> -->
-        </ion-col>
+
       </ion-row>
     </div>
+  </div>
+
+  <div class="description ion-text-center">
+    <p class="ion-text-wrap">
+      dskdsjdksjdsjdsjdsjdsdjskjdsjdsdjsdjsdjskjsjdk
+    </p>
+  </div>
+
+  <div class="btm-btn-holder ion-text-center">
+    <ion-button (click)="onReserve()" shape="round">
+      Order
+    </ion-button>
   </div>
 </ion-content>

@@ -68,7 +68,11 @@ export class FirebaseService {
   }
 
   addReserveOrders(data: any) {
-    return this.firestore.collection(`reserveOrders`).add(data);
+    return this.firestore.collection(`/reserveOrders`).add(data);
+    // const ref = firebase.database().ref(`reserveOrders/${data.user.uid}/`);
+    // return ref.once('value', function (snapshot) {
+    //   return ref.update(data);
+    // });
   }
   // END Pharmacy
 }
