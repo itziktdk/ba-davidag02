@@ -43,7 +43,7 @@ export class PharmaciesPage implements OnInit {
     const modal = await this.modalCtrl.create({
       component: PharmodalPage,
       backdropDismiss: true,
-      componentProps: data
+      componentProps: {data}
     });
 
     return await modal.present();
@@ -66,12 +66,12 @@ export class PharmaciesPage implements OnInit {
       );
   }
 
-  async onReserveProduct(data: any) {
+  async onReserveProduct(item: any) {
     const modal = await this.modalCtrl.create({
       component: ProductReserveModalPage,
       backdropDismiss: true,
       componentProps: {
-        data
+        pArray: item
       }
     });
 

@@ -54,7 +54,7 @@ export class SearchdocPage implements OnInit {
     this.nativeGeocoder.reverseGeocode(52.5072095, 13.1452818, this.options)
       .then((result: NativeGeocoderResult[]) => {
         this.ttt1 = JSON.stringify(result[0]);
-        console.log(this.ttt1)
+        console.log(this.ttt1);
       })
       .catch((error: any) => console.log(error));
 
@@ -80,7 +80,7 @@ export class SearchdocPage implements OnInit {
     }
     if (this.filteredPharmacyList && this.filteredPharmacyList.length > 0) {
       const filterPharmacyList1 = [];
-      this.filteredPharmacyList.filter(function (d) {
+      this.filteredPharmacyList.filter(d => {
         for (const key in d) {
           if (d[key].toString().toLowerCase().indexOf(val) !== -1) {
             filterPharmacyList1.push(d);
@@ -100,7 +100,7 @@ export class SearchdocPage implements OnInit {
         tepmArr = this.pharmacyList;
       }
       const filterPharmacyList2 = [];
-      tepmArr.filter(function (d) {
+      tepmArr.filter(d => {
         for (const key in d) {
           if (d[key].toString().toLowerCase().indexOf(val) !== -1) {
             filterPharmacyList2.push(d);

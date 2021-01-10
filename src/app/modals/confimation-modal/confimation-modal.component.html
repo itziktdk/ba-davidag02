@@ -1,0 +1,66 @@
+<ion-content>
+  <ion-grid style="height: 100%">
+    <ion-row class="ion-justify-content-center ion-align-items-center" style="height: 100%">
+      <div class="holder">
+        <div class="close-holder flex jc-start">
+          <ion-button color="dark" (click)="close()" expand="block" fill="clear" shape="round">
+            <ion-icon slot="icon-only" name="close-circle-outline"></ion-icon>
+          </ion-button>
+        </div>
+        <div class="content ion-padding-horizontal ion-text-left">
+          <h2>Order <br> {{item.orderId}} </h2>
+          <div class="details ion-text-left">
+            <h5>{{item.product.name}} :Name</h5>
+            <h5>{{item.product.description}} :Product</h5>
+            <h5>{{item.product.orderedQty}} :Qty</h5>
+            <div *ngIf="item.verify">
+              <h5 *ngIf="item.confirmation">Approved :Status</h5>
+              <h5 *ngIf="!item.confirmation">Decline :Status</h5>
+            </div>
+
+          </div>
+
+          <div class="file-chooser">
+            <ion-row>
+              <ion-col size="6">
+                <div class="btn ion-activatable ripple-parent ion-text-center">
+                  <ion-ripple-effect></ion-ripple-effect>
+                  <img (click)="previewImg(item.user.documents.idImgName)" src="{{item.user?.documents?.idImgName}}"
+                    alt="">
+                  <p>ID <br> document</p>
+                </div>
+              </ion-col>
+              <ion-col size="6">
+                <div class="btn ion-activatable ripple-parent ion-text-center">
+                  <ion-ripple-effect></ion-ripple-effect>
+                  <img (click)="previewImg(item.user.documents.recieptImgName)"
+                    src="{{item.user?.documents?.recieptImgName}}" alt="">
+                  <p>recipt <br> document</p>
+                </div>
+              </ion-col>
+            </ion-row>
+          </div>
+
+          <div *ngIf="!item?.verify" class="btns-holder ion-padding-bottom">
+            <ion-row>
+              <ion-col size="6">
+                <ion-button (click)="onDecline(item)" id="decline" expand="block" shape="round">
+                  decline
+                </ion-button>
+              </ion-col>
+              <ion-col size="6">
+                <ion-button (click)="onAccept(item)" id="accept" expand="block" shape="round">
+                  accept
+                </ion-button>
+              </ion-col>
+
+            </ion-row>
+          </div>
+        </div>
+        <div class="content ion-padding-horizontal ion-text-right">
+          <h5>{{dttm}}</h5>
+        </div>
+      </div>
+    </ion-row>
+  </ion-grid>
+</ion-content>

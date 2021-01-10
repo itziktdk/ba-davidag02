@@ -13,9 +13,11 @@ export class UserDataService {
   // localId
   getUserData(userID: string) {
     this.checlUserDataExist(userID);
-    return firebase.database().ref(`users/${userID}`).once('value', (snapshot) => {
-      return snapshot;
-    });
+
+    return this.afs.collection('/users').doc(userID).valueChanges();
+    // return firebase.database().ref(`users/${userID}`).once('value', (snapshot) => {
+    //   return snapshot;
+    // });
   }
 
   checlUserDataExist(userID: string) {

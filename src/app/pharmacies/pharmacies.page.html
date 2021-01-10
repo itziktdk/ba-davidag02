@@ -44,31 +44,37 @@
           <div class="the-list">
             <div class="card">
               <ion-row>
-                <ion-col (click)="showModal(data)" size="7" class="right">
-                  <div class="first flex al-center jc-start">
-                    <img src="../../assets/imgs/logo_super-pharm.png" alt="">
-                    <h4>&nbsp;{{data.name}}</h4>
+                <ion-col size="7" class="right">
+                  <ion-row>
+                    <ion-col (click)="showModal(data)">
+                      <div class="first flex al-center jc-start">
+                        <img src="../../assets/imgs/logo_super-pharm.png" alt="">
+                        <h4>&nbsp;{{data.name}}</h4>
+                      </div>
+                      <div class="sec">
+                        <p class="ion-text-wrap">{{data.address}}, {{data.city}}</p>
+                      </div>
+                    </ion-col>
+                  </ion-row>
 
-                  </div>
-                  <div class="sec">
-                    <p class="ion-text-wrap">{{data.address}}, {{data.city}}</p>
-                  </div>
-                  <div class="btns-holder flex al-center jc-between">
-                    <ion-button id="hmo">
-                      {{data.phone}}
-                    </ion-button>
-                    <ion-button id="hmo">
-                      {{data.phone}}
-                    </ion-button>
-                    <!-- <ion-button id="subject" >
-                subject
-              </ion-button> -->
-
-
-                  </div>
+                  <ion-row>
+                    <ion-col>
+                      <div class="btns-holder flex al-center jc-between">
+                        <ion-button (click)="onCallDial()" id="hmo">
+                          {{data.phone}}
+                        </ion-button>
+                        <ion-button id="hmo" (click)="onReserveProduct(data)">
+                          Reserve
+                        </ion-button>
+                        <!-- <ion-button id="subject" >
+                    subject
+                  </ion-button> -->
+                      </div>
+                    </ion-col>
+                  </ion-row>
                 </ion-col>
-                <ion-col size="5" class="left flex al-start jc-between">
-                  <a><img src="assets/imgs/phone-call (1).png" alt=""></a>
+                <ion-col (click)="showModal(data)" size="5" class="left flex al-start jc-between">
+                  <a (click)="onCallDial()"><img src="assets/imgs/phone-call (1).png" alt=""></a>
                   <a (click)=goNavigate(data.address)> <img src="assets/imgs/waze (3).png" alt=""></a>
                   <!-- <a *ngIf="(data.phone.includes('050'))"
                     href="{{'https://wa.me/972' + (data.phone.replace('-', '') | slice:1:9)}}"> -->
@@ -76,17 +82,13 @@
                     <img src="assets/imgs/whatsapp (3).png" alt="">
                   </a>
 
-
-
                 </ion-col>
               </ion-row>
             </div>
           </div>
         </ng-container>
       </ng-container>
-
     </div>
-
     <div class="s1" *ngIf="category == 's2'">
       <ng-container *ngIf='pharmRecords | filter:filterTerm as result'>
         <ion-chip class="ion-align-self-center"> אותרו &nbsp;
@@ -105,7 +107,6 @@
                       <div class="first flex al-center jc-start">
                         <img src="{{ref2.value}}" alt="">
                         <h4>&nbsp;{{data.name}}</h4>
-
                       </div>
                       <div class="sec">
                         <p class="ion-text-wrap">{{data.address}}, {{data.city}}</p>
@@ -115,26 +116,22 @@
                   <ion-row>
                     <ion-col size="12">
                       <div class="btns-holder flex al-center jc-between">
-                        <ion-button id="hmo" (click)="onReserveProduct(data)">
+                        <!-- <ion-button id="hmo" (click)="onReserveProduct(data)">
                           Reserve
-                        </ion-button>
+                        </ion-button> -->
                         <ion-button id="hmo">
                           {{data.phone}}
                         </ion-button>
                         <!-- <ion-button id="subject" >
                 subject
               </ion-button> -->
-
-
                       </div>
                     </ion-col>
                   </ion-row>
-
-
                 </ion-col>
                 <ion-col size="5" class="left flex al-start jc-between">
 
-                 <img  (click)="onNavigate(data.city)" src="assets/imgs/waze (3).png" alt="">
+                  <img (click)="onNavigate(data.city)" src="assets/imgs/waze (3).png" alt="">
                   <a href="{{'https://wa.me/972' + (data.phone | slice:0:9)}}"><img src="assets/imgs/phone-call (1).png"
                       alt=""></a>
                   <a *ngIf="(data.phone.includes('050'))"
