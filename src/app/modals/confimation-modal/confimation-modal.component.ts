@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { PhotoViewer } from '@ionic-native/photo-viewer/ngx';
 import { ModalController } from '@ionic/angular';
 import { FirebaseService } from 'src/app/services/firebase.service';
-
+import * as moment from 'moment';
 @Component({
   selector: 'app-confimation-modal',
   templateUrl: './confimation-modal.component.html',
@@ -12,6 +12,8 @@ import { FirebaseService } from 'src/app/services/firebase.service';
 export class ConfimationModalComponent implements OnInit {
   item: any;
   index: number;
+  dttm: string;
+
   constructor(
     private photoViewer: PhotoViewer,
     private fService: FirebaseService,
@@ -20,7 +22,8 @@ export class ConfimationModalComponent implements OnInit {
 
   ngOnInit() {
     console.log('item ', this.item);
-    console.log('index ', this.index);
+    this.dttm = moment(this.item.time).format('LLL');
+    console.log('index ', this.item.time);
   }
 
   previewImg(img: string) {

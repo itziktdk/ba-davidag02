@@ -28,9 +28,9 @@ export class OrdertrackingPage implements OnInit {
       .subscribe((orders: any) => {
         console.log('this.order ', orders);
         const result = orders.forEach(order => {
-          if (order.pharmacyDetails.ownerId == userId) {
+          // if (order.pharmacyDetails.ownerId == userId) {
             this.reserveList.push(order);
-          }
+          // }
           // console.log('this.reserveList ', this.reserveList);
         });
         // orders.
@@ -63,5 +63,20 @@ export class OrdertrackingPage implements OnInit {
       // this.performGetOrderList();
     });
     return await modal.present();
+  }
+
+  onNavigate(city: string) {
+    console.log('on nav');
+    this.fService.goNavigate(city)
+      .then(
+        success => console.log('Launched navigator'),
+        error => console.log('Error launching navigator', error)
+      );
+  }
+
+  onCallDial(num) {
+    this.fService.goCallDial(num)
+      .then(res => console.log('Launched dialer!', res))
+      .catch(err => console.log('Error launching dialer', err));
   }
 }

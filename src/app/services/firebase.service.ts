@@ -75,6 +75,14 @@ export class FirebaseService {
     // });
   }
 
+  addReserveOrderNotification(data: any) {
+    return this.firestore.collection(`/reserve-notification`).add(data);
+    // const ref = firebase.database().ref(`reserveOrders/${data.user.uid}/`);
+    // return ref.once('value', function (snapshot) {
+    //   return ref.update(data);
+    // });
+  }
+
   async addUserReserveOrders(data: any) {
 
     const arr = [];

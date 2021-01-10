@@ -59,6 +59,7 @@ export class ProductReserveModalPage implements OnInit {
           for (let index = 0; index < length; index++) {
             const item = this.orderItemArr[index];
             const data = {
+              time: (new Date()).toString(),
               product: item,
               verify: false,
               user: {
@@ -69,6 +70,13 @@ export class ProductReserveModalPage implements OnInit {
             };
             this.fService.addReserveOrders(data)
               .then(res => {
+                const notification = {
+                  dttm: (new Date()).toString(),
+                  orderDetails: data
+
+                }
+                this.fService.addReserveOrderNotification(notification)
+                  .then();
                 // this.fService.addUserReserveOrders(data)
                 //   .then(response => {
                 console.log(res);

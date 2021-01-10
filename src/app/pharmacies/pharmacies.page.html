@@ -60,7 +60,7 @@
                   <ion-row>
                     <ion-col>
                       <div class="btns-holder flex al-center jc-between">
-                        <ion-button id="hmo">
+                        <ion-button (click)="onCallDial()" id="hmo">
                           {{data.phone}}
                         </ion-button>
                         <ion-button id="hmo" (click)="onReserveProduct(data)">
@@ -74,7 +74,7 @@
                   </ion-row>
                 </ion-col>
                 <ion-col (click)="showModal(data)" size="5" class="left flex al-start jc-between">
-                  <a><img src="assets/imgs/phone-call (1).png" alt=""></a>
+                  <a (click)="onCallDial()"><img src="assets/imgs/phone-call (1).png" alt=""></a>
                   <a (click)=goNavigate(data.address)> <img src="assets/imgs/waze (3).png" alt=""></a>
                   <!-- <a *ngIf="(data.phone.includes('050'))"
                     href="{{'https://wa.me/972' + (data.phone.replace('-', '') | slice:1:9)}}"> -->
