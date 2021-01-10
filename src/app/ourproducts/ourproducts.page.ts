@@ -16,7 +16,7 @@ export class OurproductsPage implements OnInit {
     {
       productName: 'שמשון INDICA T15/C3',
       desc: 'שמשון INDICA T15/C3 תפרחת אינדיקה ברמת פרימיום',
-      series: 'PREMIUM'
+      series: 'PREMIUM',
     },
     {
       productName: 'דלילה SATIVA THC RICH T15/C3',

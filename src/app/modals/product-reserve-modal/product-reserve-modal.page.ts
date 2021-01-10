@@ -13,7 +13,7 @@ import { FirebaseService } from 'src/app/services/firebase.service';
 export class ProductReserveModalPage implements OnInit {
   data;
   pArray;
-  count = 20;
+  count = 0;
   orderItemArr: any = [];
   hideBtn = true;
 
@@ -26,12 +26,21 @@ export class ProductReserveModalPage implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log('data ', this.data);
-    this.data = this.pArray;
+    // console.log('data ', this.data);
+    // this.data = this.pArray;
+    this.performGetAllProducts();
   }
 
   close() {
     this.modalCtrl.dismiss();
+  }
+
+  performGetAllProducts() {
+    this.fService.getProducts()
+      .subscribe((result: any) => {
+        this.pArray.inventory = result;
+        this.data = this.pArray;
+      });
   }
 
   onReserve() {
@@ -51,6 +60,7 @@ export class ProductReserveModalPage implements OnInit {
             const item = this.orderItemArr[index];
             const data = {
               product: item,
+              verify: false,
               user: {
                 ...result,
                 uid: localStorage.getItem('userId')
@@ -59,7 +69,10 @@ export class ProductReserveModalPage implements OnInit {
             };
             this.fService.addReserveOrders(data)
               .then(res => {
+                // this.fService.addUserReserveOrders(data)
+                //   .then(response => {
                 console.log(res);
+                // });
               });
           }
           this.alert();
@@ -154,15 +167,37 @@ export class ProductReserveModalPage implements OnInit {
   }
 
   onOderItem(item, i) {
+    console.log('avail ', !!item.orderedQty)
     if (item.orderedQty && item.orderedQty > 0) {
+      this.addDisableStatus(i);
+
+
       this.orderItemArr.push(item);
       this.hideBtn = false;
+      this.data.inventory[i].isDisabled = 1;
       this.alertService.default('', 'Your item has added successfully!');
     } else {
       this.alertReset(i);
     }
   }
 
+  addDisableStatus(index?: any) {
+    if (index >= 0 || index) {
+      for (let i = 0; i < this.data.inventory.length; i++) {
+        if (i === index) {
+          this.data.inventory[i].isDisable = false;
+        } else {
+          this.data.inventory[i].isDisable = true;
+        }
+      }
+    } else {
+      // tslint:disable-next-line:prefer-for-of
+      for (let i = 0; i < this.data.inventory.length; i++) {
+        this.data.inventory[i].isDisable = undefined;
+      }
+    }
+
+  }
 
   async alert() {
     const alert = await this.alertController.create({

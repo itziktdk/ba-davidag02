@@ -19,17 +19,17 @@ export class AuthGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
     return new Promise((resolve, reject) => {
-      const navctrl = this.navCtrl;
+      // const navctrl = this.navCtrl;
       // tslint:disable-next-line:only-arrow-functions
       // tslint:disable-next-line:space-before-function-paren
-      firebase.auth().onAuthStateChanged(function (user) {
+      firebase.auth().onAuthStateChanged((user: any) => {
         if (user) {
           // User is signed in.
           console.log(user);
           resolve(true);
         } else {
           // No user is signed in.
-          navctrl.navigateRoot(['/login']);
+          this.navCtrl.navigateRoot(['/login']);
           localStorage.clear();
           resolve(false);
         }

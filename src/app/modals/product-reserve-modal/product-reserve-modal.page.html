@@ -10,7 +10,7 @@
     </h1>
   </div>
 
-  <div class="the-list">
+  <div class="the-list" *ngIf="data">
     <div class="card" *ngFor="let item of data.inventory; let i = index">
 
       <ion-row>
@@ -18,9 +18,23 @@
 
 
           <div class="btn-holder">
-            <ion-button id="reserve" (click)="onOderItem(item,i)" shape="round">
+            <ion-button color="success" [disabled]="item.isDisable" *ngIf="item.isDisable;else disableBtnList" id="reserve"
+              shape="round">
               Order
             </ion-button>
+            <ng-template #disableBtnList>
+              <ion-button color="danger" *ngIf="item.isDisable == false;else disableBtn" id="reserve" shape="round"
+                (click)="addDisableStatus()">
+                <ion-icon name="trash"></ion-icon>
+              </ion-button>
+              <ng-template #disableBtn>
+                <ion-button color="success" *ngIf="item.isDisable == undefined" (click)="onOderItem(item,i)" id="reserve" shape="round">
+                  Order
+                </ion-button>
+              </ng-template>
+
+            </ng-template>
+
           </div>
 
         </ion-col>

@@ -24,12 +24,16 @@ import { Camera } from '@ionic-native/camera/ngx';
 import { LaunchNavigator } from '@ionic-native/launch-navigator/ngx';
 import { CallNumber } from '@ionic-native/call-number/ngx';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
+import { PhotoViewer } from '@ionic-native/photo-viewer/ngx';
 
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { NativeGeocoder, NativeGeocoderResult, NativeGeocoderOptions } from '@ionic-native/native-geocoder/ngx';
+import { ConfimationModalComponent } from './modals/confimation-modal/confimation-modal.component';
+// import { FCM } from '@ionic-native/fcm/ngx';
 @NgModule({
   declarations: [
-    AppComponent],
+    AppComponent,
+    ConfimationModalComponent],
 
   entryComponents: [],
 
@@ -55,6 +59,8 @@ import { NativeGeocoder, NativeGeocoderResult, NativeGeocoderOptions } from '@io
     LaunchNavigator,
     CallNumber,
     InAppBrowser,
+    PhotoViewer,
+    // FCM,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent],
