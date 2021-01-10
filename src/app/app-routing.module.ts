@@ -163,6 +163,10 @@ const routes: Routes = [
   },  {
     path: 'product-reserve-modal',
     loadChildren: () => import('./modals/product-reserve-modal/product-reserve-modal.module').then( m => m.ProductReserveModalPageModule)
+  },
+  {
+    path: 'confirmmodal',
+    loadChildren: () => import('./modals/confirmmodal/confirmmodal.module').then( m => m.ConfirmmodalPageModule)
   }
 
 
