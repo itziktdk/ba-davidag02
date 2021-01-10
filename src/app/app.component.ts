@@ -7,7 +7,7 @@ import firebase from 'firebase/app';
 import 'firebase/auth';
 import { firebaseConfig } from './firebase.config';
 
-// import { FCM } from '@ionic-native/fcm/ngx';
+import { FCM } from '@ionic-native/fcm/ngx';
 
 import {
   GoogleMaps,
@@ -30,7 +30,7 @@ export class AppComponent {
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
-    // private fcm: FCM,
+    private fcm: FCM,
     private fService: FirebaseService,
   ) {
     this.initializeApp();
@@ -38,7 +38,7 @@ export class AppComponent {
   }
 
   sendPushNotification() {
-    // this.fService.sendPush();
+    this.fService.sendPush();
   }
 
   initializeApp() {
@@ -46,29 +46,28 @@ export class AppComponent {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
-    // firebase.initializeApp(firebaseConfig);
   }
 
-  // initPushNotification() {
-  //   this.fcm.getToken().then(token => {
-  //     console.log(token);
-  //     localStorage.setItem('tokenP', token);
-  //   });
+  initPushNotification() {
+    this.fcm.getToken().then(token => {
+      console.log(token);
+      localStorage.setItem('tokenP', token);
+    });
 
-  //   this.fcm.onTokenRefresh().subscribe(token => {
-  //     console.log(token);
-  //   });
+    this.fcm.onTokenRefresh().subscribe(token => {
+      console.log(token);
+    });
 
-  //   // Recieve Push notification
-  //   this.fcm.onNotification().subscribe(data => {
-  //     console.log(data);
-  //     if (data.wasTapped) {
-  //       console.log('Received in background');
-  //       // this.router.navigate([data.landing_page, data.price]);
-  //     } else {
-  //       console.log('Received in foreground');
-  //       // this.router.navigate([data.landing_page, data.price]);
-  //     }
-  //   });
-  // }
+    // Recieve Push notification
+    this.fcm.onNotification().subscribe(data => {
+      console.log(data);
+      if (data.wasTapped) {
+        console.log('Received in background');
+        // this.router.navigate([data.landing_page, data.price]);
+      } else {
+        console.log('Received in foreground');
+        // this.router.navigate([data.landing_page, data.price]);
+      }
+    });
+  }
 }

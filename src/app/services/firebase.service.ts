@@ -111,25 +111,25 @@ export class FirebaseService {
     return this.firestore.collection('/userData').valueChanges();
   }
 
-  // sendPush() {
-  //   console.log('toekP', localStorage.getItem('tokenP'));
-  //   const data = {
-  //     notification: {
-  //       title: 'Ionic 4 Notification',
-  //       body: 'This notification sent from POSTMAN using Firebase HTTP protocol',
-  //       sound: 'default',
-  //       click_action: 'FCM_PLUGIN_ACTIVITY',
-  //       icon: 'fcm_push_icon'
-  //     },
-  //     data: {
-  //       landing_page: 'second',
-  //       price: '$3,000.00'
-  //     },
-  //     to: localStorage.getItem('tokenP'),
-  //     priority: 'high',
-  //     restricted_package_name: ''
-  //   };
-  // }
+  sendPush() {
+    console.log('toekP', localStorage.getItem('tokenP'));
+    const data = {
+      notification: {
+        title: 'Ionic 4 Notification',
+        body: 'This notification sent from POSTMAN using Firebase HTTP protocol',
+        sound: 'default',
+        click_action: 'FCM_PLUGIN_ACTIVITY',
+        icon: 'fcm_push_icon'
+      },
+      data: {
+        landing_page: 'second',
+        price: '$3,000.00'
+      },
+      to: localStorage.getItem('tokenP'),
+      priority: 'high',
+      restricted_package_name: ''
+    };
+  }
   // END Pharmacy
 
 

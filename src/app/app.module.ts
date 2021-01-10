@@ -29,7 +29,7 @@ import { PhotoViewer } from '@ionic-native/photo-viewer/ngx';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { NativeGeocoder, NativeGeocoderResult, NativeGeocoderOptions } from '@ionic-native/native-geocoder/ngx';
 import { ConfimationModalComponent } from './modals/confimation-modal/confimation-modal.component';
-// import { FCM } from '@ionic-native/fcm/ngx';
+import { FCM } from '@ionic-native/fcm/ngx';
 @NgModule({
   declarations: [
     AppComponent,
@@ -60,7 +60,7 @@ import { ConfimationModalComponent } from './modals/confimation-modal/confimatio
     CallNumber,
     InAppBrowser,
     PhotoViewer,
-    // FCM,
+    FCM,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent],
