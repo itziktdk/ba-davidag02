@@ -61,7 +61,9 @@ export class ConfimationModalComponent implements OnInit {
   }
 
   close() {
-    this.modalCtrl.dismiss();
+    this.modalCtrl.dismiss({
+      dismissed: true
+    });
   }
 
 }

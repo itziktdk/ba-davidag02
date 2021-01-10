@@ -26,10 +26,11 @@ export class OrdertrackingPage implements OnInit {
     const userId = localStorage.getItem('userId');
     this.fService.getReserveOrders()
       .subscribe((orders: any) => {
+        this.reserveList = [];
         console.log('this.order ', orders);
-        const result = orders.forEach(order => {
+        orders.forEach(order => {
           // if (order.pharmacyDetails.ownerId == userId) {
-            this.reserveList.push(order);
+          this.reserveList.push(order);
           // }
           // console.log('this.reserveList ', this.reserveList);
         });
@@ -60,7 +61,7 @@ export class OrdertrackingPage implements OnInit {
     });
 
     this.modalCtrl.dismiss(() => {
-      // this.performGetOrderList();
+      this.performGetOrderList();
     });
     return await modal.present();
   }
