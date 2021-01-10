@@ -48,7 +48,7 @@
     </div>
   </div>
   <div class="the-list" *ngIf="category == 's2'">
-    <div *ngFor="let item of reserveList" class="card">{{item.orderId}}
+    <div *ngFor="let item of reserveList" class="card">
       <ion-row *ngIf="!item.verify">
         <ion-col size="2" class="right flex al-center flexd">
           <ion-icon (click)="showModal(item, i)" name="open-outline"></ion-icon>
