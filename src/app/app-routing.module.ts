@@ -141,7 +141,11 @@ const routes: Routes = [
   {
     path: 'searchdoc',
     loadChildren: () => import('./searchdoc/searchdoc.module').then( m => m.SearchdocPageModule)
+  },  {
+    path: 'confirmmodal',
+    loadChildren: () => import('./modals/confirmmodal/confirmmodal.module').then( m => m.ConfirmmodalPageModule)
   }
+
 
 ];
 
