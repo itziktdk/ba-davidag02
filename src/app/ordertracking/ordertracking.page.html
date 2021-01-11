@@ -32,17 +32,20 @@
         <ion-col size="5" class="right flex al-center flexd">
           <div class="details">
             <h5>{{item.orderId}} </h5>
-            <p>{{item.pharmacyDetails.address}} / {{item.pharmacyDetails.city}}
+            <h5>{{item.time | sortTimeFormat: 'LLL'}}
+            </h5>
+            <p>{{item.user.userdata.address}} / {{item.user.userdata.city}}
             </p>
 
             <h5>Qty {{item.product.orderedQty}} </h5>
           </div>
         </ion-col>
-        <ion-col size="5" class="left flex al-center jc-between">
-          <img (click)=goNavigate(item.user.userdata.city) src="assets/imgs/pin.png" alt="">
+        <ion-col size="5" class="left flex al-center jc-between">          
+          <ion-icon name="trash-outline"></ion-icon>
+          <!-- <img (click)=goNavigate(item.user.userdata.city) src="assets/imgs/pin.png" alt="">
 
           <img (click)="onCallDial(item.user.userdata.number)" src="assets/imgs/call2.png" alt="">
-          <img href="whatsapp://send?phone=item.user.userdata.number" src="assets/imgs/whatsapp.png" alt="">
+          <img href="whatsapp://send?phone=item.user.userdata.number" src="assets/imgs/whatsapp.png" alt=""> -->
         </ion-col>
       </ion-row>
     </div>
@@ -57,6 +60,8 @@
         <ion-col size="5" class="right flex al-center flexd">
           <div class="details">
             <h5>{{item.orderId}} </h5>
+            <h5>{{item.time | sortTimeFormat: 'LLL'}}
+            </h5>
             <p>{{item.pharmacyDetails.address}} / {{item.pharmacyDetails.city}}
             </p>
 

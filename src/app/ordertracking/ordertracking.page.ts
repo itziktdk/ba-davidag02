@@ -2,6 +2,7 @@ import { ModalController, NavController } from '@ionic/angular';
 import { Component, OnInit } from '@angular/core';
 import { FirebaseService } from '../services/firebase.service';
 import { ConfimationModalComponent } from '../modals/confimation-modal/confimation-modal.component';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-ordertracking',
@@ -31,6 +32,11 @@ export class OrdertrackingPage implements OnInit {
         orders.forEach(order => {
           // if (order.pharmacyDetails.ownerId == userId) {
           this.reserveList.push(order);
+          this.reserveList.sort((a, b) => {
+            const c = new Date(a.time);
+            const d = new Date(b.time);
+            return c < d ? -1 : c > d ? 1 : 0;
+          });
           // }
           // console.log('this.reserveList ', this.reserveList);
         });
@@ -50,7 +56,7 @@ export class OrdertrackingPage implements OnInit {
   }
 
   async showModal(item, index) {
-    console.log('send item ', item)
+    console.log('send item ', item);
     const modal = await this.modalCtrl.create({
       component: ConfimationModalComponent,
       backdropDismiss: true,
