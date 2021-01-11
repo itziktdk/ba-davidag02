@@ -120,6 +120,8 @@ export class AuthService {
   }
 
   signOutCurrentUser() {
+    localStorage.clear();
+    sessionStorage.clear();
     return firebase.auth().signOut();
   }
 

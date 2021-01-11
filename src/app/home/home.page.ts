@@ -41,7 +41,6 @@ export class HomePage implements OnInit {
     private authenticationService: AuthenticationService,
     private userDataService: UserDataService,
     private fireStore: AngularFirestore,
-    afs: AngularFirestore,
   ) {
 
     // this.userDoc = fireStore.doc<any>('users/xGT8mosXOfN9o4AMawx506Uotag2');
@@ -74,10 +73,14 @@ export class HomePage implements OnInit {
           localStorage.setItem('email', res.email);
           this.userDataService.getUserData(res.uid)
             .subscribe((userData: any) => {
-              this.isAdmin = userData.admin;
-              console.log('usrdata ', this.isAdmin);
-              localStorage.setItem('isAdmin', userData.admin);
-            });
+              if (userData) {
+                this.isAdmin = userData.admin;
+                console.log('usrdata ', this.isAdmin);
+                localStorage.setItem('isAdmin', userData.admin);
+              } else {
+                this.authService.signOutCurrentUser();
+              }
+            }, err => { this.authService.signOutCurrentUser(); });
           if (res.photoURL) { this.photoUrl = res.photoURL; }
         }
       });
