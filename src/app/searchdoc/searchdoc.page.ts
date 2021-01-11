@@ -39,7 +39,14 @@ export class SearchdocPage implements OnInit {
   };
 
   hd = this.locationTraces[0];
-
+  cityList: any = [];
+  cities2 = [
+    { id: 1, name: 'Vilnius' },
+    { id: 2, name: 'Kaunas' },
+    { id: 3, name: 'Pavilnys', disabled: true },
+    { id: 4, name: 'Pabradė' },
+    { id: 5, name: 'Klaipėda' }
+  ];
   constructor(
     private geolocation: Geolocation,
     private nativeGeocoder: NativeGeocoder,
@@ -69,6 +76,11 @@ export class SearchdocPage implements OnInit {
     this.fService.getPharmacyList()
       .subscribe((result: any) => {
         this.pharmacyList = result;
+        console.log(result);
+        result.forEach(element => {
+          this.cityList.push({ id: element.city, name: element.city });
+          console.log(this.cityList);
+        });
       });
   }
 
@@ -115,14 +127,15 @@ export class SearchdocPage implements OnInit {
     }
   }
 
-  filterByCity(event) {
-    if (event.target.value === '' || !event.target.value) {
+  filterByCity(city) {
+    if (city.id === '' || !city.id) {
       this.filteredPharmacyList = this.pharmacyList;
       return;
     }
     if (this.filteredPharmacyList && this.filteredPharmacyList.length > 0) {
-      const filterPharmacyList1 = this.filteredPharmacyList.filter(x => x.city === event.target.value);
+      const filterPharmacyList1 = this.filteredPharmacyList.filter(x => x.city === city.id);
       this.filteredPharmacyList = filterPharmacyList1;
+      console.log('1 ', this.filteredPharmacyList)
       // if (filterPharmacyList1 && filterPharmacyList1.length > 0) {
       //   this.filteredPharmacyList = filterPharmacyList1;
       // }
@@ -133,8 +146,9 @@ export class SearchdocPage implements OnInit {
       } else {
         tepmArr = this.pharmacyList;
       }
-      const filterPharmacyList2 = tepmArr.filter(x => x.city === event.target.value);
+      const filterPharmacyList2 = tepmArr.filter(x => x.city === city.id);
       this.filteredPharmacyList = filterPharmacyList2;
+      console.log('2 ', this.filteredPharmacyList)
       // if (filterPharmacyList2 && filterPharmacyList2.length > 0) {
       //   this.filteredPharmacyList = filterPharmacyList2;
       // }

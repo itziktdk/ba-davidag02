@@ -17,16 +17,31 @@
         </ion-item>
       </div>
       <ion-row>
-        <ion-col size="5" class="in-label flex al-center jc-center">
+        <!-- <ion-col size="5" class="in-label flex al-center jc-center">
           <ion-label>חפש באיזור </ion-label>
-        </ion-col>
+        </ion-col> -->
 
         <ion-col size="7">
-          <div class="input-item">
-            <ion-item lines="none">
-              <ion-input type="text" name="Second" [(ngModel)]="searchValue2" class="ion-text-center" (keyup)="filterByCity($event)"
-                placeholder="{{ttt1}}"></ion-input>
-            </ion-item>
+          <div class="input-item" *ngIf="cityList && cityList.length>0">
+            <!-- <ion-item lines="none"> -->
+            <!-- <ion-input type="text" name="Second" [(ngModel)]="searchValue2" class="ion-text-center"
+                (keyup)="filterByCity($event)" placeholder="{{ttt1}}">
+
+                <datalist id="browsers">
+                  <option *ngFor="let city of cityList" value="city"></option>
+                </datalist>
+              </ion-input> -->
+            <!-- <ion-searchbar (ionFocus)="filterPharmacy($event)" (ionInput)="filterPharmacy($event)"
+                (ionBlur)="filterPharmacy($event)" debounce=500>
+              </ion-searchbar> -->
+            <!-- <form action=""> -->
+            <ng-select (change)="filterByCity($event)" [items]="cityList" bindLabel="id" bindValue="name" [multiple]="false" name="test"
+              placeholder="{{ttt1}}" [(ngModel)]="searchValue2">
+            </ng-select>
+            <!-- </form> -->
+
+
+            <!-- </ion-item> -->
           </div>
         </ion-col>
       </ion-row>

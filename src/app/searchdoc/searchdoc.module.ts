@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { SearchdocPageRoutingModule } from './searchdoc-routing.module';
 
 import { SearchdocPage } from './searchdoc.page';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    SearchdocPageRoutingModule
+    SearchdocPageRoutingModule,
+    NgSelectModule
   ],
   declarations: [SearchdocPage]
 })
