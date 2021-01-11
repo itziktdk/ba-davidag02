@@ -32,7 +32,9 @@
         <ion-col size="5" class="right flex al-center flexd">
           <div class="details">
             <h5>{{item.orderId}} </h5>
-            <p>{{item.pharmacyDetails.address}} / {{item.pharmacyDetails.city}}
+            <h5>{{item.time | sortTimeFormat: 'LLL'}}
+            </h5>
+            <p>{{item.user.userdata.address}} / {{item.user.userdata.city}}
             </p>
 
             <h5>Qty {{item.product.orderedQty}} </h5>
@@ -57,6 +59,8 @@
         <ion-col size="5" class="right flex al-center flexd">
           <div class="details">
             <h5>{{item.orderId}} </h5>
+            <h5>{{item.time | sortTimeFormat: 'LLL'}}
+            </h5>
             <p>{{item.pharmacyDetails.address}} / {{item.pharmacyDetails.city}}
             </p>
 

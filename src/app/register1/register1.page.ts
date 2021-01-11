@@ -10,6 +10,8 @@ import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 import { AuthService } from '../services/auth.service';
 import { UserDataService } from '../services/user-data.service';
 
+import * as moment from 'moment';
+
 export interface ImgFile {
   name: string;
   filepath: string;
@@ -217,7 +219,7 @@ export class Register1Page implements OnInit {
       // Storage path
       const fileStoragePath = `filesStorage/${new Date().getTime()}_cam`;
       const pictures = this.afStorage.ref(fileStoragePath);
-      this.saveImage('G', pictures, image, type);
+      this.saveImage('C', pictures, image, type);
     } catch (e) {
       console.error(e);
     }
@@ -241,30 +243,32 @@ export class Register1Page implements OnInit {
     // Image reference
     const imageRef = this.afStorage.ref(fileStoragePath);
     this.saveImage('G', imageRef, file, type);
-    this.percentageVal = this.fileUploadTask.percentageChanges();
+    // this.percentageVal = this.fileUploadTask.percentageChanges();
 
   }
 
   saveImage(type: string, imageRef: any, fileORfileString, fileType) {
     let fileUploadTask;
     if (type === 'C') {
-      fileUploadTask = type === imageRef.putString(fileORfileString, 'data_url');
+      fileUploadTask = imageRef.putString(fileORfileString, 'data_url');
     } else if (type === 'G') {
-      fileUploadTask = type === imageRef.put(fileORfileString);
+      fileUploadTask = imageRef.put(fileORfileString);
     }
-    fileUploadTask.snapshotChanges().
-      subscribe((snap) => {
+    fileUploadTask
+      .snapshotChanges()
+      .subscribe((snap) => {
         // Retreive uploaded image storage path
         this.UploadedImageURL = imageRef.getDownloadURL();
         console.log(this.UploadedImageURL);
         this.UploadedImageURL.subscribe(resp => {
           this.storeFileLinkFirebase({
-            name: fileORfileString.name,
+            name: type == 'C' ? moment().valueOf() : fileORfileString.name,
             filepath: resp,
             size: this.imgSize
           }, fileType);
           this.isFileUploading = false;
           this.isFileUploaded = true;
+          console.log('isFileUploaded');
         }, error => {
           console.log(error);
         });
@@ -273,7 +277,11 @@ export class Register1Page implements OnInit {
   }
 
 
+
+
   storeFileLinkFirebase(image: ImgFile, type: string) {
+    console.log('image ', image);
+
     if (type === 'L') {
       this.step2From.licenseImgName = image;
     } else if (type === 'I') {

@@ -68,8 +68,9 @@ export class FirebaseService {
     return this.firestore.collection('/pharms').valueChanges();
   }
 
-  addReserveOrders(data: any) {
-    return this.firestore.collection(`/reserveOrders`).add(data);
+  addReserveOrders(data: any, docId: string) {
+    // const docId = docId;
+    return this.firestore.collection(`/reserveOrders`).doc(docId.toString()).set(data);
     // const ref = firebase.database().ref(`reserveOrders/${data.user.uid}/`);
     // return ref.once('value', function (snapshot) {
     //   return ref.update(data);

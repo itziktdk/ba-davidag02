@@ -13,6 +13,7 @@ import { FirebaseService } from 'src/app/services/firebase.service';
 export class ProductReserveModalPage implements OnInit {
   data;
   pArray;
+  pCount: number;
   count = 0;
   orderItemArr: any = [];
   hideBtn = true;
@@ -26,8 +27,7 @@ export class ProductReserveModalPage implements OnInit {
   ) { }
 
   ngOnInit() {
-    // console.log('data ', this.data);
-    // this.data = this.pArray;
+    this.pCount = Number(sessionStorage.getItem('rCount'));
     this.performGetAllProducts();
   }
 
@@ -44,9 +44,10 @@ export class ProductReserveModalPage implements OnInit {
   }
 
   onReserve() {
+    let currentU;
     this.hideBtn = true;
     if (this.orderItemArr && this.orderItemArr.length > 0) {
-      this.authService.getCurrentUserDetails()
+      currentU = this.authService.getCurrentUserDetails()
         .subscribe((result: any) => {
           // this.doctorList = result;
           console.log('snap ', result);
@@ -68,7 +69,8 @@ export class ProductReserveModalPage implements OnInit {
               },
               pharmacyDetails: this.pArray
             };
-            this.fService.addReserveOrders(data)
+            const reserveId: string = this.generateReserveId;
+            this.fService.addReserveOrders(data, reserveId)
               .then(res => {
                 const notification = {
                   dttm: (new Date()).toString(),
@@ -82,15 +84,43 @@ export class ProductReserveModalPage implements OnInit {
                 console.log(res);
                 // });
               });
+            this.alert();
+            this.data = this.pArray;
+            this.hideBtn = false;
           }
-          this.alert();
-          this.data = this.pArray;
-          this.hideBtn = false;
         });
+
     } else {
       this.alertService.default('', 'Please add atleast one item to process!');
       this.hideBtn = false;
     }
+    // currentU.unsubscribe();
+  }
+
+  get generateReserveId() {
+    const docId = ++this.pCount;
+    const digitCount = docId.toString().length;
+    switch (digitCount) {
+      case 1:
+        return '00000' + docId.toString();
+        break;
+      case 2:
+        return '0000' + docId.toString();
+        break;
+      case 3:
+        return '000' + docId.toString();
+        break;
+      case 4:
+        return '00' + docId.toString();
+        break;
+      case 5:
+        return '0' + docId.toString();
+        break;
+      case 6:
+        return docId.toString();
+        break;
+    }
+
   }
 
   validateQty(qty) {
