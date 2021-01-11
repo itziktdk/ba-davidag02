@@ -44,9 +44,10 @@ export class ProductReserveModalPage implements OnInit {
   }
 
   onReserve() {
+    let currentU;
     this.hideBtn = true;
     if (this.orderItemArr && this.orderItemArr.length > 0) {
-      this.authService.getCurrentUserDetails()
+      currentU = this.authService.getCurrentUserDetails()
         .subscribe((result: any) => {
           // this.doctorList = result;
           console.log('snap ', result);
@@ -83,15 +84,17 @@ export class ProductReserveModalPage implements OnInit {
                 console.log(res);
                 // });
               });
+            this.alert();
+            this.data = this.pArray;
+            this.hideBtn = false;
           }
-          this.alert();
-          this.data = this.pArray;
-          this.hideBtn = false;
         });
+
     } else {
       this.alertService.default('', 'Please add atleast one item to process!');
       this.hideBtn = false;
     }
+    // currentU.unsubscribe();
   }
 
   get generateReserveId() {
