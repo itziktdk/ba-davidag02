@@ -1,12 +1,15 @@
 ion-content {
     --background: rgba(255, 255, 255, 0.295);
+    direction: rtl;
 
     .holder {
         background: white;
         border-radius: 20px;
         width: 90%;
+        
 
         .content {
+            direction: rtl;
             h2 {
                 margin-top: 0;
             }

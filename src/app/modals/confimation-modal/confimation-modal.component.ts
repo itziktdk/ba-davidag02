@@ -40,6 +40,7 @@ export class ConfimationModalComponent implements OnInit {
 
     this.fService.UpdateOrderReserve(item.orderId, data)
       .then(res => {
+        location.reload();
         this.close();
       });
 
@@ -56,6 +57,7 @@ export class ConfimationModalComponent implements OnInit {
     this.fService.UpdateOrderReserve(item.orderId, data)
       .then(res => {
         this.close();
+        location.reload();
       });
 
   }

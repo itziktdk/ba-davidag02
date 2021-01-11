@@ -1,4 +1,4 @@
-<ion-content>
+<ion-content style="direction: rtl;">
   <ion-grid style="height: 100%">
     <ion-row class="ion-justify-content-center ion-align-items-center" style="height: 100%">
       <div class="holder">
@@ -7,12 +7,22 @@
             <ion-icon slot="icon-only" name="close-circle-outline"></ion-icon>
           </ion-button>
         </div>
-        <div class="content ion-padding-horizontal ion-text-left">
-          <h2>Order <br> {{item.orderId}} </h2>
-          <div class="details ion-text-left">
-            <h5>{{item.product.name}} :Name</h5>
-            <h5>{{item.product.description}} :Product</h5>
-            <h5>{{item.product.orderedQty}} :Qty</h5>
+        <div class="content ion-padding-horizontal ion-text-right">
+          <h2>הזמנה מס' <br> {{item.orderId}} </h2>
+          <div class="details ion-text-right">
+            <h5>
+              שם המזמין:
+              <span>{{item.user.userdata.first+' '+item.user.userdata.last}}</span>
+            </h5>
+            <h5>
+              שם המוצר:
+              <span>{{item.product.name}}</span>
+            </h5>
+            <h5>
+             כמות מבוקשת:
+              <span>{{item.product.orderedQty}}</span>
+            </h5>
+
             <div *ngIf="item.verify">
               <h5 *ngIf="item.confirmation">Approved :Status</h5>
               <h5 *ngIf="!item.confirmation">Decline :Status</h5>
@@ -45,12 +55,12 @@
             <ion-row>
               <ion-col size="6">
                 <ion-button (click)="onDecline(item)" id="decline" expand="block" shape="round">
-                  decline
+                  דחה
                 </ion-button>
               </ion-col>
               <ion-col size="6">
                 <ion-button (click)="onAccept(item)" id="accept" expand="block" shape="round">
-                  accept
+                  אשר
                 </ion-button>
               </ion-col>
 

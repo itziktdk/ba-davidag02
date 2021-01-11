@@ -11,6 +11,7 @@ import { CallNumber } from '@ionic-native/call-number/ngx';
 export class FirebaseService {
 
   collectionName = 'Customers';
+  intk = 0;
 
   constructor(
     private firestore: AngularFirestore,
@@ -155,5 +156,9 @@ export class FirebaseService {
 
   UpdateOrderReserve(orderId: string, item: any) {
     return this.firestore.collection('/reserveOrders').doc(orderId).update(item);
+  }
+
+  orderIncrement() {
+    //this.intk = this.firestore.collection('/orderSerial').doc('tJ3P2iC0O377gAb1e9Fs').collection('int');
   }
 }

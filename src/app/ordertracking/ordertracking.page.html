@@ -39,16 +39,16 @@
           </div>
         </ion-col>
         <ion-col size="5" class="left flex al-center jc-between">
-          <img (click)=goNavigate(item.user.userdata.city) src="assets/imgs/pin.png" alt="">
+          <img (click)=onNavigate(item.user.userdata.city) src="../../assets/imgs/waze (3).png" alt="">
 
-          <img (click)="onCallDial(item.user.userdata.number)" src="assets/imgs/call2.png" alt="">
-          <img href="whatsapp://send?phone=item.user.userdata.number" src="assets/imgs/whatsapp.png" alt="">
+          <img (click)="onCallDial(item.user.userdata.number)" src="../../assets/imgs/phone-call (1).png" alt="">
+          <img href="whatsapp://send?phone=item.user.userdata.number" src="../../assets/imgs/whatsapp (3).png" alt="">
         </ion-col>
       </ion-row>
     </div>
   </div>
   <div class="the-list" *ngIf="category == 's2'">
-    <div *ngFor="let item of reserveList" class="card">{{item.orderId}}
+    <div *ngFor="let item of reserveList" class="card">
       <ion-row *ngIf="!item.verify">
         <ion-col size="2" class="right flex al-center flexd">
           <ion-icon (click)="showModal(item, i)" name="open-outline"></ion-icon>
@@ -64,10 +64,10 @@
           </div>
         </ion-col>
         <ion-col size="5" class="left flex al-center jc-between">
-          <img src="assets/imgs/pin.png" alt="">
+          <img (click)=onNavigate(item.user.userdata.city) src="../../assets/imgs/waze (3).png" alt="">
 
-          <img src="assets/imgs/call2.png" alt="">
-          <img src="assets/imgs/whatsapp.png" alt="">
+          <img (click)="onCallDial(item.user.userdata.number)" src="../../assets/imgs/phone-call (1).png" alt="">
+          <img href="whatsapp://send?phone=item.user.userdata.number" src="../../assets/imgs/whatsapp (3).png" alt="">
         </ion-col>
       </ion-row>
     </div>
