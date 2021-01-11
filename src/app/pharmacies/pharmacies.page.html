@@ -63,7 +63,7 @@
                         <ion-button (click)="onCallDial()" id="hmo">
                           {{data.phone}}
                         </ion-button>
-                        <ion-button id="hmo" (click)="onReserveProduct(data)">
+                        <ion-button [disabled]="count!=0 && count < 0" id="hmo" (click)="onReserveProduct(data)">
                           Reserve
                         </ion-button>
                         <!-- <ion-button id="subject" >

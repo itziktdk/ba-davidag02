@@ -24,14 +24,20 @@ export class PharmaciesPage implements OnInit {
     private iab: InAppBrowser) { }
   filterTerm: string;
   category: any = 's1';
+  count: number = null;
 
   pharmRecords;
   ngOnInit() {
     console.log('hit');
     this.route.queryParams.subscribe(params => {
       this.pharmRecords = JSON.parse(params.data);
-      console.log(this.pharmRecords);
     });
+
+    this.fService.getReserveOrders()
+      .subscribe((result: any) => {
+        sessionStorage.setItem('rCount', result.length);
+        this.count = result.length;
+      });
   }
 
   segmentChanged(ev: any) {
@@ -43,7 +49,7 @@ export class PharmaciesPage implements OnInit {
     const modal = await this.modalCtrl.create({
       component: PharmodalPage,
       backdropDismiss: true,
-      componentProps: {data}
+      componentProps: { data }
     });
 
     return await modal.present();
