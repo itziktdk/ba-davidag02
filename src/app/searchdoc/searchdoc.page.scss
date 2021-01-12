@@ -37,6 +37,7 @@ ion-content
           border: 1px solid #808080 !important;
           border-radius: 30px !important;
           margin: 10px 0;
+         background: #ffffff;
       }
       .in-label
       {
@@ -100,4 +101,18 @@ ion-content
       }
     }
   }
+}
+
+.ng-select.customng {
+    border:0px;
+    background: #ffffff;
+}
+
+.ng-input {
+    border: 0px !important;
+    background: #ffffff;
+}
+
+.ng-option {
+  background-color: #FA9917;
 }

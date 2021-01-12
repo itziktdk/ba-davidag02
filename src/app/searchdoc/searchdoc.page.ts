@@ -7,6 +7,7 @@ import { FirebaseService } from '../services/firebase.service';
 import { NavController } from '@ionic/angular';
 import { NavigationExtras } from '@angular/router';
 import { AlertService } from '../services/alert.service';
+//import { contains } from 'jquery';
 
 @Component({
   selector: 'app-searchdoc',
@@ -47,6 +48,7 @@ export class SearchdocPage implements OnInit {
     { id: 4, name: 'Pabradė' },
     { id: 5, name: 'Klaipėda' }
   ];
+  searchterm: any;
   constructor(
     private geolocation: Geolocation,
     private nativeGeocoder: NativeGeocoder,
@@ -78,9 +80,20 @@ export class SearchdocPage implements OnInit {
         this.pharmacyList = result;
         console.log(result);
         result.forEach(element => {
-          this.cityList.push({ id: element.city, name: element.city });
-          console.log(this.cityList);
-        });
+         // if (this.cityList.indexOf(element.city) == -1) { 
+            this.cityList.push({ id: element.city, name: element.city });
+            
+       //   }
+          });
+      
+        // var filteredArray = this.cityList.reduce((accumalator, current) => {
+        //   if (!accumalator.some(item => item.city === current.city)) {
+        //     accumalator.push(current);
+        //   }
+        //   return accumalator;
+        // }, []);
+        console.log(this.cityList);
+        
       });
   }
 
@@ -125,6 +138,8 @@ export class SearchdocPage implements OnInit {
       //   this.filteredPharmacyList = filterPharmacyList2;
       // }
     }
+    this.searchterm = val;
+    console.log(this.searchterm);
   }
 
   filterByCity(city) {
@@ -153,6 +168,7 @@ export class SearchdocPage implements OnInit {
       //   this.filteredPharmacyList = filterPharmacyList2;
       // }
     }
+    this.searchterm = city.id;
   }
 
   getCoordinates() {
@@ -200,13 +216,14 @@ export class SearchdocPage implements OnInit {
       (!!this.searchValue2 && (!!this.filteredPharmacyList && this.filteredPharmacyList.length > 0))) {
       const navigationExtras: NavigationExtras = {
         queryParams: {
-          data: this.filteredPharmacyList && this.filteredPharmacyList.length > 0 ?
-            JSON.stringify(this.filteredPharmacyList) : JSON.stringify(this.pharmacyList)
+          // data: this.filteredPharmacyList && this.filteredPharmacyList.length > 0 ?
+          //   JSON.stringify(this.filteredPharmacyList) : JSON.stringify(this.pharmacyList)
+          data: this.searchterm
         }
       };
       this.navCtrl.navigateForward(['/pharmacies'], navigationExtras);
     } else {
-      this.alertService.default('Alert', '\'לא נמצאו בתי מרקחת מתאימים\'');
+      this.alertService.default('Alert', 'לא נמצאו בתי מרקחת מתאימים');
     }
   }
 }
