@@ -77,7 +77,7 @@ export class LoginPage implements OnInit {
       } else {
         params = {};
       }
-      this.google.login(params)
+      this.google.login({})
         .then((response) => {
           const { idToken, accessToken } = response;
           this.onLoginSuccess(idToken, accessToken);
@@ -94,11 +94,13 @@ export class LoginPage implements OnInit {
           localStorage.setItem('userId', success.user.uid);
           localStorage.setItem('email', success.user.email);
           this.userDataService.checlUserDataExist(success.user.uid)
-            .subscribe(snap => {
+            .subscribe(async snap => {
               if (!snap.exists) {
-                this.navCtrl.navigateBack('register1');
+                this.navCtrl.navigateRoot('register1');
               } else {
-                this.navCtrl.navigateBack('home');
+                const userData: any = await this.userDataService.getUserData(success.user.uid);
+                localStorage.setItem('isAdmin', userData.admin);
+                this.navCtrl.navigateRoot('home');
                 this.Alert.Signin();
               }
             });
@@ -133,8 +135,7 @@ export class LoginPage implements OnInit {
       this.isGoogleLogin = false;
     });
   }
-  goHome()
-  {
+  goHome() {
     this.navCtrl.navigateForward('home');
   }
 }

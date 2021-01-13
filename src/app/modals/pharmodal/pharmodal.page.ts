@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 import { LaunchNavigator } from '@ionic-native/launch-navigator/ngx';
@@ -11,7 +11,7 @@ import { FirebaseService } from 'src/app/services/firebase.service';
   styleUrls: ['./pharmodal.page.scss'],
 })
 export class PharmodalPage implements OnInit {
-  data;
+  @Input() data;
   constructor(
     private modalCtrl: ModalController,
     private launchNavigator: LaunchNavigator,

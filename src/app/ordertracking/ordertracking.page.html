@@ -3,7 +3,6 @@
     <h1>מעקב הזמנות
     </h1>
   </div>
-
   <div class="seg-holder">
     <div class="segments-holder2">
       <ion-segment (ionChange)="segmentChanged($event)" [value]="category">
@@ -22,62 +21,57 @@
       </ion-segment>
     </div>
   </div>
-
-
-  <div class="the-list" *ngIf="category == 's2'">
-    <div class="card" (click)="goDetails()">
-      <ion-row>
+  <div class="the-list" *ngIf="category == 's1'">
+    <div *ngFor="let item of reserveList; let i = index;" class="card">
+      <ion-row *ngIf="item.verify">
         <ion-col size="2" class="right flex al-center flexd">
-          <ion-icon name="checkmark-circle-outline"></ion-icon>
-          <ion-icon name="close-circle-outline"></ion-icon>
+          <ion-icon (click)="showModal(item, i)" name="open-outline"></ion-icon>
+          <!-- <ion-icon name="checkmark-circle-outline"></ion-icon>
+          <ion-icon name="close-circle-outline"></ion-icon> -->
         </ion-col>
         <ion-col size="5" class="right flex al-center flexd">
           <div class="details">
-            <h5>הזמנה 00124
-
+            <h5>{{item.orderId}} </h5>
+            <h5>{{item.time | sortTimeFormat: 'LLL'}}
             </h5>
-            <p>תל אביב
-              ישראל כהן,
+            <p>{{item.user.userdata.address}} / {{item.user.userdata.city}}
             </p>
 
-            <h5>מוצרים: 2
-
-            </h5>
+            <h5>Qty {{item.product.orderedQty}} </h5>
           </div>
         </ion-col>
         <ion-col size="5" class="left flex al-center jc-between">
-          <img src="assets/imgs/pin.png" alt="">
+          <img (click)=onNavigate(item.user.userdata.city) src="../../assets/imgs/waze (3).png" alt="">
 
-          <img src="assets/imgs/call2.png" alt="">
-          <img src="assets/imgs/whatsapp.png" alt="">
+          <img (click)="onCallDial(item.user.userdata.number)" src="../../assets/imgs/phone-call (1).png" alt="">
+          <img href="whatsapp://send?phone=item.user.userdata.number" src="../../assets/imgs/whatsapp (3).png" alt="">
         </ion-col>
       </ion-row>
     </div>
-    <div class="card"  (click)="goDetails()">
-      <ion-row>
+  </div>
+  <div class="the-list" *ngIf="category == 's2'">
+    <div *ngFor="let item of reserveList" class="card">
+      <ion-row *ngIf="!item.verify">
         <ion-col size="2" class="right flex al-center flexd">
-          <ion-icon name="checkmark-circle-outline"></ion-icon>
-          <ion-icon name="close-circle-outline"></ion-icon>
+          <ion-icon (click)="showModal(item, i)" name="open-outline"></ion-icon>
+          <!-- <ion-icon (click)="showModal(item, i)" name="flag-outline"></ion-icon> -->
         </ion-col>
         <ion-col size="5" class="right flex al-center flexd">
           <div class="details">
-            <h5>הזמנה 00124
-
+            <h5>{{item.orderId}} </h5>
+            <h5>{{item.time | sortTimeFormat: 'LLL'}}
             </h5>
-            <p>תל אביב
-              ישראל כהן,
+            <p>{{item.pharmacyDetails.address}} / {{item.pharmacyDetails.city}}
             </p>
 
-            <h5>מוצרים: 2
-
-            </h5>
+            <h5>Qty {{item.product.orderedQty}} </h5>
           </div>
         </ion-col>
         <ion-col size="5" class="left flex al-center jc-between">
-          <img src="assets/imgs/pin.png" alt="">
+          <img (click)=onNavigate(item.user.userdata.city) src="../../assets/imgs/waze (3).png" alt="">
 
-          <img src="assets/imgs/call2.png" alt="">
-          <img src="assets/imgs/whatsapp.png" alt="">
+          <img (click)="onCallDial(item.user.userdata.number)" src="../../assets/imgs/phone-call (1).png" alt="">
+          <img href="whatsapp://send?phone=item.user.userdata.number" src="../../assets/imgs/whatsapp (3).png" alt="">
         </ion-col>
       </ion-row>
     </div>

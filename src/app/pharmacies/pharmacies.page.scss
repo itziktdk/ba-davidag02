@@ -2,40 +2,114 @@ ion-content
 {
   --background: #fff url('../../assets/imgs/bg.png') no-repeat center center / cover;
 
-  .holder
-  {
+  // .holder
+  // {
    
-    .top-logo
-    {
-      .img-holder
-      {
-        img
-        {
-          height: 4rem;
-        }
+  //   .top-logo
+  //   {
+  //     .img-holder
+  //     {
+  //       img
+  //       {
+  //         height: 4rem;
+  //       }
 
-        h5
-        {
-          color: white;
-          margin: 0;
-        }
+  //       h5
+  //       {
+  //         color: white;
+  //         margin: 0;
+  //       }
         
-      }
+  //     }
 
-      .sub-bar
-      {
-        background-color: rgba(0,2,66,0.5);
-        border-radius: 25px;
-        p
-        {
+  //     .sub-bar
+  //     {
+  //       background-color: rgba(0,2,66,0.5);
+  //       border-radius: 25px;
+  //       p
+  //       {
          
-          color: white;
-          margin: 5px 0;
-        }
-      }
-    }
+  //         color: white;
+  //         margin: 5px 0;
+  //       }
+  //     }
+  //   }
 
 
    
-  }
+  // }
 }
+
+ion-grid {
+//  :host {
+  ion-card {
+    border-radius: 15px;
+  }
+  ion-item {
+    --inner-padding-end: 0px !important;
+  }
+
+  div {
+    display: flex;
+    align-items: center;
+  }
+
+  h4 {
+    color: rgb(25, 26, 27);
+    padding: 5px 0px 5px 0px;
+  }
+
+  .active {
+    ion-card-content {
+      transform: none;
+      opacity: 1;
+      height: 100%;
+    }
+  }
+
+  ion-card-content {
+    background-color: var(--my-custom-color2);
+    opacity: 0;
+    height: 0;
+   // transform: translateY(-100%);
+    overflow: hidden;
+   // transition: ease all 0.5s;
+ //   -webkit-transition: ease all 0.5s;
+    padding: 5px !important;
+  }
+  .quickbar {
+    width: 32px;
+    height: 32px;
+    margin-left: 8px;
+    margin-right: 3px;
+  }
+  .item-content {
+    width: 100%;
+    background-color: aliceblue;
+   div {
+      border-radius: 26px;
+      padding: 4px;
+     // margin-right: 20px;
+     ion-chip {
+       --background: orange;
+       border-width: thick;
+       border-color: orange;
+       color: #fff; 
+     }
+   }
+  }
+   .mapouter {
+                        position: relative;
+                        text-align: right;
+                        height: 300px;
+                        width: auto;
+                      }
+                      .gmap_canvas {
+                        overflow: hidden;
+                        background: none !important;
+                        height: 300px;
+                        width: auto;
+                      }
+}
+
+//}

@@ -15,6 +15,8 @@ import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
   styleUrls: ['./pharmacies.page.scss'],
 })
 export class PharmaciesPage implements OnInit {
+  pharmacyList: any;
+  cityList: any;
   constructor(
     private navCtrl: NavController,
     private modalCtrl: ModalController,
@@ -24,14 +26,24 @@ export class PharmaciesPage implements OnInit {
     private iab: InAppBrowser) { }
   filterTerm: string;
   category: any = 's1';
+  count: number = null;
 
   pharmRecords;
+  pharmlist;
   ngOnInit() {
     console.log('hit');
     this.route.queryParams.subscribe(params => {
-      this.pharmRecords = JSON.parse(params.data);
-      console.log(this.pharmRecords);
+     // this.pharmRecords = JSON.parse(params.data);
+      this.filterTerm = params.data;
     });
+
+    this.fService.getReserveOrders()
+      .subscribe((result: any) => {
+        sessionStorage.setItem('rCount', result.length);
+        this.count = result.length;
+      });
+    this.performGetAllPharmacies();
+    //this.pharmRecords = JSON.stringify(this.pharmlist);
   }
 
   segmentChanged(ev: any) {
@@ -43,7 +55,7 @@ export class PharmaciesPage implements OnInit {
     const modal = await this.modalCtrl.create({
       component: PharmodalPage,
       backdropDismiss: true,
-      componentProps: data
+      componentProps: { data }
     });
 
     return await modal.present();
@@ -66,18 +78,30 @@ export class PharmaciesPage implements OnInit {
       );
   }
 
-  async onReserveProduct(data: any) {
+  async onReserveProduct(item: any) {
     const modal = await this.modalCtrl.create({
       component: ProductReserveModalPage,
       backdropDismiss: true,
       componentProps: {
-        data
+        pArray: item
       }
     });
+
+    
 
     return await modal.present();
   }
 
+
+  performGetAllPharmacies() {
+    this.fService.getPharmacyList()
+      .subscribe((result: any) => {
+        this.pharmacyList = result;
+        console.log(result);
+        this.pharmRecords = result;
+      });
+  }
+  
   onNavigate(city: string) {
     console.log('on nav');
     this.fService.goNavigate(city)

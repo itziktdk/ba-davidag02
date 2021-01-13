@@ -5,6 +5,8 @@ import { AuthenticationService } from '../services/authentication.service';
 import { ActionSheetController } from '@ionic/angular';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { Observable } from 'rxjs/Observable';
+import { UserDataService } from '../services/user-data.service';
+import { subscribeOn } from 'rxjs/operators';
 // import { AngularFireAuth } from '@angular/fire/auth';
 
 
@@ -30,14 +32,15 @@ export class HomePage implements OnInit {
   userUID: string;
   users: Observable<User[]>;
   usersCollectionRef: AngularFirestoreCollection<User>;
+  isAdmin = false;;
   // tslint:disable-next-line: max-line-length
   constructor(
     private navCtrl: NavController,
     public actionSheetController: ActionSheetController,
     private authService: AuthService,
     private authenticationService: AuthenticationService,
+    private userDataService: UserDataService,
     private fireStore: AngularFirestore,
-    afs: AngularFirestore,
   ) {
 
     // this.userDoc = fireStore.doc<any>('users/xGT8mosXOfN9o4AMawx506Uotag2');
@@ -63,12 +66,25 @@ export class HomePage implements OnInit {
     this.authenticationService.authStatus()
       .subscribe(res => {
         console.log(res);
-        this.firstName = res.displayName;
-        this.userUID = res.uid;
-        localStorage.setItem('userId', res.uid);
-        localStorage.setItem('email', res.email);
-        if (res.photoURL) { this.photoUrl = res.photoURL; }
+        if (res) {
+          this.firstName = res.displayName;
+          this.userUID = res.uid;
+          localStorage.setItem('userId', res.uid);
+          localStorage.setItem('email', res.email);
+          this.userDataService.getUserData(res.uid)
+            .subscribe((userData: any) => {
+              if (userData) {
+                this.isAdmin = userData.admin;
+                console.log('usrdata ', this.isAdmin);
+                localStorage.setItem('isAdmin', userData.admin);
+              } else {
+                this.authService.signOutCurrentUser();
+              }
+            }, err => { this.authService.signOutCurrentUser(); });
+          if (res.photoURL) { this.photoUrl = res.photoURL; }
+        }
       });
+
   }
 
   async presentActionSheet() {
@@ -138,11 +154,11 @@ export class HomePage implements OnInit {
   // }
   goOut() {
     this.authService.signOutCurrentUser()
-    .then(res => {
-      localStorage.clear();
-      this.navCtrl.navigateForward('login');
-      console.log('signout res ', res);
-    });
+      .then(res => {
+        localStorage.clear();
+        this.navCtrl.navigateForward('login');
+        console.log('signout res ', res);
+      });
   }
 
   goVaucher() {

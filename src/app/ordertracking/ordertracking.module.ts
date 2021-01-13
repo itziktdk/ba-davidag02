@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { OrdertrackingPageRoutingModule } from './ordertracking-routing.module';
 
 import { OrdertrackingPage } from './ordertracking.page';
+import { SortTimeFormatPipe } from '../pipes/sort-time-format.pipe';
 
 @NgModule({
   imports: [
@@ -15,6 +16,7 @@ import { OrdertrackingPage } from './ordertracking.page';
     IonicModule,
     OrdertrackingPageRoutingModule
   ],
-  declarations: [OrdertrackingPage]
+  declarations: [OrdertrackingPage,
+    SortTimeFormatPipe]
 })
 export class OrdertrackingPageModule {}
