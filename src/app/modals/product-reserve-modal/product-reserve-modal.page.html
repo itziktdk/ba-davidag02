@@ -1,5 +1,5 @@
 <ion-content>
-  <div class="close-holder flex jc-end">
+  <div class="close-holder flex jc-start">
     <ion-button color="dark" (click)="close()" expand="block" fill="clear" shape="round">
       <ion-icon slot="icon-only" name="close-circle-outline"></ion-icon>
     </ion-button>
@@ -14,29 +14,22 @@
     <div class="card" *ngFor="let item of data.inventory; let i = index">
 
       <ion-row>
-        <ion-col size="4" class="left flex al-center">
+     
+        
+        <ion-col size="5" class="right flex al-center flexd al-start">
+          <div class="details">
+            <h5 id="name">{{item.productName}}
 
+            </h5>
+            <p>{{item.description}}
+            </p>
+            <!-- <p>{{item?.category?}}
+            </p> -->
 
-          <div class="btn-holder">
-            <ion-button color="success" [disabled]="item.isDisable" *ngIf="item.isDisable;else disableBtnList" id="reserve"
-              shape="round">
-              Order
-            </ion-button>
-            <ng-template #disableBtnList>
-              <ion-button color="danger" *ngIf="item.isDisable == false;else disableBtn" id="reserve" shape="round"
-                (click)="addDisableStatus()">
-                <ion-icon name="trash"></ion-icon>
-              </ion-button>
-              <ng-template #disableBtn>
-                <ion-button color="success" *ngIf="item.isDisable == undefined" (click)="onOderItem(item,i)" id="reserve" shape="round">
-                  Order
-                </ion-button>
-              </ng-template>
+            <!--  <h5>Available qty. {{item.quantity}}
 
-            </ng-template>
-
+            </h5> -->
           </div>
-
         </ion-col>
 
         <ion-col size="4" class="center flex al-center jc-center">
@@ -75,20 +68,30 @@
 
         </ion-col>
 
-        <ion-col size="4" class="right flex al-center flexd">
-          <div class="details">
-            <h5 id="name">{{item.productName}}
 
-            </h5>
-            <p>{{item.description}}
-            </p>
-            <!-- <p>{{item?.category?}}
-            </p> -->
+        <ion-col size="3" class="left flex al-center">
 
-            <!--  <h5>Available qty. {{item.quantity}}
 
-            </h5> -->
+          <div class="btn-holder">
+            <ion-button  [disabled]="item.isDisable" *ngIf="item.isDisable;else disableBtnList" id="reserve"
+              shape="round">
+              Order
+            </ion-button>
+            <ng-template #disableBtnList>
+              <ion-button color="danger" *ngIf="item.isDisable == false;else disableBtn" shape="round"
+                (click)="addDisableStatus()">
+                <ion-icon name="trash"></ion-icon>
+              </ion-button>
+              <ng-template #disableBtn>
+                <ion-button  *ngIf="item.isDisable == undefined" (click)="onOderItem(item,i)" id="reserve" shape="round">
+                  Order
+                </ion-button>
+              </ng-template>
+
+            </ng-template>
+
           </div>
+
         </ion-col>
 
       </ion-row>

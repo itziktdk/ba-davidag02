@@ -5,3 +5,94 @@ ion-content {
     max-width: 50px !important;
     text-align: center !important;
 }
+
+ion-content
+{
+    .title-holder
+    {
+        h1
+        {
+            margin-top: 0 !important;
+        }
+    }
+}
+
+
+.the-list
+{
+    border-top: 2px solid gray;
+    border-bottom: 2px solid gray;
+    height: 70%;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    white-space: nowrap;
+    &::-webkit-scrollbar
+    {
+        display: none;
+    }
+
+    .card
+    {
+        ion-col
+        {
+            padding: 0 !important;
+        }
+        .center
+        {
+            p
+            {
+                margin: 0;
+            }
+
+            .center-holder
+            {
+                width: 100%;
+
+                .qty-holder
+                {
+                    .btn
+                    {
+                        margin: 0 5px;
+                        ion-icon
+                        {
+                            color: gray;
+                        }
+                    }
+
+                    ion-note
+                    {
+                        background: white;
+                        color: black;
+                        border: 2px solid gray;
+                        padding: 5px;
+                        width: 40px;
+                        height: 40px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.btn-holder
+{
+    #reserve
+    {
+        --background: #F36;
+    }
+    ion-button
+    {
+       
+        width: 70px !important;
+        font-size: 0.9rem !important;
+    }
+}
+
+
+.btm-btn-holder
+{
+    ion-button
+    {
+        --background: #F36;
+    }
+}
