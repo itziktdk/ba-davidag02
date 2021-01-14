@@ -71,12 +71,17 @@
       </ion-grid>
     </div>
 
-    <div class="btn-holder ion-padding-horizontal">
+    <!-- <div class="btn-holder ion-padding-horizontal">
       <ion-button expand="block">
         מבצעים והודעות
       </ion-button>
-    </div>
+    </div> -->
 
   
   </div>
 </ion-content>
+<ion-fab vertical="bottom" horizontal="center" slot="fixed">
+  <ion-fab-button (click)="goHome()">
+    <ion-icon name="home"></ion-icon>
+  </ion-fab-button>
+</ion-fab>

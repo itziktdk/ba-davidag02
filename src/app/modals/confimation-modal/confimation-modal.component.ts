@@ -24,6 +24,8 @@ export class ConfimationModalComponent implements OnInit {
     console.log('item ', this.item);
     this.dttm = moment(this.item.time).format('LLL');
     console.log('index ', this.item.time);
+    console.log('item ', this.item.user.userdata);
+
   }
 
   previewImg(img: string) {
@@ -52,12 +54,13 @@ export class ConfimationModalComponent implements OnInit {
       confirmation: false,
       verify: true
     };
-    console.log('dataaa ', data)
+    console.log('dataaa ', data);
 
     this.fService.UpdateOrderReserve(item.orderId, data)
       .then(res => {
         this.close();
         location.reload();
+
       });
 
   }

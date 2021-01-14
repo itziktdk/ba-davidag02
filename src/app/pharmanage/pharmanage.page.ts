@@ -28,4 +28,7 @@ export class PharmanagePage implements OnInit {
     this.navCtrl.navigateForward('pharmprofile');
   }
 
+  goHome() {
+    this.navCtrl.navigateForward('home');
+  }
 }

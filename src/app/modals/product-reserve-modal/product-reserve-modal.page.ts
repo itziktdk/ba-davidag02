@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { AlertController, ModalController } from '@ionic/angular';
+import { AlertController, ModalController, PopoverController  } from '@ionic/angular';
 import { AlertService } from 'src/app/services/alert.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 import { FirebaseService } from 'src/app/services/firebase.service';
+import { ReserverPopoverComponent } from '../../reserver-popover/reserver-popover.component';
 
 @Component({
   selector: 'app-product-reserve-modal',
@@ -17,6 +18,7 @@ export class ProductReserveModalPage implements OnInit {
   count = 0;
   orderItemArr: any = [];
   hideBtn = true;
+  products: any;
 
   constructor(
     private modalCtrl: ModalController,
@@ -24,11 +26,21 @@ export class ProductReserveModalPage implements OnInit {
     private fService: FirebaseService,
     private alertController: AlertController,
     private alertService: AlertService,
+    public popoverController: PopoverController,
   ) { }
-
+  async presentPopover(ev: any) {
+    const popover = await this.popoverController.create({
+      component: ReserverPopoverComponent,
+      cssClass: 'my-custom-class',
+      event: ev,
+      translucent: true
+    });
+    return await popover.present();
+  }
   ngOnInit() {
     this.pCount = Number(sessionStorage.getItem('rCount'));
     this.performGetAllProducts();
+
   }
 
   close() {
@@ -39,7 +51,9 @@ export class ProductReserveModalPage implements OnInit {
     this.fService.getProducts()
       .subscribe((result: any) => {
         this.pArray.inventory = result;
-        this.data = this.pArray;
+        this.data = (this.pArray);
+        console.log(this.data);
+        this.products = result;
       });
   }
 
@@ -64,7 +78,7 @@ export class ProductReserveModalPage implements OnInit {
               product: item,
               verify: false,
               user: {
-                ...result,
+                result,
                 uid: localStorage.getItem('userId')
               },
               pharmacyDetails: this.pArray
@@ -76,7 +90,7 @@ export class ProductReserveModalPage implements OnInit {
                   dttm: (new Date()).toString(),
                   orderDetails: data
 
-                }
+                };
                 this.fService.addReserveOrderNotification(notification)
                   .then();
                 // this.fService.addUserReserveOrders(data)
@@ -91,7 +105,7 @@ export class ProductReserveModalPage implements OnInit {
         });
 
     } else {
-      this.alertService.default('', 'Please add atleast one item to process!');
+      this.alertService.default('', 'כמות לא תקינה');
       this.hideBtn = false;
     }
     // currentU.unsubscribe();
@@ -205,7 +219,7 @@ export class ProductReserveModalPage implements OnInit {
   }
 
   onOderItem(item, i) {
-    console.log('avail ', !!item.orderedQty)
+    console.log('avail ', !!item.orderedQty);
     if (item.orderedQty && item.orderedQty > 0) {
       this.addDisableStatus(i);
 
@@ -213,7 +227,7 @@ export class ProductReserveModalPage implements OnInit {
       this.orderItemArr.push(item);
       this.hideBtn = false;
       this.data.inventory[i].isDisabled = 1;
-      this.alertService.default('', 'Your item has added successfully!');
+      this.alertService.default('', 'המוצר התווסף בהצלחה! :)');
     } else {
       this.alertReset(i);
     }
@@ -239,10 +253,10 @@ export class ProductReserveModalPage implements OnInit {
 
   async alert() {
     const alert = await this.alertController.create({
-      message: 'The reserver request has been sent for Pharmacy approval. Please follow the notification area for update.',
+      message: 'בקשת ההזמנה נשלחה בהצלחה להנהלת בית המרקחת, נא עקוב אחרי איזור ההתראות בנוגע לאישור ההזמנה. בריאות שלמה!',
       buttons: [
         {
-          text: 'OK',
+          text: 'סגור',
           cssClass: 'secondary',
           handler: (blah) => {
             this.close();
@@ -253,6 +267,8 @@ export class ProductReserveModalPage implements OnInit {
     });
     await alert.present();
   }
+
+
   async alertReset(index) {
     const alert = await this.alertController.create({
       message: 'Please add a valid Quantity',

@@ -241,8 +241,8 @@ ion-fab-button
     --border-style: solid;
 }
 
-ion-content {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+ion-content ion-label ion-col .holder {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
 }
 
 .Alert {

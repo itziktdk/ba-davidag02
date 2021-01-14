@@ -1,14 +1,22 @@
 <ion-content>
+  <div class="holder">
+  <div class="top-logo  ion-padding">
+    <div class="img-holder ion-text-center">
+      <img src="assets/imgs/pharm.png" alt="">
+      <h5>חיפוש בתי מרקחת</h5>
+      <div class="sub-bar ion-text-center">
+        <p>חיפוש בתי מרקחת ואיתור זמינות</p>
+      </div>
+    </div>
+  </div>
+  <div class="search-holder ion-padding">
+    <ion-searchbar class="ion-text-center" placeholder="חיפוש מהיר" inputmode="search" type="decimal" [debounce]="250"
+      showCancelButton="never" [(ngModel)]="filterTerm">
+    </ion-searchbar>
+  </div>
 
   <ion-grid>
     <ion-row>
-      <ion-col size="12">
-        <div class="search-holder ion-padding">
-          <ion-searchbar class="ion-text-center" placeholder="חיפוש מהיר" inputmode="search" type="decimal"
-            [debounce]="250" showCancelButton="never" [(ngModel)]="filterTerm">
-          </ion-searchbar>
-        </div>
-      </ion-col>
     </ion-row>
     <ng-container *ngIf='pharmRecords | filter:filterTerm as result'>
       <input #ref1 type="text" hidden value="../../assets/imgs/logo_super-pharm.png" />
@@ -49,10 +57,10 @@
                       </ion-item>
                   </ion-col>
 
-                  <ion-col size=6 class="ion-align-items-end">
+                  <ion-col size=6 style="direction: ltr;" class="ion-text-right">
                     <ion-item lines="none" class="item-content ion-no-padding">
-                      <div class="ion-no-padding ion-align-items-start">
-                        <ion-chip  (click)="onReserveProduct(data)">שריין מלאי</ion-chip>
+                      <div class="ion-no-padding ion-text-right">
+                       
                         <ion-button fill="clear" class="ion-float-right ion-no-padding" (click)="data.active=!data.active">
                           <ng-template [ngIf]="!data.active" [ngIfElse]="no">
                             <ion-icon size="large" name="chevron-down-outline"></ion-icon>
@@ -61,6 +69,12 @@
                             <ion-icon size="large" name="chevron-up-outline"></ion-icon>
                           </ng-template>
                         </ion-button>
+                        
+                        <ion-chip (click)="onReserveProduct(data)">
+                          <ion-icon name="bag-check-outline"></ion-icon>
+                          <ion-label> שריין מלאי</ion-label>
+                         
+                        </ion-chip>
                       </div>
                     </ion-item>
                   </ion-col>
@@ -113,4 +127,10 @@
       </ion-row>
     </ng-container>
   </ion-grid>
+  </div>
+  <ion-fab vertical="bottom" horizontal="center" slot="fixed">
+    <ion-fab-button (click)="goHome()">
+      <ion-icon name="home"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>

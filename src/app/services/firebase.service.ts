@@ -113,7 +113,7 @@ export class FirebaseService {
         }
 
         // return firebase.database().ref(`/userReserveOrders/${data.user.uid}`).set(arr);
-        // return this.firestore.collection(`/userReserveOrders`).doc(data.user.uid).set(data);  
+        // return this.firestore.collection(`/userReserveOrders`).doc(data.user.uid).set(data);
       });
   }
 
@@ -160,6 +160,6 @@ export class FirebaseService {
   }
 
   orderIncrement() {
-    //this.intk = this.firestore.collection('/orderSerial').doc('tJ3P2iC0O377gAb1e9Fs').collection('int');
+    // this.intk = this.firestore.collection('/orderSerial').doc('tJ3P2iC0O377gAb1e9Fs').collection('int');
   }
 }
