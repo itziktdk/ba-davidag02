@@ -53,7 +53,7 @@
     <div *ngFor="let item of reserveList" class="card">
       <ion-row *ngIf="!item.verify">
         <ion-col size="2" class="right flex al-center flexd">
-          <ion-icon (click)="showModal(item, i)" name="open-outline"></ion-icon>
+          <ion-icon (click)="showModal(item)" name="open-outline"></ion-icon>
           <!-- <ion-icon (click)="showModal(item, i)" name="flag-outline"></ion-icon> -->
         </ion-col>
         <ion-col size="5" class="right flex al-center flexd">

@@ -43,7 +43,7 @@ export class PharmaciesPage implements OnInit {
         this.count = result.length;
       });
     this.performGetAllPharmacies();
-    //this.pharmRecords = JSON.stringify(this.pharmlist);
+    // this.pharmRecords = JSON.stringify(this.pharmlist);
   }
 
   segmentChanged(ev: any) {
@@ -87,7 +87,7 @@ export class PharmaciesPage implements OnInit {
       }
     });
 
-    
+
 
     return await modal.present();
   }
@@ -101,7 +101,7 @@ export class PharmaciesPage implements OnInit {
         this.pharmRecords = result;
       });
   }
-  
+
   onNavigate(city: string) {
     console.log('on nav');
     this.fService.goNavigate(city)

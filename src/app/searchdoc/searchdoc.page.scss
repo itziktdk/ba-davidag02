@@ -103,16 +103,11 @@ ion-content
   }
 }
 
-.ng-select.customng {
-    border:0px;
-    background: #ffffff;
-}
+ng-select {
+    
+        border: none !important;
+    }
 
-.ng-input {
-    border: 0px !important;
-    background: #ffffff;
-}
-
-.ng-option {
-  background-color: #FA9917;
+select-dropdown {
+    display: none;
 }
