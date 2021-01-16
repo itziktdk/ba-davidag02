@@ -1,5 +1,6 @@
+import { NotificationsPage } from './../notifications/notifications.page';
 import { Component, OnInit } from '@angular/core';
-import { NavController } from '@ionic/angular';
+import { NavController, ModalController, IonRouterOutlet } from '@ionic/angular';
 import { AuthService } from '../services/auth.service';
 import { AuthenticationService } from '../services/authentication.service';
 import { ActionSheetController } from '@ionic/angular';
@@ -41,6 +42,8 @@ export class HomePage implements OnInit {
     private authenticationService: AuthenticationService,
     private userDataService: UserDataService,
     private fireStore: AngularFirestore,
+    private modalCtrl: ModalController,
+    private routOut: IonRouterOutlet
   ) {
 
     // this.userDoc = fireStore.doc<any>('users/xGT8mosXOfN9o4AMawx506Uotag2');
@@ -171,4 +174,18 @@ export class HomePage implements OnInit {
   goNews() {
     this.navCtrl.navigateForward('news');
   }
+
+  async showModal() {
+    const modal = await this.modalCtrl.create({
+      component: NotificationsPage,
+      mode: 'ios',
+      swipeToClose: true,
+      presentingElement: this.routOut.nativeEl,
+      backdropDismiss: true,
+    
+    });
+
+    return await modal.present();
+  }
+
 }
