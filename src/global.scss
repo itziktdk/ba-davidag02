@@ -250,3 +250,20 @@ ion-content ion-label ion-col .holder {
     border-radius: 15px;
     color: limegreen;
 }
+
+.ng-dropdown-panel
+{
+    .scroll-host
+    {
+
+        background: white !important;
+        border-radius: 0.5rem !important;
+        padding: 0 10px !important;
+        .ng-option
+        {
+            margin: 10px 0 !important;
+        }
+    }
+
+}
+

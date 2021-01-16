@@ -1,0 +1,21 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-title class="ion-text-center">התראות</ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="close()">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+        </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="the-list">
+    <ion-item lines="none">
+      <div class="thumb flex al-center jc-center" slot="end">
+        <ion-icon slot="icon-only" name="checkmark-circle-outline"></ion-icon>
+      </div>
+      <ion-label>התקבלה התראה חדשה      </ion-label>
+    </ion-item>
+  </div>
+</ion-content>

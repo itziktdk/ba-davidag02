@@ -33,7 +33,8 @@ export class ProductReserveModalPage implements OnInit {
       component: ReserverPopoverComponent,
       cssClass: 'my-custom-class',
       event: ev,
-      translucent: true
+      translucent: true,
+      mode: 'ios'
     });
     return await popover.present();
   }

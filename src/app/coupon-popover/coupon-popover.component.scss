@@ -1,0 +1,20 @@
+.input-item
+{
+    ion-item
+    {
+        --border-color: gray;
+        --border-radius: 30px;
+        --border-style: solid;
+        --border-width: 1px;
+    }
+}
+
+.btn-holder
+{
+    margin-top: 10px;
+  ion-button
+  {
+    --background: #F36;
+    height: 36px !important;
+  }
+}

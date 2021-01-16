@@ -17,10 +17,35 @@ ion-content
         height: 10vh;
       }
     }
-.delivery {
-  background-color: #F36 !important;
-  color: #fff !important;
-}
+
+    .notification
+    {
+      position: absolute;
+      right: 0;
+      top: 10px;
+
+      ion-button
+      {
+        --color: white;
+        font-size: 1.3rem !important;
+      }
+
+      ion-badge
+      {
+        --background: #F36;
+        position: absolute;
+        right: 10px;
+        top: 0;
+        border-radius: 50% !important;
+        height: 2rem;
+        width: 2rem;
+      }
+    }
+
+    .delivery {
+      background-color: #F36 !important;
+      color: #fff !important;
+    }
     @media (max-width: 370px) {
       .wide {
         visibility: hidden;

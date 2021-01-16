@@ -49,6 +49,31 @@ ion-content
       }
   }
 
+  .area-holder
+  {
+    ion-label
+    {
+      color: white;
+      font-size: 1.3rem;
+    }
+
+
+    .customng
+    {
+      height: 3rem !important;
+
+      display: flex !important;
+      align-items: center !important;
+      padding: 0 10px !important;
+
+      .ng-placeholder
+      {
+        opacity: 0.5 !important;
+      }
+
+    
+    }
+  }
   .btnn-holder
   {
       ion-button
@@ -71,7 +96,7 @@ ion-content
       {
           background: white;
           width: 2px;
-          height: 50px;
+          height: 30px;
           margin: 0 auto;
       }
 
