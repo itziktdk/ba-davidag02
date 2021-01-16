@@ -2,7 +2,6 @@
   <div class="logo-holder ion-text-left">
     <img src="assets/imgs/logo.png" alt="">
   </div>
-
   <div class="title ion-padding-top">
   <ion-row>
     <ion-col size="10">
@@ -13,8 +12,6 @@
     </ion-col>
   </ion-row>
   </div>
-
-
   <div class="form-holder">
     <div class="the-form">
       <div class="input-item">
@@ -23,10 +20,12 @@
             class="ion-text-center" placeholder="הקלד שם רופא או התמחות"></ion-input>
         </ion-item>
       </div>
+
       <ion-row class="area-holder">
         <ion-col size="5" class="flex al-center jc-center">
           <ion-label>חפש באיזור</ion-label>
         </ion-col>
+
         <ion-col size="7">
           <div class="input-item" *ngIf="cityList && cityList.length>0">
             <!-- <ion-item lines="none"> -->
@@ -41,39 +40,34 @@
                 (ionBlur)="filterPharmacy($event)" debounce=500>
               </ion-searchbar> -->
             <!-- <form action=""> -->
-              
-            <ng-select class="customng the-form " (change)="filterByCity($event)" [items]="cityList" bindLabel="id" bindValue="name" [multiple]="false" name="test"
-              placeholder="היכנס לאזור" [(ngModel)]="searchValue2">
+
+            <ng-select class="customng the-form input-item" (change)="filterByCity($event)" [items]="cityList"
+              bindLabel="id" bindValue="name" [multiple]="false" name="test" placeholder="{{ttt1}}"
+              [(ngModel)]="searchValue2">
             </ng-select>
-            
-            <!-- </form> -->
-
-
-            <!-- </ion-item> -->
+          </div>
+        </ion-col>
+        <ion-col size="5">
+          <div (click)="onNavPharmacyList()" class="btnn-holder ion-text-left">
+            <ion-button [disabled]="!cityList && cityList.length < 0">
+              חפש
+            </ion-button>
           </div>
         </ion-col>
 
       
       </ion-row>
     </div>
-    <div (click)="onNavPharmacyList()" class="btnn-holder ion-text-left">
-      <ion-button>
-        חפש
-      </ion-button>
-    </div>
   </div>
   <div class="in-holder ion-text-center">
     <div class="bar">
-
     </div>
     <div class="in">
       <h3>או</h3>
     </div>
     <div class="bar">
-
     </div>
   </div>
-
   <div class="bottom-button">
     <ion-item class="button">
       <ion-label> {{this.hx}} חפש סביב מיקום נוכחי</ion-label>
@@ -84,7 +78,6 @@
   </div>
   <div class="ion-text-center">
     <ion-list>
-
       <ion-item *ngFor="let location of locationTraces">
         <ion-label class="ion-text-wrap">
           <ion-label>Time: {{location.timestamp | date:'M/d/yy, h:mm a'}}</ion-label>
@@ -92,7 +85,6 @@
           <ion-label>Accuracy: {{location.accuracy}}</ion-label>
         </ion-label>
       </ion-item>
-
     </ion-list>
     <ng-container *ngIf="!locationWatchStarted; else elseTemplate">
       <ion-button color="primary" (click)="getCoordinates()">Start Location {{latitude}}, {{hx}}</ion-button>
@@ -103,7 +95,5 @@
     <ng-template #elseTemplate>
       {{ttt1}}
     </ng-template>
-
   </div>
-
 </ion-content>
