@@ -79,13 +79,24 @@ export class SearchdocPage implements OnInit {
       .subscribe((result: any) => {
         this.pharmacyList = result;
         console.log(result);
-        result.forEach(element => {
-         // if (this.cityList.indexOf(element.city) == -1) { 
-            this.cityList.push({ id: element.city, name: element.city });
-            
-       //   }
-          });
-      
+        // result.forEach(element => {
+        //   // if (this.cityList.indexOf(element.city) == -1) { 
+        //   console.log('!this.cityList.includes(element.city ', !this.cityList.includes(element.city))
+        //   console.log('this.cityList.includes(element.city ', this.cityList.includes(element.city))
+        //   if (!this.cityList.includes(element.city)) {
+        //     this.cityList.push({ id: element.city, name: element.city });
+        //   }
+        // });
+
+        const duplicatePushArray = [];
+        for (const i of result.keys()) {
+          if (this.cityList.indexOf(result[i].city) === -1) {
+            this.cityList.push(result[i].city);
+          } else {
+            console.log(`${result[i]} is already pushed into array`);
+          }
+        }
+
         // var filteredArray = this.cityList.reduce((accumalator, current) => {
         //   if (!accumalator.some(item => item.city === current.city)) {
         //     accumalator.push(current);
@@ -93,7 +104,7 @@ export class SearchdocPage implements OnInit {
         //   return accumalator;
         // }, []);
         console.log(this.cityList);
-        
+
       });
   }
 
