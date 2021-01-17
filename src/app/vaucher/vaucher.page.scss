@@ -37,6 +37,16 @@ ion-content
   {
     padding: 0 !important;
     position: relative;
+
+    .coupon-lbl
+    {
+      ion-badge
+      {
+        background: #1BDCFF ;
+        padding: 5px !important;
+        margin-top: 10px;
+      }
+    }
     .top-bar
     {
       background-color: #ffffff;
@@ -93,6 +103,28 @@ ion-content
     }
 
 
+    .btn-holder
+    {
+      ion-button
+      {
+        --background: #F36;
+      }
+    }
+
+    .s2
+    {
+      border-radius: 20px;
+      p
+      {
+        color: white;
+      }
+      background: #F36;
+      ion-chip
+      {
+        border: 1px solid white !important;
+       --color: white
+      }
+    }
    
   }
 }
