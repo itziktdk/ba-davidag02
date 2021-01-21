@@ -168,6 +168,10 @@ export class FirebaseService {
     return this.firestore.collection('/user-voucher').doc(userId).get();
   }
 
+  getAllerVoucher() {
+    return this.firestore.collection('/user-voucher').valueChanges();
+  }
+
   getUserVoucher(userId: string) {
     return this.firestore.collection('/user-voucher').doc(userId).valueChanges();
   }

@@ -92,8 +92,7 @@ export class VaucherPage implements OnInit {
     this.showBadge = true;
 
     const updateData = {
-      vaucherOffer: '10% הנחה בהזמנה מעל 40 גרם',
-      vaucherNUM: this.userVoucherDetails[0].vaucherNUM,
+      ...this.userVoucherDetails[0],
       // lastredeem: this.userVoucherDetails[0].oldLastRedeemDttm ? this.userVoucherDetails[0].oldLastRedeemDttm : null,
       OwnedPharmacy: null,
       redeemed: false,

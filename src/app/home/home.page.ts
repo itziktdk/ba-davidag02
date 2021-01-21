@@ -105,7 +105,9 @@ export class HomePage implements OnInit {
             lastredeem: null,
             OwnedPharmacy: null,
             redeemed: false,
-            sent: false
+            sent: false,
+            uId: localStorage.getItem('userId'),
+            userData: userdata.userdata
           };
           this.fService.addVoucher(userdata.userdata.userId, voucherData).then();
         }
