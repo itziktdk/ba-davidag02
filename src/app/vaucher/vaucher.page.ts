@@ -75,7 +75,6 @@ export class VaucherPage implements OnInit {
             id: tdata.data.id,
             name: tdata.data.name
           },
-          lastredeem: Moment().format(),
           oldLastRedeemDttm: this.userVoucherDetails[0].lastredeem,
           sent: true
         };
@@ -95,7 +94,7 @@ export class VaucherPage implements OnInit {
     const updateData = {
       vaucherOffer: '10% הנחה בהזמנה מעל 40 גרם',
       vaucherNUM: this.userVoucherDetails[0].vaucherNUM,
-      lastredeem: this.userVoucherDetails[0].oldLastRedeemDttm ? this.userVoucherDetails[0].oldLastRedeemDttm : null,
+      // lastredeem: this.userVoucherDetails[0].oldLastRedeemDttm ? this.userVoucherDetails[0].oldLastRedeemDttm : null,
       OwnedPharmacy: null,
       redeemed: false,
       sent: false
