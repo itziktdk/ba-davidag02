@@ -2,6 +2,9 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController, PopoverController } from '@ionic/angular';
 import { CouponPopoverComponent } from '../coupon-popover/coupon-popover.component';
+import { FirebaseService } from '../services/firebase.service';
+
+import * as Moment from 'moment';
 
 @Component({
   selector: 'app-vaucher',
@@ -10,16 +13,37 @@ import { CouponPopoverComponent } from '../coupon-popover/coupon-popover.compone
 })
 export class VaucherPage implements OnInit {
 
-  s1:boolean = true;
-  showBadge:boolean = true;
-  constructor(private navCtrl: NavController,  public popoverController: PopoverController) { }
+  s1 = true;
+  showBadge = true;
+  filteredList: Array<any>;
+  pharmacyList: Array<any>;
+  pharmacy: any;
+  userVoucherDetails: Array<any> = [];
+
+  showDetails = false;
+  constructor(
+    private navCtrl: NavController,
+    public popoverController: PopoverController,
+    private fService: FirebaseService
+  ) { }
 
   ngOnInit() {
+    this.performGetAllPharmacies();
+
+    this.fService.getUserVoucher(localStorage.getItem('userId'))
+      .subscribe((userVoucher: any) => {
+        this.userVoucherDetails.push(userVoucher);
+      });
   }
 
+  performGetAllPharmacies() {
+    this.fService.getPharmacyList()
+      .subscribe((result: any) => {
+        this.pharmacyList = result;
+      });
+  }
 
-  goHome()
-  {
+  goHome() {
     this.navCtrl.navigateBack('home');
   }
 
@@ -31,21 +55,52 @@ export class VaucherPage implements OnInit {
       translucent: true,
       mode: 'ios',
       componentProps: {
-        "setVisible": true,
+        setVisible: true,
+        pharmacyList: this.pharmacyList
       }
     });
 
-    popover.onDidDismiss().then((tdata)=>{
-      this.s1 = false;
-      this.showBadge = false;
-      console.log(this.s1);
-    })
+    popover.onDidDismiss().then((tdata) => {
+      if (tdata.data) {
+        this.showDetails = true;
+        this.s1 = false;
+        this.showBadge = false;
+        console.log(this.s1);
+        console.log('tdata ', tdata);
+        this.pharmacy = tdata.data;
+
+        const updateData = {
+          ...this.userVoucherDetails[0],
+          OwnedPharmacy: {
+            id: tdata.data.id,
+            name: tdata.data.name
+          },
+          lastredeem: Moment().format(),
+          oldLastRedeemDttm: this.userVoucherDetails[0].lastredeem,
+          sent: true
+        };
+        this.fService.addVoucher(localStorage.getItem('userId'), updateData);
+
+      } else {
+        this.s1 = true;
+      }
+    });
     return await popover.present();
   }
 
-  setBack()
-  {
+  setBack() {
     this.s1 = true;
+    this.showBadge = true;
+
+    const updateData = {
+      vaucherOffer: '10% הנחה בהזמנה מעל 40 גרם',
+      vaucherNUM: this.userVoucherDetails[0].vaucherNUM,
+      lastredeem: this.userVoucherDetails[0].oldLastRedeemDttm ? this.userVoucherDetails[0].oldLastRedeemDttm : null,
+      OwnedPharmacy: null,
+      redeemed: false,
+      sent: false
+    };
+    this.fService.addVoucher(localStorage.getItem('userId'), updateData);
   }
 
 }

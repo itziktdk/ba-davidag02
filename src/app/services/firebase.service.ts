@@ -65,7 +65,7 @@ export class FirebaseService {
 
   // START Pharmacy
   getPharmacyList() {
-    return this.firestore.collection('/pharms').valueChanges();
+    return this.firestore.collection('/pharms').valueChanges({ idField: 'id' });
   }
 
   addReserveOrders(data: any, docId: string) {
@@ -164,11 +164,19 @@ export class FirebaseService {
   }
 
   // START Voucher 
-  getUserVoucher(userId: string) {
+  performUserVoucher(userId: string) {
     return this.firestore.collection('/user-voucher').doc(userId).get();
   }
 
+  getUserVoucher(userId: string) {
+    return this.firestore.collection('/user-voucher').doc(userId).valueChanges();
+  }
+
   addVoucher(uid: string, userVoucherData: any) {
+    return this.firestore.collection(`/user-voucher`).doc(uid).set(userVoucherData);
+  }
+
+  updateVoucher(uid: string, userVoucherData: any) {
     return this.firestore.collection(`/user-voucher`).doc(uid).set(userVoucherData);
   }
 }

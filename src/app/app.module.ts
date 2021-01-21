@@ -30,10 +30,12 @@ import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { NativeGeocoder, NativeGeocoderResult, NativeGeocoderOptions } from '@ionic-native/native-geocoder/ngx';
 import { ConfimationModalComponent } from './modals/confimation-modal/confimation-modal.component';
 import { FCM } from '@ionic-native/fcm/ngx';
+import { CouponPopoverComponent } from './coupon-popover/coupon-popover.component';
 @NgModule({
   declarations: [
     AppComponent,
-    ConfimationModalComponent],
+    ConfimationModalComponent,
+    CouponPopoverComponent],
 
   entryComponents: [],
 

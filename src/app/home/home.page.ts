@@ -96,7 +96,7 @@ export class HomePage implements OnInit {
 
   validateUserVoucher(userdata: any) {
     // validate user-voucher
-    this.fService.getUserVoucher(localStorage.getItem('userId'))
+    this.fService.performUserVoucher(localStorage.getItem('userId'))
       .subscribe(doc => {
         if (!doc.exists) {
           const voucherData = {
