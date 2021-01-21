@@ -162,4 +162,13 @@ export class FirebaseService {
   orderIncrement() {
     // this.intk = this.firestore.collection('/orderSerial').doc('tJ3P2iC0O377gAb1e9Fs').collection('int');
   }
+
+  // START Voucher 
+  getUserVoucher(userId: string) {
+    return this.firestore.collection('/user-voucher').doc(userId).get();
+  }
+
+  addVoucher(uid: string, userVoucherData: any) {
+    return this.firestore.collection(`/user-voucher`).doc(uid).set(userVoucherData);
+  }
 }
