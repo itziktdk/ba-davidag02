@@ -41,7 +41,8 @@ export class CouponPopoverComponent implements OnInit {
 
         if (!res.lastredeem || (res.lastredeem && diff >= 30)) {
           const selectedPharmacyList = this.pharmacyList.filter(x =>
-            (x.phone.includes('-') ? x.phone.replace('-', '') : x.phone) === this.couponCode);
+            (x.phone.includes('-') ? x.phone.replace('-', '') : x.phone) === this.couponCode ||
+            (x.phone2.includes('-') ? x.phone2.replace('-', '') : x.phone2) === this.couponCode);
           if (!selectedPharmacyList || (selectedPharmacyList && selectedPharmacyList.length === 0)) {
             this.errorMessage = 'Invalid  Coupon code';
           } else {
