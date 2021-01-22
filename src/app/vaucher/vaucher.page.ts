@@ -91,6 +91,15 @@ export class VaucherPage implements OnInit {
         };
         this.fService.addVoucher(localStorage.getItem('userId'), updateData);
 
+        const notification = {
+          dttm: (new Date()).toString(),
+          voucherDetails: updateData,
+          seen: false,
+          show: true
+        };
+        this.fService.addReserveOrderNotification(notification)
+          .then();
+
       } else {
         this.s1 = true;
       }

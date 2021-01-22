@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AlertController, ModalController, PopoverController  } from '@ionic/angular';
+import { AlertController, ModalController, PopoverController } from '@ionic/angular';
 import { AlertService } from 'src/app/services/alert.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { AuthenticationService } from 'src/app/services/authentication.service';
@@ -89,7 +89,9 @@ export class ProductReserveModalPage implements OnInit {
               .then(res => {
                 const notification = {
                   dttm: (new Date()).toString(),
-                  orderDetails: data
+                  orderDetails: data,
+                  seen: false,
+                  show: true
 
                 };
                 this.fService.addReserveOrderNotification(notification)
