@@ -38,8 +38,7 @@ export class CouponPopoverComponent implements OnInit {
         const lastRedeemDttm = Moment(res.lastredeem);
         const currentDttm = Moment();
         const diff = currentDttm.diff(lastRedeemDttm, 'days');
-
-        if (!res.lastredeem || (res.lastredeem && diff >= 30)) {
+        if ((!res.lastredeem || (res.lastredeem && diff >= 30))) {
           const selectedPharmacyList = this.pharmacyList.filter(x =>
             (x.phone.includes('-') ? x.phone.replace('-', '') : x.phone) === this.couponCode ||
             (x.phone2.includes('-') ? x.phone2.replace('-', '') : x.phone2) === this.couponCode);

@@ -28,11 +28,24 @@ export class VaucherPage implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.performGetAllPharmacies();
+    this.performGetUserVoucher();
+  }
 
+  performGetUserVoucher() {
     this.fService.getUserVoucher(localStorage.getItem('userId'))
-      .subscribe((userVoucher: any) => {
-        this.userVoucherDetails.push(userVoucher);
+      .subscribe((res: any) => {
+        if (res.sent && !res.redeemed) {
+          this.showDetails = true;
+          this.s1 = false;
+          this.showBadge = false;
+          this.pharmacy = res.OwnedPharmacy;
+        } else {
+          this.performGetAllPharmacies();
+          this.fService.getUserVoucher(localStorage.getItem('userId'))
+            .subscribe((userVoucher: any) => {
+              this.userVoucherDetails.push(userVoucher);
+            });
+        }
       });
   }
 
@@ -65,8 +78,6 @@ export class VaucherPage implements OnInit {
         this.showDetails = true;
         this.s1 = false;
         this.showBadge = false;
-        console.log(this.s1);
-        console.log('tdata ', tdata);
         this.pharmacy = tdata.data;
 
         const updateData = {
