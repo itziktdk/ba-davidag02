@@ -32,7 +32,6 @@ export class CouponPopoverComponent implements OnInit {
   }
 
   onSubmit() {
-
     this.fService.getUserVoucher(localStorage.getItem('userId'))
       .subscribe((res: any) => {
         const lastRedeemDttm = Moment(res.lastredeem);

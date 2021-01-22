@@ -85,6 +85,10 @@ export class FirebaseService {
     // });
   }
 
+  addVoucherOrderNotification(data: any) {
+    return this.firestore.collection(`/voucher-notification`).add(data);
+  }
+
   async addUserReserveOrders(data: any) {
 
     const arr = [];
