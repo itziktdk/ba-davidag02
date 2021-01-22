@@ -33,7 +33,7 @@ export class AppComponent {
     private fcm: FCM,
     private fService: FirebaseService,
   ) {
-    this.addData()
+    // this.addData()
     this.initializeApp();
     this.sendPushNotification();
   }
