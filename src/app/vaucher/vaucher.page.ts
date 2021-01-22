@@ -37,7 +37,7 @@ export class VaucherPage implements OnInit {
         if (res.sent && !res.redeemed) {
           this.showDetails = true;
           this.s1 = false;
-          this.showBadge = false;
+          this.showBadge = true;
           this.pharmacy = res.OwnedPharmacy;
         } else {
           this.performGetAllPharmacies();
