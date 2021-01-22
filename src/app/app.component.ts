@@ -33,6 +33,7 @@ export class AppComponent {
     private fcm: FCM,
     private fService: FirebaseService,
   ) {
+    this.addData()
     this.initializeApp();
     this.sendPushNotification();
   }
@@ -70,4 +71,11 @@ export class AppComponent {
       }
     });
   }
+
+  // addData() {
+  //     pharm.forEach(element => {
+
+  //     this.fService.addDoctors(element).then();
+  //   })
+  // }
 }

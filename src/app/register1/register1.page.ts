@@ -57,36 +57,24 @@ export class Register1Page implements OnInit {
     encodingType: this.camera.EncodingType.JPEG,
     mediaType: this.camera.MediaType.PICTURE
   };
-
-  // File upload task
-  fileUploadTask: AngularFireUploadTask;
-
-  // Upload progress
-  percentageVal: Observable<number>;
-
-  // Track file uploading with snapshot
-  trackSnapshot: Observable<any>;
-
-  // Uploaded File URL
-  UploadedImageURL: Observable<string>;
-
-  // Uploaded image collection
-  files: Observable<ImgFile[]>;
-
+ 
+  fileUploadTask: AngularFireUploadTask; // File upload task 
+  percentageVal: Observable<number>; // Upload progress  
+  trackSnapshot: Observable<any>;// Track file uploading with snapshot 
+  UploadedImageURL: Observable<string>; // Uploaded File URL 
+  files: Observable<ImgFile[]>; // Uploaded image collection
   // Image specifications
   imgName: string;
   imgSize: number;
-
   // File uploading status
   isFileUploading: boolean;
   isFileUploaded: boolean;
-
-  private filesCollection: AngularFirestoreCollection<ImgFile>;
   email: string;
   userid: string;
   file: File;
   isSocialLogin = false;
-
+  private filesCollection: AngularFirestoreCollection<ImgFile>;
+  
   constructor(
     private navCtrl: NavController,
     public actionSheetController: ActionSheetController,
@@ -148,9 +136,6 @@ export class Register1Page implements OnInit {
           return false;
         });
     }
-
-
-
   }
 
   async signup2() {
@@ -202,7 +187,6 @@ export class Register1Page implements OnInit {
     await actionSheet.present();
   }
 
-
   async takeSnap(type: string) {
     try {
       const options: CameraOptions = {
@@ -226,10 +210,8 @@ export class Register1Page implements OnInit {
   }
 
   uploadImage(event: FileList, type: string) {
-
     const file = event.item(0);
     this.file = file;
-
     // Image validation
     if (file.type.split('/')[0] !== 'image') {
       console.log('File type is not supported!');
@@ -237,11 +219,9 @@ export class Register1Page implements OnInit {
     }
     this.isFileUploading = true;
     this.isFileUploaded = false;
-    this.imgName = file.name;
-    // Storage path
-    const fileStoragePath = `filesStorage/${new Date().getTime()}_${file.name}`;
-    // Image reference
-    const imageRef = this.afStorage.ref(fileStoragePath);
+    this.imgName = file.name;    
+    const fileStoragePath = `filesStorage/${new Date().getTime()}_${file.name}`; // Storage path   
+    const imageRef = this.afStorage.ref(fileStoragePath); // Image reference
     this.saveImage('G', imageRef, file, type);
     // this.percentageVal = this.fileUploadTask.percentageChanges();
 
@@ -276,12 +256,8 @@ export class Register1Page implements OnInit {
       });
   }
 
-
-
-
   storeFileLinkFirebase(image: ImgFile, type: string) {
     console.log('image ', image);
-
     if (type === 'L') {
       this.step2From.licenseImgName = image;
     } else if (type === 'I') {
