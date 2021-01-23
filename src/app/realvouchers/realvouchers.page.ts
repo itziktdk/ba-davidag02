@@ -25,13 +25,24 @@ export class RealvouchersPage implements OnInit {
 
   performGetVouchers() {
     this.fService.getAllerVoucher()
-      .subscribe((result: any) => {
-        this.voucherList = result;
-        console.log('voucherList ', this.voucherList);
-        this.sentVoucherList = this.voucherList.filter(x => x.redeemed == false && x.sent == true)
-        this.redeemedVoucherList = this.voucherList.filter(x => x.redeemed == true && x.sent == true)
-        console.log('sentVoucherList ', this.sentVoucherList);
-        console.log('redeemedVoucherList ', this.redeemedVoucherList);
+      .subscribe((results: any) => {
+        this.sentVoucherList = [];
+        this.redeemedVoucherList = [];
+        for (const result of results) {
+          for (const owner of result.ownedPharmacy.owners) {
+            if (owner.ownerId === localStorage.getItem('userId')) {
+              this.voucherList.push(result);
+              if (!result.redeemed && result.sent) {
+                this.sentVoucherList.push(result);
+              } else if (result.redeemed && result.sent) {
+                this.redeemedVoucherList.push(result);
+              }
+            }
+          }
+        }
+        // this.voucherList = results.filter(x => x.ownedPharmacy.owners.filter(y => y.ownerId == '7'));
+        // this.sentVoucherList = this.voucherList.filter(x => x.redeemed == false && x.sent == true)
+        // this.redeemedVoucherList = this.voucherList.filter(x => x.redeemed == true && x.sent == true)
       });
   }
 
@@ -54,7 +65,7 @@ export class RealvouchersPage implements OnInit {
     } else {
       const updateData = {
         ...voucher,
-        OwnedPharmacy: null,
+        ownedPharmacy: null,
         redeemed: false,
         sent: false
       };
