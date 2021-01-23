@@ -7,7 +7,7 @@ import { FirebaseService } from '../services/firebase.service';
 import { NavController } from '@ionic/angular';
 import { NavigationExtras } from '@angular/router';
 import { AlertService } from '../services/alert.service';
-//import { contains } from 'jquery';
+// import { contains } from 'jquery';
 
 @Component({
   selector: 'app-searchdoc',
@@ -80,7 +80,7 @@ export class SearchdocPage implements OnInit {
         this.pharmacyList = result;
         console.log(result);
         // result.forEach(element => {
-        //   // if (this.cityList.indexOf(element.city) == -1) { 
+        //   // if (this.cityList.indexOf(element.city) == -1) {
         //   console.log('!this.cityList.includes(element.city ', !this.cityList.includes(element.city))
         //   console.log('this.cityList.includes(element.city ', this.cityList.includes(element.city))
         //   if (!this.cityList.includes(element.city)) {
@@ -161,7 +161,7 @@ export class SearchdocPage implements OnInit {
     if (this.filteredPharmacyList && this.filteredPharmacyList.length > 0) {
       const filterPharmacyList1 = this.filteredPharmacyList.filter(x => x.city === city.id);
       this.filteredPharmacyList = filterPharmacyList1;
-      console.log('1 ', this.filteredPharmacyList)
+      console.log('1 ', this.filteredPharmacyList);
       // if (filterPharmacyList1 && filterPharmacyList1.length > 0) {
       //   this.filteredPharmacyList = filterPharmacyList1;
       // }
@@ -174,7 +174,7 @@ export class SearchdocPage implements OnInit {
       }
       const filterPharmacyList2 = tepmArr.filter(x => x.city === city.id);
       this.filteredPharmacyList = filterPharmacyList2;
-      console.log('2 ', this.filteredPharmacyList)
+      console.log('2 ', this.filteredPharmacyList);
       // if (filterPharmacyList2 && filterPharmacyList2.length > 0) {
       //   this.filteredPharmacyList = filterPharmacyList2;
       // }
@@ -198,31 +198,6 @@ export class SearchdocPage implements OnInit {
   }
 
   onNavPharmacyList() {
-    // this.fService.addDoctors({
-    //   address: 'address: \'המרכבה 31 חצי חינם\'',
-    //   city: 'חולון',
-    //   pharmcode: '12121',
-    //   phone: '46546464564564',
-    //   rating: '5',
-    //   inventory: [{
-    //     productName: 'מוצר',
-    //     description: 'שווה ביותר',
-    //     qty: '3'
-    //   },
-    //   {
-    //     productName: 'מוצר',
-    //     description: 'שווה ביותר',
-    //     qty: '7'
-    //   }
-    //   ],
-    //   opening: [{
-    //     from: 'מוצר',
-    //     to: 'שווה ביותר',
-    //     shortDay: '3',
-    //     dayOff: '3',
-    //     shortTo: '3'
-    //   }]
-    // });
     if ((!!this.searchValue1 && (!!this.filteredPharmacyList && this.filteredPharmacyList.length > 0)) ||
       (!!this.searchValue2 && (!!this.filteredPharmacyList && this.filteredPharmacyList.length > 0))) {
       const navigationExtras: NavigationExtras = {

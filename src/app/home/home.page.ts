@@ -8,6 +8,8 @@ import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/fire
 import { Observable } from 'rxjs/Observable';
 import { UserDataService } from '../services/user-data.service';
 import { subscribeOn } from 'rxjs/operators';
+import { FirebaseService } from '../services/firebase.service';
+import { userInfo } from 'os';
 // import { AngularFireAuth } from '@angular/fire/auth';
 
 
@@ -43,7 +45,8 @@ export class HomePage implements OnInit {
     private userDataService: UserDataService,
     private fireStore: AngularFirestore,
     private modalCtrl: ModalController,
-    private routOut: IonRouterOutlet
+    private routOut: IonRouterOutlet,
+    private fService: FirebaseService
   ) {
 
     // this.userDoc = fireStore.doc<any>('users/xGT8mosXOfN9o4AMawx506Uotag2');
@@ -80,6 +83,7 @@ export class HomePage implements OnInit {
                 this.isAdmin = userData.admin;
                 console.log('usrdata ', this.isAdmin);
                 localStorage.setItem('isAdmin', userData.admin);
+                this.validateUserVoucher(userData);
               } else {
                 this.authService.signOutCurrentUser();
               }
@@ -88,6 +92,27 @@ export class HomePage implements OnInit {
         }
       });
 
+  }
+
+  validateUserVoucher(userdata: any) {
+    // validate user-voucher
+    this.fService.performUserVoucher(localStorage.getItem('userId'))
+      .subscribe(doc => {
+        if (!doc.exists) {
+          const voucherData = {
+            vaucherOffer: '10% הנחה בהזמנה מעל 40 גרם',
+            vaucherNUM: `DAG${userdata.userdata.id}`,
+            lastredeem: null,
+            ownedPharmacy: null,
+            redeemed: false,
+            sent: false,
+            uId: localStorage.getItem('userId'),
+            userData: userdata.userdata
+          };
+          this.fService.addVoucher(userdata.userdata.userId, voucherData).then();
+        }
+      }
+      );
   }
 
   async presentActionSheet() {
@@ -182,7 +207,7 @@ export class HomePage implements OnInit {
       swipeToClose: true,
       presentingElement: this.routOut.nativeEl,
       backdropDismiss: true,
-    
+
     });
 
     return await modal.present();

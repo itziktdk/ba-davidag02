@@ -2,13 +2,14 @@
   <div class="the-form">
     <div class="input-item">
       <ion-item lines="none">
-        <ion-input type="text" placeholder="הקלד קוד מקבל"></ion-input>
+        <input [(ngModel)]="couponCode" type="text" placeholder="הקלד קוד מקבל" />
       </ion-item>
+      <p id="err">{{errorMessage}}</p>
     </div>
 
     <div class="btn-holder ion-text-center">
-      <ion-button (click)="close()"  shape="round">
-       OK
+      <ion-button (click)="onSubmit()" shape="round">
+        OK
       </ion-button>
     </div>
   </div>

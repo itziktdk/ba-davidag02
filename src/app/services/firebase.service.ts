@@ -65,7 +65,7 @@ export class FirebaseService {
 
   // START Pharmacy
   getPharmacyList() {
-    return this.firestore.collection('/pharms').valueChanges();
+    return this.firestore.collection('/pharms').valueChanges({ idField: 'id' });
   }
 
   addReserveOrders(data: any, docId: string) {
@@ -83,6 +83,10 @@ export class FirebaseService {
     // return ref.once('value', function (snapshot) {
     //   return ref.update(data);
     // });
+  }
+
+  addVoucherOrderNotification(data: any) {
+    return this.firestore.collection(`/voucher-notification`).add(data);
   }
 
   async addUserReserveOrders(data: any) {
@@ -161,5 +165,26 @@ export class FirebaseService {
 
   orderIncrement() {
     // this.intk = this.firestore.collection('/orderSerial').doc('tJ3P2iC0O377gAb1e9Fs').collection('int');
+  }
+
+  // START Voucher 
+  performUserVoucher(userId: string) {
+    return this.firestore.collection('/user-voucher').doc(userId).get();
+  }
+
+  getAllerVoucher() {
+    return this.firestore.collection('/user-voucher').valueChanges();
+  }
+
+  getUserVoucher(userId: string) {
+    return this.firestore.collection('/user-voucher').doc(userId).valueChanges();
+  }
+
+  addVoucher(uid: string, userVoucherData: any) {
+    return this.firestore.collection(`/user-voucher`).doc(uid).set(userVoucherData);
+  }
+
+  updateVoucher(uid: string, userVoucherData: any) {
+    return this.firestore.collection(`/user-voucher`).doc(uid).set(userVoucherData);
   }
 }

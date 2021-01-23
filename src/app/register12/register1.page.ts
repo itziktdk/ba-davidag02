@@ -22,52 +22,42 @@ export interface ImgFile {
   styleUrls: ['./register1.page.scss'],
 })
 export class Register1Page implements OnInit {
-step1 = false;
-step2 = true;
-step2init = true;
-step3 = false;
-step3init = true;
-step4 = false;
-logup = {first: '', last: '', address: '',  id: '',city:'',number:''};
- password:any;
-capturedSnapURL: string;
+  step1 = false;
+  step2 = true;
+  step2init = true;
+  step3 = false;
+  step3init = true;
+  step4 = false;
+  logup = { first: '', last: '', address: '', id: '', city: '', number: '' };
+  password: any;
+  capturedSnapURL: string;
 
-cameraOptions: CameraOptions = {
-  quality: 20,
-  destinationType: this.camera.DestinationType.DATA_URL,
-  encodingType: this.camera.EncodingType.JPEG,
-  mediaType: this.camera.MediaType.PICTURE
-};
+  cameraOptions: CameraOptions = {
+    quality: 20,
+    destinationType: this.camera.DestinationType.DATA_URL,
+    encodingType: this.camera.EncodingType.JPEG,
+    mediaType: this.camera.MediaType.PICTURE
+  };
 
- // File upload task
-fileUploadTask: AngularFireUploadTask;
 
-// Upload progress
-percentageVal: Observable<number>;
+  fileUploadTask: AngularFireUploadTask; // File upload task
+  percentageVal: Observable<number>; // Upload progress
+  trackSnapshot: Observable<any>; // Track file uploading with snapshot
+  UploadedImageURL: Observable<string>; // Uploaded File URL
+  files: Observable<ImgFile[]>; // Uploaded image collection
+  // Image specifications
+  imgName: string;
+  imgSize: number;
+  // File uploading status
+  isFileUploading: boolean;
+  isFileUploaded: boolean;
 
-// Track file uploading with snapshot
-trackSnapshot: Observable<any>;
-
-// Uploaded File URL
-UploadedImageURL: Observable<string>;
-
-// Uploaded image collection
-files: Observable<ImgFile[]>;
-
-// Image specifications
-imgName: string;
-imgSize: number;
-
-// File uploading status
-isFileUploading: boolean;
-isFileUploaded: boolean;
-
-private filesCollection: AngularFirestoreCollection<ImgFile>;
+  private filesCollection: AngularFirestoreCollection<ImgFile>;
   email: string;
- 
+
   signup() {
-   this.auth.register(this.email,this.password,this.logup);
-}
+    this.auth.register(this.email, this.password, this.logup);
+  }
 
   constructor(
     private navCtrl: NavController,
@@ -76,132 +66,113 @@ private filesCollection: AngularFirestoreCollection<ImgFile>;
     private afs: AngularFirestore,
     private afStorage: AngularFireStorage,
     private auth: AuthService,
-    ) {
+  ) {
 
-      this.isFileUploading = false;
-      this.isFileUploaded = false;
+    this.isFileUploading = false;
+    this.isFileUploaded = false;
 
     // Define uploaded files collection
-      this.filesCollection = afs.collection<ImgFile>('imagesCollection');
-      this.files = this.filesCollection.valueChanges();
+    this.filesCollection = afs.collection<ImgFile>('imagesCollection');
+    this.files = this.filesCollection.valueChanges();
 
-    }
-
-    async presentActionSheet(name: string) {
-
-      const actionSheet = await this.actionSheetController.create({
-        header: 'בחר פעולה',
-        cssClass: 'actions',
-        buttons: [{
-          text: 'העלה תמונה',
-          role: 'destructive',
-          icon: 'cloud-upload',
-          handler: () => {
-            const selectfile = document.getElementsByClassName(name)[0] as HTMLElement;
-            selectfile.click();
-          }
-        }, {
-          text: 'צילום תמונה',
-          icon: 'camera',
-          handler: () => {
-            this.takeSnap();
-          }
-        }]
-      });
-      await actionSheet.present();
-    }
+  }
 
   ngOnInit() {
-    this.email=history.state.data;
+    this.email = history.state.data;
     console.log(this.email);
   }
 
+  async presentActionSheet(name: string) {
+    const actionSheet = await this.actionSheetController.create({
+      header: 'בחר פעולה',
+      cssClass: 'actions',
+      buttons: [{
+        text: 'העלה תמונה',
+        role: 'destructive',
+        icon: 'cloud-upload',
+        handler: () => {
+          const selectfile = document.getElementsByClassName(name)[0] as HTMLElement;
+          selectfile.click();
+        }
+      },
+      {
+        text: 'צילום תמונה',
+        icon: 'camera',
+        handler: () => {
+          this.takeSnap();
+        }
+      }]
+    });
+    await actionSheet.present();
+  }
 
   takeSnap() {
     this.camera.getPicture(this.cameraOptions).then((imageData) => {
       // this.camera.DestinationType.FILE_URI gives file URI saved in local
       // this.camera.DestinationType.DATA_URL gives base64 URI
-
       const base64Image = 'data:image/jpeg;base64,' + imageData;
       this.capturedSnapURL = base64Image;
     }, (err) => {
-
       console.log(err);
       // Handle error
     });
   }
 
-
   uploadImage(event: FileList) {
+    const file = event.item(0);
+    // Image validation
+    if (file.type.split('/')[0] !== 'image') {
+      console.log('File type is not supported!');
+      return;
+    }
+    this.isFileUploading = true;
+    this.isFileUploaded = false;
+    this.imgName = file.name;
 
-      const file = event.item(0);
-
-      // Image validation
-      if (file.type.split('/')[0] !== 'image') {
-        console.log('File type is not supported!');
-        return;
-      }
-
-      this.isFileUploading = true;
-      this.isFileUploaded = false;
-
-      this.imgName = file.name;
-
-      // Storage path
-      const fileStoragePath = `filesStorage/${new Date().getTime()}_${file.name}`;
-
-      // Image reference
-      const imageRef = this.afStorage.ref(fileStoragePath);
-
-      // File upload task
-      this.fileUploadTask = this.afStorage.upload(fileStoragePath, file);
-
-      // Show uploading progress
-      this.percentageVal = this.fileUploadTask.percentageChanges();
-      this.trackSnapshot = this.fileUploadTask.snapshotChanges().pipe(
-
-        finalize(() => {
-          // Retreive uploaded image storage path
-          this.UploadedImageURL = imageRef.getDownloadURL();
-
-          this.UploadedImageURL.subscribe(resp => {
-            this.storeFilesFirebase({
-              name: file.name,
-              filepath: resp,
-              size: this.imgSize
-            });
-            this.isFileUploading = false;
-            this.isFileUploaded = true;
-          }, error => {
-            console.log(error);
+    const fileStoragePath = `filesStorage/${new Date().getTime()}_${file.name}`;    // Storage path
+    const imageRef = this.afStorage.ref(fileStoragePath);    // Image reference
+    this.fileUploadTask = this.afStorage.upload(fileStoragePath, file);    // File upload task
+    // Show uploading progress
+    this.percentageVal = this.fileUploadTask.percentageChanges();
+    this.trackSnapshot = this.fileUploadTask.snapshotChanges().pipe(
+      finalize(() => {
+        // Retreive uploaded image storage path
+        this.UploadedImageURL = imageRef.getDownloadURL();
+        this.UploadedImageURL.subscribe(resp => {
+          this.storeFilesFirebase({
+            name: file.name,
+            filepath: resp,
+            size: this.imgSize
           });
-        }),
-        tap(snap => {
-            this.imgSize = snap.totalBytes;
-        })
-      );
+          this.isFileUploading = false;
+          this.isFileUploaded = true;
+        }, error => {
+          console.log(error);
+        });
+      }),
+      tap(snap => {
+        this.imgSize = snap.totalBytes;
+      })
+    );
   }
 
   storeFilesFirebase(image: ImgFile) {
-      const fileId = this.afs.createId();
-
-      this.filesCollection.doc(fileId).set(image).then(res => {
-        console.log(res);
-      }).catch(err => {
-        console.log(err);
-      });
+    const fileId = this.afs.createId();
+    this.filesCollection.doc(fileId).set(image).then(res => {
+      console.log(res);
+    }).catch(err => {
+      console.log(err);
+    });
   }
 
-  goStep2()
-  {
+  goStep2() {
     this.step1 = false;
     this.step2 = true;
     this.step2init = false;
     console.log(this.step3init);
   }
 
-  goStep3()
-  {
+  goStep3() {
     this.step2 = false;
     this.step3 = true;
     this.step3init = false;
@@ -209,14 +180,12 @@ private filesCollection: AngularFirestoreCollection<ImgFile>;
     console.log(this.step3init);
   }
 
-  goStep4()
-  {
+  goStep4() {
     this.step3 = false;
     this.step4 = true;
   }
 
-  goHome()
-  {
+  goHome() {
     this.navCtrl.navigateRoot('home');
   }
 

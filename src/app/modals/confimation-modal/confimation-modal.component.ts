@@ -21,10 +21,7 @@ export class ConfimationModalComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log('item ', this.item);
     this.dttm = moment(this.item.time).format('LLL');
-    console.log('index ', this.item.time);
-    console.log('item ', this.item.user.userdata);
 
   }
 
@@ -38,14 +35,11 @@ export class ConfimationModalComponent implements OnInit {
       confirmation: true,
       verify: true
     };
-
-
     this.fService.UpdateOrderReserve(item.orderId, data)
       .then(res => {
         location.reload();
         this.close();
       });
-
   }
 
   onDecline(item) {
@@ -54,15 +48,11 @@ export class ConfimationModalComponent implements OnInit {
       confirmation: false,
       verify: true
     };
-    console.log('dataaa ', data);
-
     this.fService.UpdateOrderReserve(item.orderId, data)
       .then(res => {
         this.close();
         location.reload();
-
       });
-
   }
 
   close() {
@@ -70,5 +60,4 @@ export class ConfimationModalComponent implements OnInit {
       dismissed: true
     });
   }
-
 }

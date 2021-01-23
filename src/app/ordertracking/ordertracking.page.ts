@@ -29,19 +29,18 @@ export class OrdertrackingPage implements OnInit {
       .subscribe((orders: any) => {
         this.reserveList = [];
         console.log('this.order ', orders);
-        orders.forEach(order => {
-          // if (order.pharmacyDetails.ownerId == userId) {
-          this.reserveList.push(order);
-          this.reserveList.sort((a, b) => {
-            const c = new Date(a.time);
-            const d = new Date(b.time);
-            return c < d ? -1 : c > d ? 1 : 0;
-          });
-          // }
-          // console.log('this.reserveList ', this.reserveList);
+        orders.forEach((order: any) => {
+          for (const owner of order.pharmacyDetails.owners) {
+            if (owner.ownerId === userId) {
+              this.reserveList.push(order);
+              this.reserveList.sort((a, b) => {
+                const c = new Date(a.time);
+                const d = new Date(b.time);
+                return c < d ? -1 : c > d ? 1 : 0;
+              });
+            }
+          }
         });
-        // orders.
-        // console.log('reserve orders ', result);
       });
   }
 
