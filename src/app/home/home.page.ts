@@ -103,7 +103,7 @@ export class HomePage implements OnInit {
             vaucherOffer: '10% הנחה בהזמנה מעל 40 גרם',
             vaucherNUM: `DAG${userdata.userdata.id}`,
             lastredeem: null,
-            OwnedPharmacy: null,
+            ownedPharmacy: null,
             redeemed: false,
             sent: false,
             uId: localStorage.getItem('userId'),

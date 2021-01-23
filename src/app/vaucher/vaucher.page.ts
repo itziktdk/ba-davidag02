@@ -38,7 +38,7 @@ export class VaucherPage implements OnInit {
           this.showDetails = true;
           this.s1 = false;
           this.showBadge = true;
-          this.pharmacy = res.OwnedPharmacy;
+          this.pharmacy = res.ownedPharmacy;
         } else {
           this.performGetAllPharmacies();
           this.fService.getUserVoucher(localStorage.getItem('userId'))
@@ -79,16 +79,14 @@ export class VaucherPage implements OnInit {
         this.s1 = false;
         this.showBadge = false;
         this.pharmacy = tdata.data;
-
+        const ownedPharmacy = { ...tdata.data };
         const updateData = {
           ...this.userVoucherDetails[0],
-          OwnedPharmacy: {
-            id: tdata.data.id,
-            name: tdata.data.name
-          },
+          ownedPharmacy,
           oldLastRedeemDttm: this.userVoucherDetails[0].lastredeem,
           sent: true
         };
+        console.log(this.pharmacy)
         this.fService.addVoucher(localStorage.getItem('userId'), updateData);
 
         const notification = {
@@ -114,7 +112,7 @@ export class VaucherPage implements OnInit {
     const updateData = {
       ...this.userVoucherDetails[0],
       // lastredeem: this.userVoucherDetails[0].oldLastRedeemDttm ? this.userVoucherDetails[0].oldLastRedeemDttm : null,
-      OwnedPharmacy: null,
+      ownedPharmacy: null,
       redeemed: false,
       sent: false
     };
