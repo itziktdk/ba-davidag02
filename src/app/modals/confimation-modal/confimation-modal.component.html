@@ -35,7 +35,7 @@
               <ion-col size="6">
                 <div class="btn ion-activatable ripple-parent ion-text-center">
                   <ion-ripple-effect></ion-ripple-effect>
-                  <img (click)="previewImg(item?.user?.documents?.idImgName?.filepath)" src="{{item.user?.documents?.idImgName?.filepath}}"
+                  <img (click)="previewImg(item?.user?.result?.documents?.idImgName?.filepath)" src="{{item.user?.result?.documents?.idImgName?.filepath}}"
                     alt="">
                   <p>ID <br> document</p>
                 </div>
@@ -43,9 +43,9 @@
               <ion-col size="6">
                 <div class="btn ion-activatable ripple-parent ion-text-center">
                   <ion-ripple-effect></ion-ripple-effect>
-                  <img (click)="previewImg(item?.user?.documents?.recieptImgName?.filepath)"
-                    src="{{item.user?.documents?.recieptImgName?.filepath}}" alt="">
-                  <p>recipt <br> document</p>
+                  <img (click)="previewImg(item?.user?.result?.documents?.recieptImgName?.filepath)"
+                    src="{{item.user?.result?.documents?.recieptImgName?.filepath}}" alt="">
+                  <p>receipt <br> document</p>
                 </div>
               </ion-col>
             </ion-row>
