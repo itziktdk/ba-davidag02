@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AlertController, ModalController, PopoverController } from '@ionic/angular';
 import { AlertService } from 'src/app/services/alert.service';
 import { AuthService } from 'src/app/services/auth.service';
@@ -11,7 +11,7 @@ import { ReserverPopoverComponent } from '../../reserver-popover/reserver-popove
   templateUrl: './product-reserve-modal.page.html',
   styleUrls: ['./product-reserve-modal.page.scss'],
 })
-export class ProductReserveModalPage implements OnInit {
+export class ProductReserveModalPage implements OnInit, OnDestroy {
   data;
   pArray;
   pCount: number;
@@ -19,6 +19,10 @@ export class ProductReserveModalPage implements OnInit {
   orderItemArr: any = [];
   hideBtn = true;
   products: any;
+  alert2: any = null;
+  alert1: any = null;
+  getAll: any;
+  currentU: any;
 
   constructor(
     private modalCtrl: ModalController,
@@ -28,6 +32,12 @@ export class ProductReserveModalPage implements OnInit {
     private alertService: AlertService,
     public popoverController: PopoverController,
   ) { }
+
+  ngOnInit() {
+    this.pCount = Number(sessionStorage.getItem('rCount'));
+    this.performGetAllProducts();
+  }
+
   async presentPopover(ev: any) {
     const popover = await this.popoverController.create({
       component: ReserverPopoverComponent,
@@ -38,18 +48,13 @@ export class ProductReserveModalPage implements OnInit {
     });
     return await popover.present();
   }
-  ngOnInit() {
-    this.pCount = Number(sessionStorage.getItem('rCount'));
-    this.performGetAllProducts();
-
-  }
 
   close() {
     this.modalCtrl.dismiss();
   }
 
   performGetAllProducts() {
-    this.fService.getProducts()
+    this.getAll = this.fService.getProducts()
       .subscribe((result: any) => {
         this.pArray.inventory = result;
         this.data = (this.pArray);
@@ -59,10 +64,9 @@ export class ProductReserveModalPage implements OnInit {
   }
 
   onReserve() {
-    let currentU;
     this.hideBtn = true;
     if (this.orderItemArr && this.orderItemArr.length > 0) {
-      currentU = this.authService.getCurrentUserDetails()
+      this.currentU = this.authService.getCurrentUserDetails()
         .subscribe((result: any) => {
           // this.doctorList = result;
           console.log('snap ', result);
@@ -88,6 +92,7 @@ export class ProductReserveModalPage implements OnInit {
             this.fService.addReserveOrders(data, reserveId)
               .then(res => {
                 const notification = {
+                  type: 'order',
                   dttm: (new Date()).toString(),
                   orderDetails: data,
                   seen: false,
@@ -106,12 +111,10 @@ export class ProductReserveModalPage implements OnInit {
             this.hideBtn = false;
           }
         });
-
     } else {
       this.alertService.default('', 'כמות לא תקינה');
       this.hideBtn = false;
     }
-    // currentU.unsubscribe();
   }
 
   get generateReserveId() {
@@ -255,8 +258,9 @@ export class ProductReserveModalPage implements OnInit {
   }
 
   async alert() {
-    const alert = await this.alertController.create({
+    this.alert1 = await this.alertController.create({
       message: 'בקשת ההזמנה נשלחה בהצלחה להנהלת בית המרקחת, נא עקוב אחרי איזור ההתראות בנוגע לאישור ההזמנה. בריאות שלמה!',
+      backdropDismiss: false,
       buttons: [
         {
           text: 'סגור',
@@ -268,13 +272,14 @@ export class ProductReserveModalPage implements OnInit {
         }
       ]
     });
-    await alert.present();
+    await this.alert1.present();
   }
 
 
   async alertReset(index) {
-    const alert = await this.alertController.create({
+    this.alert2 = await this.alertController.create({
       message: 'Please add a valid Quantity',
+      backdropDismiss: false,
       buttons: [
         {
           text: 'OK',
@@ -286,6 +291,17 @@ export class ProductReserveModalPage implements OnInit {
         }
       ]
     });
-    await alert.present();
+    await this.alert2.present();
+  }
+
+  ngOnDestroy() {
+    if (this.alert1 != null) {
+      this.alert1.dismiss();
+    }
+    if (this.alert2 != null) {
+      this.alert2.dismiss();
+    }
+    this.getAll.unsubscribe();
+    this.currentU.unsubscribe();
   }
 }
