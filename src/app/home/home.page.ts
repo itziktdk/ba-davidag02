@@ -35,7 +35,8 @@ export class HomePage implements OnInit {
   userUID: string;
   users: Observable<User[]>;
   usersCollectionRef: AngularFirestoreCollection<User>;
-  isAdmin = false;;
+  isAdmin = false; notificationList: unknown[];
+  notiCount = 0;
   // tslint:disable-next-line: max-line-length
   constructor(
     private navCtrl: NavController,
@@ -77,6 +78,7 @@ export class HomePage implements OnInit {
           this.userUID = res.uid;
           localStorage.setItem('userId', res.uid);
           localStorage.setItem('email', res.email);
+          this.performGetNotifications(res.uid);
           this.userDataService.getUserData(res.uid)
             .subscribe((userData: any) => {
               if (userData) {
@@ -91,7 +93,19 @@ export class HomePage implements OnInit {
           if (res.photoURL) { this.photoUrl = res.photoURL; }
         }
       });
+  }
 
+  performGetNotifications(userId) {
+    this.fService.getNotifications()
+      .subscribe(notifications => {
+        if (notifications && notifications.length > 0) {
+          this.notiCount = notifications.filter((x: any) => x.uid === userId).length;
+          this.notificationList = notifications;
+          console.log(this.notificationList)
+        } else {
+          this.notiCount = 0;
+        }
+      })
   }
 
   validateUserVoucher(userdata: any) {
@@ -109,7 +123,8 @@ export class HomePage implements OnInit {
             uId: localStorage.getItem('userId'),
             userData: userdata.userdata
           };
-          this.fService.addVoucher(userdata.userdata.userId, voucherData).then();
+          const voucherId: any = this.fService.addVoucher(localStorage.getItem('userId'));
+          voucherId.set({ ...voucherData, voucherId: voucherId.ref.id }).then();
         }
       }
       );
@@ -207,6 +222,9 @@ export class HomePage implements OnInit {
       swipeToClose: true,
       presentingElement: this.routOut.nativeEl,
       backdropDismiss: true,
+      componentProps: {
+        notificationList: this.notificationList
+      }
 
     });
 

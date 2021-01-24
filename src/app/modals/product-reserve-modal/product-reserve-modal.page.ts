@@ -98,7 +98,8 @@ export class ProductReserveModalPage implements OnInit, OnDestroy {
                   dttm: (new Date()).toString(),
                   orderDetails: data,
                   seen: false,
-                  show: true
+                  show: true,
+                  uid: localStorage.getItem('userId')
                 };
                 this.fService.addReserveOrderNotification(notification)
                   .then();

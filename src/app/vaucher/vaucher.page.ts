@@ -86,17 +86,21 @@ export class VaucherPage implements OnInit {
           oldLastRedeemDttm: this.userVoucherDetails[0].lastredeem,
           sent: true
         };
-        console.log(this.pharmacy)
-        this.fService.addVoucher(localStorage.getItem('userId'), updateData);
+        const voucherId = this.fService.addVoucher(localStorage.getItem('userId'));
+        console.log('v data ', updateData)
+        voucherId.set(updateData).then();
 
-        const notification = {
-          dttm: (new Date()).toString(),
-          voucherDetails: updateData,
-          seen: false,
-          show: true
-        };
-        this.fService.addReserveOrderNotification(notification)
-          .then();
+        // const notification = {
+        //   type: 'voucher',
+        //   dttm: (new Date()).toString(),
+        //   voucherDetails: updateData,
+        //   seen: false,
+        //   show: false,
+        //   uid: localStorage.getItem('userId')
+        // };
+        // console.log(notification)
+        // this.fService.addReserveOrderNotification(notification)
+        //   .then();
 
       } else {
         this.s1 = true;

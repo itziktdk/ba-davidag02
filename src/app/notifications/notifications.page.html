@@ -4,18 +4,37 @@
     <ion-buttons slot="start">
       <ion-button (click)="close()">
         <ion-icon slot="icon-only" name="close"></ion-icon>
-        </ion-button>
+      </ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
-  <div class="the-list">
-    <ion-item lines="none">
-      <div class="thumb flex al-center jc-center" slot="end">
-        <ion-icon slot="icon-only" name="checkmark-circle-outline"></ion-icon>
-      </div>
-      <ion-label>התקבלה התראה חדשה      </ion-label>
-    </ion-item>
-  </div>
+<ion-content>
+  <ng-container *ngIf="voucherList" class="ion-padding">
+    <div class="the-list" *ngFor="let voucher of voucherList">
+      <ion-item lines="none" *ngIf="voucher.show">
+        <div class="thumb flex al-center jc-center" slot="end">
+          <ion-icon slot="icon-only" name="checkmark-circle-outline"></ion-icon>
+        </div>
+        <ion-label>Your voucher has approved!</ion-label>
+      </ion-item>
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="orderList" class="ion-padding">
+    <div class="the-list" *ngFor="let order of orderList">
+      <ion-item lines="none" *ngIf="order.show && !order.orderDetails.verify && !order.orderDetails.confirmation">
+        <div class="thumb flex al-center jc-center" slot="end">
+          <ion-icon slot="icon-only" name="checkmark-circle-outline"></ion-icon>
+        </div>
+        <ion-label>Oder sent to {{order.orderDetails.pharmacyDetails.name}} </ion-label>
+      </ion-item>
+      <ion-item lines="none" *ngIf="order.show && order.orderDetails.verify">
+        <div class="thumb flex al-center jc-center" slot="end">
+          <ion-icon slot="icon-only" name="checkmark-circle-outline"></ion-icon>
+        </div>
+        <ion-label>Order approved by {{order.orderDetails.pharmacyDetails.name}}</ion-label>
+      </ion-item>
+    </div>
+  </ng-container>
 </ion-content>

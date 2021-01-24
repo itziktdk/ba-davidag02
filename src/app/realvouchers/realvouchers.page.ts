@@ -59,8 +59,22 @@ export class RealvouchersPage implements OnInit {
         lastredeem: Moment().format(),
         redeemed: true,
       };
-      this.fService.addVoucher(voucher.userData.userId, updateData).then(() => {
-        this.showModal();
+      const voucherId = this.fService.addVoucher(voucher.userData.userId);
+      voucherId.set(updateData).then(() => {
+        const notification = {
+          type: 'voucher',
+          dttm: (new Date()).toString(),
+          voucherDetails: updateData,
+          seen: false,
+          show: true,
+          uid: localStorage.getItem('userId')
+        };
+        this.fService.addReserveOrderNotification(notification)
+          .then(() => {
+            this.showModal().then(() => {
+              location.reload();
+            });
+          });
       });
     } else {
       const updateData = {
@@ -69,7 +83,10 @@ export class RealvouchersPage implements OnInit {
         redeemed: false,
         sent: false
       };
-      this.fService.addVoucher(voucher.userData.userId, updateData);
+      const voucherId = this.fService.addVoucher(voucher.userData.userId);
+      voucherId.set(updateData).then(() => {
+        location.reload();
+      });
     }
   }
 
@@ -81,7 +98,6 @@ export class RealvouchersPage implements OnInit {
 
     return await modal.present();
   }
-
 
 
 }
