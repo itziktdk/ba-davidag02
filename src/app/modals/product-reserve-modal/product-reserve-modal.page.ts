@@ -99,7 +99,6 @@ export class ProductReserveModalPage implements OnInit, OnDestroy {
                   orderDetails: data,
                   seen: false,
                   show: true
-
                 };
                 this.fService.addReserveOrderNotification(notification)
                   .then();
