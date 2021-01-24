@@ -51,6 +51,8 @@ export class ProductReserveModalPage implements OnInit, OnDestroy {
 
   close() {
     this.modalCtrl.dismiss();
+    this.getAll.unsubscribe();
+    this.currentU.unsubscribe();
   }
 
   performGetAllProducts() {
@@ -301,7 +303,5 @@ export class ProductReserveModalPage implements OnInit, OnDestroy {
     if (this.alert2 != null) {
       this.alert2.dismiss();
     }
-    this.getAll.unsubscribe();
-    this.currentU.unsubscribe();
   }
 }
