@@ -19,7 +19,7 @@
               <span>{{item.product.name}}</span>
             </h5>
             <h5>
-             כמות מבוקשת:
+              כמות מבוקשת:
               <span>{{item.product.orderedQty}}</span>
             </h5>
 
@@ -35,8 +35,8 @@
               <ion-col size="6">
                 <div class="btn ion-activatable ripple-parent ion-text-center">
                   <ion-ripple-effect></ion-ripple-effect>
-                  <img (click)="previewImg(item?.user?.result?.documents?.idImgName?.filepath)" src="{{item.user?.result?.documents?.idImgName?.filepath}}"
-                    alt="">
+                  <img (click)="previewImg(item?.user?.result?.documents?.idImgName?.filepath)"
+                    src="../../../assets/imgs/document.png" alt="">
                   <p>ID <br> document</p>
                 </div>
               </ion-col>
@@ -44,7 +44,7 @@
                 <div class="btn ion-activatable ripple-parent ion-text-center">
                   <ion-ripple-effect></ion-ripple-effect>
                   <img (click)="previewImg(item?.user?.result?.documents?.recieptImgName?.filepath)"
-                    src="{{item.user?.result?.documents?.recieptImgName?.filepath}}" alt="">
+                    src="../../../assets/imgs/document.png" alt="">
                   <p>receipt <br> document</p>
                 </div>
               </ion-col>

@@ -66,7 +66,8 @@ export class OrdertrackingPage implements OnInit {
     });
 
     this.modalCtrl.dismiss(() => {
-      this.performGetOrderList();
+      location.reload();
+      // this.performGetOrderList();
     });
     return await modal.present();
   }

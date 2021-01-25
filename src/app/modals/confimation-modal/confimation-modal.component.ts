@@ -37,7 +37,16 @@ export class ConfimationModalComponent implements OnInit {
     };
     this.fService.UpdateOrderReserve(item.orderId, data)
       .then(res => {
-        location.reload();
+        const notification = {
+          type: 'order',
+          dttm: (new Date()).toString(),
+          orderDetails: data,
+          seen: false,
+          show: true,
+          uid: localStorage.getItem('userId')
+        };
+        this.fService.addReserveOrderNotification(notification)
+          .then();
         this.close();
       });
   }

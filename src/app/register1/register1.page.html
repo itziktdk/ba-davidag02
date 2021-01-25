@@ -222,7 +222,7 @@
 
         <div class="btn-holder ion-text-center">
           <ion-button type="submit"
-            [disabled]="form.invalid || (step2From.licenseImgName == null && step2From.idImgName == null && step2From.recieptImgName == null)">
+            [disabled]="form.invalid || (step2From.licenseImgName == null || step2From.idImgName == null || step2From.recieptImgName == null)">
             המשך
             <ion-icon slot="end" name="chevron-back-circle"></ion-icon>
           </ion-button>

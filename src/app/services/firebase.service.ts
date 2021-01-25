@@ -78,7 +78,7 @@ export class FirebaseService {
   }
 
   addReserveOrderNotification(data: any) {
-    return this.firestore.collection(`/reserve-notification`).add(data);
+    return this.firestore.collection(`/user-notifications`).add(data);
     // const ref = firebase.database().ref(`reserveOrders/${data.user.uid}/`);
     // return ref.once('value', function (snapshot) {
     //   return ref.update(data);
@@ -180,11 +180,17 @@ export class FirebaseService {
     return this.firestore.collection('/user-voucher').doc(userId).valueChanges();
   }
 
-  addVoucher(uid: string, userVoucherData: any) {
-    return this.firestore.collection(`/user-voucher`).doc(uid).set(userVoucherData);
+  addVoucher(uid: string) {
+    return this.firestore.collection(`/user-voucher`).doc(uid);
   }
 
   updateVoucher(uid: string, userVoucherData: any) {
     return this.firestore.collection(`/user-voucher`).doc(uid).set(userVoucherData);
   }
+
+  // NOTIFICATIONS
+  getNotifications() {
+    return this.firestore.collection('/user-notifications').valueChanges();
+  }
+
 }
