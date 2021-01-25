@@ -36,7 +36,7 @@
         <div class="btn-holder ion-text-center" *ngIf="s1">
           <ion-button [disabled]="!pharmacyList || (pharmacyList && pharmacyList.length <= 0)"
             (click)="presentPopover($event)" shape="round">
-            Redeem
+            ממש
           </ion-button>
         </div>
       </div>
@@ -44,11 +44,15 @@
 
     <div class="s2 ion-text-center ion-padding" *ngIf="!s1">
       <div class="description ">
-        <p>{{pharmacy.name}}: pharmacy name
+        <p>
+          השובר נשלח לבית המרקחת: <br>
+      <strong>
+          {{pharmacy.name}} 
+          </strong>
         </p>
 
         <ion-chip mode="ios" outline="true" (click)="setBack()">
-          <ion-label>Click to cancel</ion-label>
+          <ion-label>הקש לביטול</ion-label>
         </ion-chip>
       </div>
     </div>

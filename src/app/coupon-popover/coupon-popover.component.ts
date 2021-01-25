@@ -42,7 +42,7 @@ export class CouponPopoverComponent implements OnInit {
             (x.phone.includes('-') ? x.phone.replace('-', '') : x.phone) === this.couponCode ||
             (x.phone2.includes('-') ? x.phone2.replace('-', '') : x.phone2) === this.couponCode);
           if (!selectedPharmacyList || (selectedPharmacyList && selectedPharmacyList.length === 0)) {
-            this.errorMessage = 'Invalid  Coupon code';
+            this.errorMessage = 'בית המרקחת לא נמצא';
           } else {
             // Skip duplicating
             for (const i of selectedPharmacyList.keys()) {
