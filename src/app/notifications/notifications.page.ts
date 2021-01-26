@@ -12,8 +12,6 @@ import { FirebaseService } from '../services/firebase.service';
 export class NotificationsPage implements OnInit {
 
   notificationList: Array<any>;
-  voucherList: Array<any> = [];
-  orderList: Array<any> = [];
   constructor(
     private modalCtrl: ModalController,
     private fService: FirebaseService) { }
