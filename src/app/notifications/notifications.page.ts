@@ -1,5 +1,6 @@
 import { ModalController } from '@ionic/angular';
 import { Component, OnInit } from '@angular/core';
+import { FirebaseService } from '../services/firebase.service';
 
 @Component({
   selector: 'app-notifications',
@@ -11,7 +12,9 @@ export class NotificationsPage implements OnInit {
   notificationList: Array<any>;
   voucherList: Array<any> = [];
   orderList: Array<any> = [];
-  constructor(private modalCtrl: ModalController) { }
+  constructor(
+    private modalCtrl: ModalController,
+    private fService: FirebaseService) { }
 
   ngOnInit() {
     if (this.notificationList && this.notificationList.length > 0) {
@@ -26,7 +29,16 @@ export class NotificationsPage implements OnInit {
   }
 
   close() {
+    for (const notification of this.notificationList) {
+      if (!notification.seen) {
+        const updNotification = {
+          ...notification,
+          seen: true
+        };
+        this.fService.updateNotification(notification.id, updNotification)
+          .then();
+      }
+    }
     this.modalCtrl.dismiss();
   }
-
 }
