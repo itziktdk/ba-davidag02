@@ -10,31 +10,31 @@
 </ion-header>
 
 <ion-content>
-  <ng-container *ngIf="voucherList" class="ion-padding">
-    <div class="the-list" *ngFor="let voucher of voucherList">
-      <ion-item lines="none" *ngIf="voucher.show">
-        <div *ngIf="voucher.seen" class="thumb flex al-center jc-center" slot="end">
-          <ion-icon class="icon" slot="icon-only" name="checkmark-circle-outline"></ion-icon>
-        </div>
-        <ion-label>Your voucher has approved!</ion-label>
-      </ion-item>
-    </div>
-  </ng-container>
-
-  <ng-container *ngIf="orderList" class="ion-padding">
-    <div class="the-list" *ngFor="let order of orderList">
-      <ion-item lines="none" *ngIf="order.show && !order.orderDetails.verify && !order.orderDetails.confirmation">
-        <div *ngIf="order.seen" class="thumb flex al-center jc-center" slot="end">
-          <ion-icon class="icon" slot="icon-only" name="checkmark-circle-outline"></ion-icon>
-        </div>
-        <ion-label>Oder sent to {{order.orderDetails.pharmacyDetails.name}} </ion-label>
-      </ion-item>
-      <ion-item lines="none" *ngIf="order.show && order.orderDetails.verify">
-        <div *ngIf="order.seen" class="thumb flex al-center jc-center" slot="end">
-          <ion-icon class="icon" slot="icon-only" name="checkmark-circle-outline"></ion-icon>
-        </div>
-        <ion-label>Order approved by {{order.orderDetails.pharmacyDetails.name}}</ion-label>
-      </ion-item>
+  <ng-container *ngIf="notificationList" class="ion-padding">
+    <div class="the-list" *ngFor="let notification of notificationList">
+      <ng-container *ngIf="notification.type === 'voucher'">
+        <ion-item lines="none" *ngIf="notification.show">
+          <div *ngIf="notification.seen" class="thumb flex al-center jc-center" slot="end">
+            <ion-icon class="icon" slot="icon-only" name="checkmark-circle-outline"></ion-icon>
+          </div>
+          <ion-label>{{notification.dttm}}</ion-label>
+        </ion-item>
+      </ng-container>
+      <ng-container *ngIf="notification.type === 'order'">
+        <ion-item lines="none"
+          *ngIf="notification.show && !notification.orderDetails.verify && !notification.orderDetails.confirmation">
+          <div *ngIf="notification.seen" class="thumb flex al-center jc-center" slot="end">
+            <ion-icon class="icon" slot="icon-only" name="checkmark-circle-outline"></ion-icon>
+          </div>
+          <ion-label>{{notification.dttm}}</ion-label>
+        </ion-item>
+        <ion-item lines="none" *ngIf="notification.show && notification.orderDetails.verify">
+          <div *ngIf="notification.seen" class="thumb flex al-center jc-center" slot="end">
+            <ion-icon class="icon" slot="icon-only" name="checkmark-circle-outline"></ion-icon>
+          </div>
+          <ion-label>{{notification.dttm}}</ion-label>
+        </ion-item>
+      </ng-container>
     </div>
   </ng-container>
 </ion-content>
