@@ -120,7 +120,8 @@ export class VaucherPage implements OnInit {
       redeemed: false,
       sent: false
     };
-    this.fService.addVoucher(localStorage.getItem('userId'), updateData);
+    const voucherId = this.fService.addVoucher(localStorage.getItem('userId'));
+    voucherId.set(updateData).then();
   }
 
 }
