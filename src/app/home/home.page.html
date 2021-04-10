@@ -5,10 +5,10 @@
     </div>
 
     <div class="notification">
-      <ion-button (click)="showModal()" fill="clear" >
-        <ion-icon  slot="icon-only" name="notifications"></ion-icon>
+      <ion-button [disabled]="notiCount <= 0" (click)="showModal()" fill="clear">
+        <ion-icon slot="icon-only" name="notifications"></ion-icon>
       </ion-button>
-      <ion-badge class="flex al-center jc-center"  mode="ios">{{notiCount}}</ion-badge>
+      <ion-badge class="flex al-center jc-center" mode="ios">{{notiCount}}</ion-badge>
     </div>
 
     <div class="user-bar flex al-center jc-between">
@@ -28,7 +28,7 @@
     </div>
 
     <div class="search-holder ion-padding wide" (click)="presentActionSheet()">
-      
+
       <ion-searchbar class="ion-text-center" placeholder="חיפוש מהיר" inputmode="decimal" type="decimal"
         [debounce]="250" showCancelButton="never"></ion-searchbar>
     </div>

@@ -190,7 +190,11 @@ export class FirebaseService {
 
   // NOTIFICATIONS
   getNotifications() {
-    return this.firestore.collection('/user-notifications').valueChanges();
+    return this.firestore.collection('/user-notifications').valueChanges({ idField: 'id' });
+  }
+
+  updateNotification(notificationId: string, notificationData: any) {
+    return this.firestore.collection(`/user-notifications`).doc(notificationId).set(notificationData);
   }
 
 }
