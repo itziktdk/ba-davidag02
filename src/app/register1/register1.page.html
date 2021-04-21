@@ -33,7 +33,7 @@
     </div>
 
 
-    <form *ngIf="step1" #form="ngForm" (ngSubmit)="signup(form)">
+    <form *ngIf="step1" #form="ngForm" (ngSubmit)="signup()">
       <div class="the-form set1" *ngIf="step1">
         <ion-row>
           <ion-col size="6">
@@ -64,8 +64,8 @@
           <ion-col size="12" *ngIf="!isSocialLogin">
             <div class="input-item">
               <ion-item lines="none">
-                <ion-input type="text" name="password" [(ngModel)]="password" ngModel required class="ion-text-center"
-                  placeholder="Password"></ion-input>
+                <ion-input type="password" name="password" [(ngModel)]="password" ngModel required
+                  class="ion-text-center" placeholder="Password"></ion-input>
               </ion-item>
             </div>
           </ion-col>
@@ -92,7 +92,7 @@
             <div class="input-item">
               <ion-item lines="none">
                 <ion-input type="text" name="city" [(ngModel)]="logup.city" ngModel required class="ion-text-center"
-                  placeholder="מספר"></ion-input>
+                  placeholder="דירה"></ion-input>
               </ion-item>
             </div>
           </ion-col>
@@ -126,7 +126,7 @@
       </div>
     </form>
 
-    <form *ngIf="step2" #form="ngForm" (ngSubmit)="signup2(form)">
+    <form *ngIf="step2" #form="ngForm" (ngSubmit)="signup2()">
       <div class="the-form set2">
         <ion-row>
           <ion-col size="6">
@@ -138,7 +138,7 @@
               </ion-item>
             </div>
           </ion-col>
-          <ion-col size="6">
+          <!-- <ion-col size="6">
             <div class="input-item">
               <ion-item lines="none">
                 <ion-input type="text" name="licenseExpireDate" [(ngModel)]="step2From.licenseExpireDate" ngModel
@@ -146,6 +146,10 @@
               </ion-item>
             </div>
           </ion-col>
+          
+          
+          ////-->
+
 
           <ion-col size="6">
             <div class="input-item">
@@ -155,7 +159,23 @@
                   <ion-label class="ion-align-self-center ion-text-center" style="--background:#fff; color:#333333">
                   </ion-label>
                   <ion-datetime style="font-size: smaller;" monthValues="1,2,3,4,5,6,7,8,9,10,11,12"
-                    yearValues="2021,2022,2023" value="" placeholder="בחר תאריך">
+                    yearValues="2021,2022,2023" value="" placeholder="בחר תוקף רשיון">
+                  </ion-datetime>
+                </ion-item>
+              </ion-item>
+            </div>
+          </ion-col>
+
+
+          <ion-col size="6">
+            <div class="input-item">
+              <ion-item lines="none">
+                <!-- <ion-input type="text" class="ion-text-center" placeholder="תוקף מרשם"></ion-input> -->
+                <ion-item lines=none>
+                  <ion-label class="ion-align-self-center ion-text-center" style="--background:#fff; color:#333333">
+                  </ion-label>
+                  <ion-datetime style="font-size: smaller;" monthValues="1,2,3,4,5,6,7,8,9,10,11,12"
+                    yearValues="2021,2022,2023" value="" placeholder="בחר תוקף מרשם">
                   </ion-datetime>
                 </ion-item>
               </ion-item>
@@ -230,11 +250,11 @@
       </div>
     </form>
 
-    <form *ngIf="step3" #form="ngForm" (ngSubmit)="signup3(form)">
+    <form *ngIf="step3" #form="ngForm" (ngSubmit)="signup3()">
       <div class="the-form set3" *ngIf="step3">
         <div class="quiz-box">
           <ion-slides mode="ios" pager="false" scrollbar="false">
-            <ion-slide>
+            <ion-slide *ngIf="q == 1">
               <ion-grid fixed>
                 <ion-row>
                   <ion-col size="12">
@@ -272,13 +292,14 @@
                 </ion-row>
               </ion-grid>
             </ion-slide>
-            <ion-slide>
+
+            <ion-slide *ngIf="q == 2">
               <ion-grid fixed>
                 <ion-row>
                   <ion-col size="12">
                     <div>
                       <p class="ion-text-wrap">
-                        לאיזה צורך הנך משתמש בתרופות מסוג אלו?
+                        מהו מרקם החומר המועדף עליך?
                       </p>
                     </div>
 
@@ -310,31 +331,32 @@
                 </ion-row>
               </ion-grid>
             </ion-slide>
-            <ion-slide>
+
+            <ion-slide *ngIf="q == 3">
               <ion-grid fixed>
                 <ion-row>
                   <ion-col size="12">
                     <div>
                       <p class="ion-text-wrap">
-                        לאיזה צורך הנך משתמש בתרופות מסוג אלו?
+                        האם מרשם התרופה שבידך עבר שינוי מאז ניתן לראשונה?
                       </p>
                     </div>
 
                     <div class="answers">
                       <ion-radio-group name="auto" value="tesla" mode="md">
                         <ion-item lines="none">
-                          <ion-label>תשובה א'
+                          <ion-label>כן, לרמה גבוהה יותר
                           </ion-label>
                           <ion-radio value="tesla" slot="start"></ion-radio>
                         </ion-item>
                         <ion-item lines="none">
-                          <ion-label>תשובה ב'
+                          <ion-label>כן, לרמה נמכונה יותר
 
                           </ion-label>
                           <ion-radio value="c" slot="start"></ion-radio>
                         </ion-item>
                         <ion-item lines="none">
-                          <ion-label> תשובה ג'
+                          <ion-label> ללא שינוי מאז המרשם הראשוני
 
 
                           </ion-label>
@@ -355,7 +377,7 @@
           </div>
 
           <div class="btnnn-holder flex jc-end">
-            <ion-button expand="block" fill="clear" (click)="goStep4()">
+            <ion-button expand="block" fill="clear" (click)="goNext()">
               <ion-icon slot="start" name="chevron-back-outline"></ion-icon>
               המשך
             </ion-button>

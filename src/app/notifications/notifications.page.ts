@@ -36,7 +36,7 @@ export class NotificationsPage implements OnInit {
       if (!notification.seen) {
         const updNotification = {
           ...notification,
-          seen: true
+          seen: false
         };
         this.fService.updateNotification(notification.id, updNotification)
           .then();

@@ -17,7 +17,7 @@
       <div class="input-item">
         <ion-item lines="none">
           <ion-input type="text" name="First" [(ngModel)]="searchValue1" (ngModelChange)="filterPharmacy($event)"
-            class="ion-text-center" placeholder="הקלד שם רופא או התמחות"></ion-input>
+            class="ion-text-center" placeholder="חיפוש לפי שם"></ion-input>
         </ion-item>
       </div>
 
@@ -76,7 +76,7 @@
       </div>
     </ion-item>
   </div>
-  <div class="ion-text-center">
+  <!-- <div class="ion-text-center">
     <ion-list>
       <ion-item *ngFor="let location of locationTraces">
         <ion-label class="ion-text-wrap">
@@ -95,5 +95,5 @@
     <ng-template #elseTemplate>
       {{ttt1}}
     </ng-template>
-  </div>
+  </div> -->
 </ion-content>

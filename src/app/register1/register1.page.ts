@@ -30,6 +30,7 @@ export class Register1Page implements OnInit {
   step3 = false;
   step3init = true;
   step4 = false;
+  q = 1;
 
   password: any;
   capturedSnapURL: string;
@@ -290,6 +291,15 @@ export class Register1Page implements OnInit {
   goHome() {
     this.navCtrl.navigateRoot('home');
   }
+
+  goNext() {
+    this.q++;
+    if (this.q > 3) {
+      this.goStep4();
+    }
+  }
+
+
 
 
 }

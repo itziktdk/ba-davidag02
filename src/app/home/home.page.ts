@@ -35,7 +35,7 @@ export class HomePage implements OnInit {
   userUID: string;
   users: Observable<User[]>;
   usersCollectionRef: AngularFirestoreCollection<User>;
-  isAdmin = false; notificationList: unknown[];
+  isAdmin = true; notificationList: unknown[];
   notiCount = 0;
   // tslint:disable-next-line: max-line-length
   constructor(
@@ -82,8 +82,8 @@ export class HomePage implements OnInit {
           this.userDataService.getUserData(res.uid)
             .subscribe((userData: any) => {
               if (userData) {
-                this.isAdmin = userData.admin;
-                console.log('usrdata ', this.isAdmin);
+                this.isAdmin = true; // userData.admin;
+                console.log('usrdata ', userData);
                 localStorage.setItem('isAdmin', userData.admin);
                 this.validateUserVoucher(userData);
               } else {
@@ -100,12 +100,12 @@ export class HomePage implements OnInit {
       .subscribe(notifications => {
         if (notifications && notifications.length > 0) {
           this.notiCount = notifications.filter((x: any) => x.uid === userId).length;
-          this.notificationList = notifications;
-          console.log(this.notificationList)
+          this.notificationList = notifications.filter((uud: any) => uud.uid === userId);
+          console.log(this.notificationList);
         } else {
           this.notiCount = 0;
         }
-      })
+      });
   }
 
   validateUserVoucher(userdata: any) {
