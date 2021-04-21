@@ -29,9 +29,9 @@ export class RealvouchersPage implements OnInit {
         this.sentVoucherList = [];
         this.redeemedVoucherList = [];
         for (const result of results) {
-          console.log(result);
-          for (const owner of result.ownedPharmacy.owners) {
-            if (owner.ownerId === localStorage.getItem('userId')) {
+         console.log(result);
+         for (const owner of result.ownedPharmacy.owners) {
+            if (owner === localStorage.getItem('userId')) {
               this.voucherList.push(result);
               if (!result.redeemed && result.sent) {
                 this.sentVoucherList.push(result);

@@ -27,6 +27,7 @@ export class PharmaciesPage implements OnInit {
   filterTerm: string;
   category: any = 's1';
   count: number = null;
+  networks: any = null;
 
   pharmRecords;
   pharmlist;
@@ -41,6 +42,7 @@ export class PharmaciesPage implements OnInit {
       .subscribe((result: any) => {
         sessionStorage.setItem('rCount', result.length);
         this.count = result.length;
+      // this.networks = result.
       });
     this.performGetAllPharmacies();
     // this.pharmRecords = JSON.stringify(this.pharmlist);
@@ -65,13 +67,13 @@ export class PharmaciesPage implements OnInit {
     this.navCtrl.navigateBack('home');
   }
 
-  goNavigate() {
+  goNavigate(addrs) {
     const OPTS: LaunchNavigatorOptions = {
       start: 'אשתאול 4 חולון',
       app: this.launchNavigator.APP.WAZE
     };
 
-    this.launchNavigator.navigate('אלנבי 80 תל אביב', OPTS)
+    this.launchNavigator.navigate(addrs, OPTS)
       .then(
         success => console.log('Launched navigator'),
         error => console.log('Error launching navigator', error)
@@ -94,8 +96,7 @@ export class PharmaciesPage implements OnInit {
 
 
   performGetAllPharmacies() {
-    this.fService.getPharmacyList()
-      .subscribe((result: any) => {
+    this.fService.getPharmacyList().subscribe((result: any) => {
         this.pharmacyList = result;
         console.log(result);
         this.pharmRecords = result;
